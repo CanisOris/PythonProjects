@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Operators Reference</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #222;
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        h1 { border-bottom: 2px solid #eaeaea; padding-bottom: 0.5rem; }
+        h2 { color: #0056b3; margin-top: 2rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0 2rem 0;
+            background: #fff;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px 14px;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #fbfbfc;
+        }
+        code {
+            background-color: #f1f3f5;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+            font-size: 0.9em;
+            color: #d63384;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Python Operators Reference Guide</h1>
+
+    <section>
+        <h2>1. Arithmetic Operators</h2>
+        <table>
+            <thead>
+                <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>+</code></td><td>Addition</td><td><code>5 + 3</code></td><td><code>8</code></td></tr>
+                <tr><td><code>-</code></td><td>Subtraction</td><td><code>5 - 3</code></td><td><code>2</code></td></tr>
+                <tr><td><code>*</code></td><td>Multiplication</td><td><code>5 * 3</code></td><td><code>15</code></td></tr>
+                <tr><td><code>/</code></td><td>Division</td><td><code>5 / 2</code></td><td><code>2.5</code></td></tr>
+                <tr><td><code>//</code></td><td>Floor Division</td><td><code>5 // 2</code></td><td><code>2</code></td></tr>
+                <tr><td><code>%</code></td><td>Modulus (Remainder)</td><td><code>5 % 2</code></td><td><code>1</code></td></tr>
+                <tr><td><code>**</code></td><td>Exponentiation</td><td><code>2 ** 3</code></td><td><code>8</code></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>2. Comparison (Relational) Operators</h2>
+        <table>
+            <thead>
+                <tr><th>Operator</th><th>Name</th><th>Example</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>==</code></td><td>Equal to</td><td><code>5 == 5</code></td><td><code>True</code></td></tr>
+                <tr><td><code>!=</code></td><td>Not equal to</td><td><code>5 != 3</code></td><td><code>True</code></td></tr>
+                <tr><td><code>&gt;</code></td><td>Greater than</td><td><code>5 &gt; 3</code></td><td><code>True</code></td></tr>
+                <tr><td><code>&lt;</code></td><td>Less than</td><td><code>3 &lt; 5</code></td><td><code>True</code></td></tr>
+                <tr><td><code>&gt;=</code></td><td>Greater than or equal to</td><td><code>5 &gt;= 5</code></td><td><code>True</code></td></tr>
+                <tr><td><code>&lt;=</code></td><td>Less than or equal to</td><td><code>3 &lt;= 5</code></td><td><code>True</code></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>3. Logical Operators</h2>
+        <table>
+            <thead>
+                <tr><th>Operator</th><th>Description</th><th>Example</th><th>Result</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>and</code></td><td>True if both statements are true</td><td><code>(5 &gt; 3) and (10 &gt; 5)</code></td><td><code>True</code></td></tr>
+                <tr><td><code>or</code></td><td>True if at least one statement is true</td><td><code>(5 &gt; 3) or (2 &gt; 5)</code></td><td><code>True</code></td></tr>
+                <tr><td><code>not</code></td><td>Reverses the result</td><td><code>not(5 &gt; 3)</code></td><td><code>False</code></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>4. Assignment Operators</h2>
+        <table>
+            <thead>
+                <tr><th>Operator</th><th>Equivalent Expression</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>=</code></td><td><code>x = 5</code></td><td><code>x = 5</code></td></tr>
+                <tr><td><code>+=</code></td><td><code>x = x + 5</code></td><td><code>x += 5</code></td></tr>
+                <tr><td><code>-=</code></td><td><code>x = x - 5</code></td><td><code>x -= 5</code></td></tr>
+                <tr><td><code>*=</code></td><td><code>x = x * 5</code></td><td><code>x *= 5</code></td></tr>
+                <tr><td><code>/=</code></td><td><code>x = x / 5</code></td><td><code>x /= 5</code></td></tr>
+                <tr><td><code>//=</code></td><td><code>x = x // 5</code></td><td><code>x //= 5</code></td></tr>
+                <tr><td><code>%=</code></td><td><code>x = x % 5</code></td><td><code>x %= 5</code></td></tr>
+                <tr><td><code>**=</code></td><td><code>x = x ** 5</code></td><td><code>x **= 5</code></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>5. Identity Operators</h2>
+        <table>
+            <thead>
+                <tr><th>Operator</th><th>Description</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>is</code></td><td>True if both variables point to the same object</td><td><code>x is y</code></td></tr>
+                <tr><td><code>is not</code></td><td>True if variables point to different objects</td><td><code>x is not y</code></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>6. Membership Operators</h2>
+        <table>
+            <thead>
+                <tr><th>Operator</th><th>Description</th><th>Example</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>in</code></td><td>True if value is present in sequence</td><td><code>"a" in "apple"</code></td></tr>
+                <tr><td><code>not in</code></td><td>True if value is absent from sequence</td><td><code>"z" not in "apple"</code></td></tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>7. Bitwise Operators</h2>
+        <table>
+            <thead>
+                <tr><th>Operator</th><th>Name</th><th>Description</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>&amp;</code></td><td>Bitwise AND</td><td>Sets bit to 1 if both bits are 1</td></tr>
+                <tr><td><code>|</code></td><td>Bitwise OR</td><td>Sets bit to 1 if one of two bits is 1</td></tr>
+                <tr><td><code>^</code></td><td>Bitwise XOR</td><td>Sets bit to 1 if only one bit is 1</td></tr>
+                <tr><td><code>~</code></td><td>Bitwise NOT</td><td>Inverts all the bits</td></tr>
+                <tr><td><code>&lt;&lt;</code></td><td>Zero fill left shift</td><td>Shift left by pushing zeros</td></tr>
+                <tr><td><code>&gt;&gt;</code></td><td>Signed right shift</td><td>Shift right by pushing sign bits</td></tr>
+            </tbody>
+        </table>
+    </section>
+
+</body>
+</html>
