@@ -5,8 +5,19 @@ test_info = {
     "abbreviation": "MBTI",
     "category": "Typology",
     "popular": True,
+    "subdivisions": {
+        "Introversion": {"code": "I", "preference": "Internal"},
+        "Extraversion": {"code": "E", "preference": "External"},
+        "Sensing": {"code": "S", "preference": "Concrete"},
+        "Intuition": {"code": "N", "preference": "Abstract"},
+        "Thinking": {"code": "T", "preference": "Logic"},
+        "Feeling": {"code": "F", "preference": "Values"},
+        "Judging": {"code": "J", "preference": "Structure"},
+        "Perceiving": {"code": "P", "preference": "Flexible"}
+    },
+    "myrating": 7
 }
-
+print(test_info)
 # NOTE: .get() fails gracefully like c# get param 
 category = test_info.get("category")
 print("Category: ", category)
@@ -17,6 +28,7 @@ print("Inventor: ", inventor)
 cost = test_info.get("cost", "Free / Varies")
 print("Cost: ", cost)
 
+# ARE YOU THE KEY MASTER?
 # Test if key exists in the dictionary
 if "category" in test_info:
     print("Category exists:", test_info["category"])
@@ -31,3 +43,8 @@ except KeyError:
 if "inventor" not in test_info:
     print("Inventor is missing from the dictionary.")
 
+
+if "myrating" in test_info:
+    test_info["myrating"] = 9
+
+print(test_info)
