@@ -1,23 +1,26 @@
-subdivisions_dict = {
-    "Introversion": {"code": "I", "preference": "Internal"},
-    "Extraversion": {"code": "E", "preference": "External"},
-    "Sensing": {"code": "S", "preference": "Concrete"},
-    "Intuition": {"code": "N", "preference": "Abstract"},
-    "Thinking": {"code": "T", "preference": "Logic"},
-    "Feeling": {"code": "F", "preference": "Values"},
-    "Judging": {"code": "J", "preference": "Structure"},
-    "Perceiving": {"code": "P", "preference": "Flexible"}
-}
+import personalityTypes
 
-test_info = {
-    "name": "Myers-Briggs Type Indicator",
-    "abbreviation": "MBTI",
-    "category": "Typology",
-    "popular": True,
-    "typeclassifica"
-    "subdivisions": subdivisions_dict,
-    "myrating": 7
-}
+
+# subdivisions_dict = {
+#     "Introversion": {"code": "I", "preference": "Internal"},
+#     "Extraversion": {"code": "E", "preference": "External"},
+#     "Sensing": {"code": "S", "preference": "Concrete"},
+#     "Intuition": {"code": "N", "preference": "Abstract"},
+#     "Thinking": {"code": "T", "preference": "Logic"},
+#     "Feeling": {"code": "F", "preference": "Values"},
+#     "Judging": {"code": "J", "preference": "Structure"},
+#     "Perceiving": {"code": "P", "preference": "Flexible"}
+# }
+
+# test_info = {
+#     "name": "Myers-Briggs Type Indicator",
+#     "abbreviation": "MBTI",
+#     "category": "Typology",
+#     "popular": True,
+#     "typeclassifica"
+#     "subdivisions": subdivisions_dict,
+#     "myrating": 7
+# }
 
 
 
