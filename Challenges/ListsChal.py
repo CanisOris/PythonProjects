@@ -82,15 +82,15 @@ for item in p_ack:
 # print(dir(p_ack))
 # better but long
 # print(help(p_ack))
-
+print("############################################ [ CRUD ]\n")
+# edit #################################################[ CRUD ]
 tpp = [
     "ApplePy",
     "Pandas",
     "Requests",
     "FastAPI"
 ]
-print("############################################ [ CRUD ]\n")
-# edit #################################################[ CRUD ]
+
 tpp[0] = "NumPy"
 tpp.append("SQLAlchemy")
 print(f"tpp cnt: {len(tpp)}")
@@ -99,9 +99,28 @@ print(f"tpp removed count: {len(tpp)}")
 # insert at location
 tpp.insert(0, "Xanidoo")
 # print("New 0 {}",format(tpp[0]))
+
+# note: if you sort then reverse it will be sorted by alphabetical order in descending order
+# if just do reverse it reverse the list in its list order, not alphabetical order
+
+tpp.sort()
 for item in tpp:
     print(item)
 
+tpp.reverse()
+for item in tpp:
+    print(item)
 
+print(tpp.index("Xanidoo"))
+tpp.append("SQLAlchemy")
+tpp.append("SQLAlchemy")
+tpp.append("SQLAlchemy")
+tpp.append("SQLAlchemy")
+
+print(f"SQLAlchemy count: {tpp.count('SQLAlchemy')}")
+
+
+
+tpp.clear()
 
 
