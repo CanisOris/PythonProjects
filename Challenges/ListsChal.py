@@ -55,6 +55,8 @@ first_half.extend(second_half)
 print(f"first_half count after adding second_half: {len(first_half)}")
 # print(first_half)
 print("############################################ [ END ]\n")
+
+# shorter named tests :) #############################################################
 print("############################################ [ NEW ]\n")
 p_ack = ["MBTI", "Enneagram", "DiSC"]
 
@@ -87,7 +89,7 @@ tpp = [
     "Requests",
     "FastAPI"
 ]
-
+print("############################################ [ CRUD ]\n")
 # edit #################################################[ CRUD ]
 tpp[0] = "NumPy"
 tpp.append("SQLAlchemy")
