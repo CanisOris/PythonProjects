@@ -51,4 +51,5 @@ print(format(abin, "08b"))
 
 result = abin << 2
 # 3.6 f-string
+# This one took a while to get :)
 print(f"{result:08b} = {result}")
