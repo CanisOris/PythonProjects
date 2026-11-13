@@ -88,7 +88,7 @@ tpp = [
     "FastAPI"
 ]
 
-# edit
+# edit #################################################[ CRUD ]
 tpp[0] = "NumPy"
 tpp.append("SQLAlchemy")
 print(f"tpp cnt: {len(tpp)}")
