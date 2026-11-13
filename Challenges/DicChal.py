@@ -1,0 +1,33 @@
+
+
+test_info = {
+    "name": "Myers-Briggs Type Indicator",
+    "abbreviation": "MBTI",
+    "category": "Typology",
+    "popular": True,
+}
+
+# NOTE: .get() fails gracefully like c# get param 
+category = test_info.get("category")
+print("Category: ", category)
+# will fail
+inventor = test_info.get("inventor")
+print("Inventor: ", inventor)
+# fail default 
+cost = test_info.get("cost", "Free / Varies")
+print("Cost: ", cost)
+
+# Test if key exists in the dictionary
+if "category" in test_info:
+    print("Category exists:", test_info["category"])
+else:
+    print("Category key does not exist.")
+# using try
+try:
+    print(test_info["kategory"])
+except KeyError:
+    print("The kategory key does not exist!")    
+# Test if key is missing from the dictionary
+if "inventor" not in test_info:
+    print("Inventor is missing from the dictionary.")
+
