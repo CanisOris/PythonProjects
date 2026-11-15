@@ -102,7 +102,7 @@ test_info = {
     "abbreviation": "MBTI",
     "category": "Typology",
     "popular": True,
-    "type_classification": 16,  # Fixed the incomplete string syntax here
+    "type_classification": 16,  
     "subdivisions": subdivisions_dict,
     "myrating": 7
 }
