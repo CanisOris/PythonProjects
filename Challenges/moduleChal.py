@@ -2,10 +2,23 @@
 import diceModule
 import datetime
 
-print(" You rolled a 20-sided die and got ", format(diceModule.roll(20)))
-print(" You rolled a 20-sided die and got ", format(diceModule.roll(20)))
-print(" You rolled a 12-sided die and got ", format(diceModule.roll(12)))
-print(" You rolled a 4-sided die and got ", format(diceModule.roll(4)))
+roll1 = int(format(diceModule.roll(20)))
+roll2 = int(format(diceModule.roll(12)))
+roll3 = int(format(diceModule.roll(4)))
+
+if roll1 >= 5:
+    print("You hit the target ")
+    if roll2 > 1 and roll3 == 4:
+        print(" You hit the bullseye!! ")
+    elif roll1 < 5:
+        print("You missed the target")
+
+elif roll1 < 5:
+    print("You missed the target ")
+
+
+
+    
 
 
 print("Current date and time: ", datetime.datetime.now())
