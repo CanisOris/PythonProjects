@@ -26,5 +26,6 @@ def getSum(num1, num2):
 
 getSum(5, 7)
 
+# this just creates another pointer to the same function right?
 myAdd = getSum 
 myAdd(10, 15)
