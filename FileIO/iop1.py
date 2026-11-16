@@ -13,6 +13,9 @@ try:
     with open("test.txt", "r") as file:
         content = file.read()
         print(content)
+        file.close()
+        print("File read successfully.")
+
 except FileNotFoundError:
     print(f"Error: The directory '{target_dir}' does not exist.")
 except NotADirectoryError:
