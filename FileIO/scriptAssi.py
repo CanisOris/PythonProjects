@@ -9,17 +9,24 @@ ALLEXTENSION = ['.txt', '.md', '.csv', '.json']
 EXTENSION = ALLEXTENSION[0]
 
 def scan_text_files(folder_path):
-    print(f"Scanning directory: {os.path.abspath(folder_path)}\n" + "-" * 60)
-    
-    # Verify the directory exists
-    if not os.path.exists(folder_path):
-        print(f"Error: Directory '{folder_path}' does not exist.")
-        return
+    '''
+    Scans the specified folder for text files with the given extension.
+    Prints the file name, full path, raw modification time, and human-readable modification time.
 
+    Parameters:
+    folder_path (str): The path to the folder to scan.
+    '''
     txt_count = 0
 
-    # Iterate through directory 
     try:
+        print(f"Scanning directory: {os.path.abspath(folder_path)}\n" + "-" * 60)
+    
+        # Verify the directory exists
+        if not os.path.exists(folder_path):
+            print(f"Error: Directory '{folder_path}' does not exist.")
+            return
+
+        # Iterate through directory 
         for file_name in os.listdir(folder_path):
             try:
                 # join path and file
