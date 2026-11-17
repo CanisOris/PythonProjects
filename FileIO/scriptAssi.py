@@ -43,26 +43,17 @@ def scan_text_files(folder_path):
                     print(f"    Modified    : {mtime_readable}")
                     # found this gem - you can multiply chars
                     print("-" * 60)
-            except FileNotFoundError as e:
-            # This catches both if the directory doesn't exist OR if  missing
-                print(f"Error: {e}")
-            except NotADirectoryError:
-                print(f"Error: '{folder_path}' is not a directory.")
-            except PermissionError:
-                print(f"Error: Permission denied to access the path.")
+            # filnotfound, not a directory, or permission error in the inner loop
+            except (FileNotFoundError, NotADirectoryError, PermissionError) as item:
+                print(f"Error: {item}")
         if txt_count == 0:
             print(f"No files ending with any of {EXTENSION} were found in this directory.")
         else:
             print(f"Successfully processed {txt_count} text file(s).")
-    except Exception as e0:
-        print(f"Error: {e0}")
-    except FileNotFoundError as e0:
-        # This catches both if the directory doesn't exist OR if  missing
-        print(f"Error: {e0}")
-    except NotADirectoryError:
-        print(f"Error: '{folder_path}' is not a directory.")
-    except PermissionError:
-        print(f"Error: Permission denied to access the path.")
+    # found cool compact way of catching multiple exceptions
+    # filnotfound, not a directory, or permission error in the outer loop
+    except (FileNotFoundError, NotADirectoryError, PermissionError) as outerLoop:
+        print(f"Error: {outerLoop}")
 
 
 
