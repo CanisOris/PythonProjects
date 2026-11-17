@@ -1,0 +1,24 @@
+Python offers dedicated libraries for building truth tables and evaluating symbolic logic, but applying these to raw human text requires bridging formal mathematics with Natural Language Processing (NLP).
+
+Boolean Logic & Truth Table Libraries
+If you want to evaluate strict logical propositions (e.g., A & (B | ~C)), Python has specific modules for this:
+
+SymPy (sympy.logic): A comprehensive symbolic mathematics library that allows you to define symbols, build complex boolean expressions, generate full truth tables, and mathematically test if two logical statements are equivalent.
+
+pyTruthTable: A Pandas-based library designed specifically for initializing custom truth tables and computing logical relations between dataframe columns.
+
+logical: A lightweight PyPI package for evaluating boolean functions and instances based on their arity (nullary, unary, binary).
+
+The "Text to Truth" Challenge
+Formal logic libraries require absolute variables (True/False). Because human language is messy and ambiguous, you cannot feed a sentence like "The system is offline and the server is smoking" directly into a truth table. To analyze text for "truth," you must first parse it into structured claims.
+
+NLP Libraries for Text Analysis
+To extract claims, determine sentiment, or evaluate semantic meaning before applying formal logic, you will need NLP tools. These can be run entirely locally without relying on cloud APIs:
+
+Hugging Face Transformers: The industry standard for modern NLP. You can run local, open-source transformer models to perform semantic analysis, zero-shot classification, or fact-checking against an embedded database.
+
+spaCy: A highly efficient, industrial-strength library excellent for extracting structured information, named entities, and grammatical relationships (dependency parsing) from raw text.
+
+NLTK (Natural Language Toolkit): A foundational library for basic text processing, tokenization, stemming, and linguistic analysis.
+
+To build a system that analyzes text for logical consistency, you would typically use an NLP library like spaCy to parse sentences into structured propositions, and then feed those parsed propositions into a logic engine like SymPy to evaluate if the claims contradict one another.

@@ -1,0 +1,156 @@
+[
+  {
+    "name": "Ad Hominem",
+    "description": "Attacking your opponent's character or personal traits in an attempt to undermine their argument.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "Dismissing a doctor's advice on healthy eating simply because the doctor is overweight."
+  },
+  {
+    "name": "Appeal to Authority",
+    "description": "Asserting that a claim is true simply because a valid authority or expert on the issue said it was true, without any other supporting evidence.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "Believing a new software architecture is perfect just because a famous engineer tweeted about it."
+  },
+  {
+    "name": "Appeal to Emotion",
+    "description": "Manipulating an emotional response in place of a valid or compelling argument.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "A politician arguing we must pass a bill 'for the sake of the children' without providing facts on how the bill actually helps."
+  },
+  {
+    "name": "Appeal to Ignorance",
+    "description": "Arguing that a proposition must be true because it has not been proven false, or false because it has not been proven true.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Defective Induction",
+    "real_world_example": "Stating aliens must exist because no one has definitively proven that they don't."
+  },
+  {
+    "name": "Appeal to Nature",
+    "description": "Arguing that because something is 'natural' it is therefore valid, justified, inevitable, good or ideal.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "Claiming herbal medicine is inherently safer than synthesized pharmaceuticals because it comes from plants."
+  },
+  {
+    "name": "Bandwagon (Ad Populum)",
+    "description": "Appealing to popularity or the fact that many people do something as an attempted form of validation.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "Claiming a specific brand of truck is the best simply because it's the highest-selling vehicle in the country."
+  },
+  {
+    "name": "Begging the Question (Circular Reasoning)",
+    "description": "A circular argument in which the conclusion is included in the premise.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Presumption",
+    "real_world_example": "Saying 'The code is bug-free because I wrote it perfectly.'"
+  },
+  {
+    "name": "Burden of Proof",
+    "description": "Asserting that the burden of proof lies not with the person making the claim, but with someone else to disprove.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Presumption",
+    "real_world_example": "Claiming there is a teapot orbiting the sun and demanding skeptics prove you wrong."
+  },
+  {
+    "name": "Equivocation",
+    "description": "Using a double meaning or ambiguity of language to mislead or misrepresent the truth.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Ambiguity",
+    "real_world_example": "Saying 'The sign said fine for parking here, so I thought it was fine to park.'"
+  },
+  {
+    "name": "False Cause (Post Hoc)",
+    "description": "Presuming that a real or perceived relationship between things means that one is the cause of the other.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Defective Induction",
+    "real_world_example": "Noticing ice cream sales and shark attacks both increase in summer, and concluding eating ice cream causes shark attacks."
+  },
+  {
+    "name": "False Dilemma (Black-or-White)",
+    "description": "Presenting two alternative states as the only possibilities, when in fact more possibilities exist.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Presumption",
+    "real_world_example": "Saying 'You are either with us, or against us.'"
+  },
+  {
+    "name": "Gambler's Fallacy",
+    "description": "Believing that 'runs' occur to statistically independent phenomena such as roulette wheel spins.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Defective Induction",
+    "real_world_example": "Believing that because a coin landed on heads five times in a row, it is 'due' to land on tails next."
+  },
+  {
+    "name": "Genetic Fallacy",
+    "description": "Judging something good or bad on the basis of where it comes from, or from whom it comes.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "Dismissing an environmental study's findings solely because it was funded by an oil company."
+  },
+  {
+    "name": "Hasty Generalization",
+    "description": "Drawing a conclusion based on a small sample size, rather than looking at statistics that are much more in line with the typical or average situation.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Defective Induction",
+    "real_world_example": "Meeting one rude person from a city and concluding everyone in that city is rude."
+  },
+  {
+    "name": "Middle Ground",
+    "description": "Claiming that a compromise, or middle point, between two extremes must be the truth.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Compromise",
+    "real_world_example": "One person says the sky is blue, another says it's yellow, and concluding the sky must be green."
+  },
+  {
+    "name": "No True Scotsman",
+    "description": "Making what could be called an appeal to purity as a way to dismiss relevant criticisms or flaws of an argument.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Ambiguity",
+    "real_world_example": "Saying 'No true programmer uses Windows,' and when shown a great programmer who does, responding 'Well, no TRUE programmer.'"
+  },
+  {
+    "name": "Personal Incredulity",
+    "description": "Concluding that because something is difficult to understand, or one is unaware of how it works, it is therefore not true.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "Not understanding how evolutionary biology works, and therefore concluding it must be entirely false."
+  },
+  {
+    "name": "Red Herring",
+    "description": "Introducing an irrelevant topic into an argument to divert the attention of listeners or readers from the original issue.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "When asked about missing a deadline, pivoting to talk about how hard you worked on a completely different project."
+  },
+  {
+    "name": "Slippery Slope",
+    "description": "Asserting that if we allow A to happen, then Z will consequently happen too, therefore A should not happen.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Presumption",
+    "real_world_example": "Arguing that if we allow employees to wear jeans on Fridays, soon everyone will be coming to work in pajamas."
+  },
+  {
+    "name": "Straw Man",
+    "description": "Misrepresenting, exaggerating, or fabricating someone's argument to make it easier to attack.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "Person A says we should fund space exploration. Person B responds, 'So you want to bankrupt the country for little green men?'"
+  },
+  {
+    "name": "Texas Sharpshooter",
+    "description": "Cherry-picking data clusters to suit an argument, or finding a pattern to fit a presumption.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Defective Induction",
+    "real_world_example": "Pointing out that three successful tech founders dropped out of college, while ignoring the thousands of dropouts who failed."
+  },
+  {
+    "name": "Tu Quoque",
+    "description": "Answering criticism with criticism; avoiding having to engage with criticism by turning it back on the accuser.",
+    "category": "Informal Fallacy",
+    "sub_type": "Fallacy of Relevance",
+    "real_world_example": "Responding to someone pointing out a flaw in your code by saying 'Well, your code had bugs in it last week.'"
+  }
+]

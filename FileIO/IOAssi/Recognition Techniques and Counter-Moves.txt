@@ -1,0 +1,149 @@
+# Recognition Techniques and Counter-Moves
+
+
+
+This guide outlines practical techniques to spot cognitive biases and logical fallacies in real-time, followed by strategic counter-moves (antidotes) to neutralize flawed reasoning in yourself and others.
+
+
+
+---
+
+
+
+## Part 1: How to Recognize the Flaws (The "Tells")
+
+
+
+Look for these cognitive and conversational red flags. When these appear, a bias or fallacy is likely in play.
+
+
+
+1.  **The Emotional Spike:** 
+
+    *   *The Tell:* The argument heavily triggers fear, anger, pity, or outrage rather than intellectual curiosity. 
+
+    *   *Usually indicates:* Appeal to Emotion, Red Herring, Negativity Bias.
+
+
+
+2.  **Absolute and Polarized Language:** 
+
+    *   *The Tell:* The use of words like "always," "never," "either/or," "everybody," or "nobody."
+
+    *   *Usually indicates:* False Dilemma (Black-or-White), Bandwagon Effect, Slippery Slope.
+
+
+
+3.  **Attacking the Messenger (Pivot from the Premise):** 
+
+    *   *The Tell:* The conversation shifts from evaluating a claim or idea to criticizing the person making it, or praising their unrelated credentials.
+
+    *   *Usually indicates:* Ad Hominem, Genetic Fallacy, Appeal to Authority, Halo Effect.
+
+
+
+4.  **Vagueness and Missing Baselines:** 
+
+    *   *The Tell:* An argument relies on an isolated anecdote, a single dramatic event, or lacks statistical context (e.g., "I know a guy who...").
+
+    *   *Usually indicates:* Hasty Generalization, Availability Heuristic, Texas Sharpshooter.
+
+
+
+5.  **The "Gut Feeling" or Rapid Agreement:** 
+
+    *   *The Tell:* Accepting information instantly without scrutiny because it "feels right" or perfectly aligns with your existing worldview.
+
+    *   *Usually indicates:* Confirmation Bias, In-Group Favoritism, Status Quo Bias.
+
+
+
+---
+
+
+
+## Part 2: Counter-Moves and Antidotes
+
+
+
+Once you recognize a flaw, use these specific counter-moves to correct the reasoning.
+
+
+
+### Group 1: Combating Fallacies of Relevance & Distraction
+
+*Targeting: Ad Hominem, Straw Man, Red Herring, Tu Quoque*
+
+
+
+*   **Antidote 1: The "Steel Man" Technique.** 
+
+    *   *Action:* Instead of attacking a weak version of an argument (Straw Man), reconstruct your opponent's argument in its absolute strongest, most favorable form before critiquing it. This forces intellectual honesty.
+
+*   **Antidote 2: The Core Pivot.** 
+
+    *   *Action:* When the topic drifts to character attacks or irrelevant topics, calmly acknowledge the distraction and pivot back. "That may be true about their background, but it doesn't address the math in their proposal. Let's look at the math."
+
+
+
+### Group 2: Combating Defective Induction (Flawed Data)
+
+*Targeting: Hasty Generalization, Post Hoc (False Cause), Gambler's Fallacy*
+
+
+
+*   **Antidote 3: The Base-Rate Check.** 
+
+    *   *Action:* Whenever presented with an alarming statistic or anecdote, demand the baseline. Ask: "Out of how many total?" or "What is the normal rate for this?"
+
+*   **Antidote 4: The Mechanism Search (Correlation vs. Causation).** 
+
+    *   *Action:* When someone links two events (A happened, then B happened, so A caused B), ask them to explain the *exact physical or logical mechanism* that connects them. If they can't, it's just a coincidence.
+
+
+
+### Group 3: Combating Presumption & Ambiguity
+
+*Targeting: False Dilemma, Begging the Question, Equivocation*
+
+
+
+*   **Antidote 5: Expand the Spectrum.** 
+
+    *   *Action:* When presented with an "either/or" scenario, immediately brainstorm a third, fourth, or fifth option. Say, "Those are two extremes, but what about a hybrid approach?"
+
+*   **Antidote 6: Define Your Terms.** 
+
+    *   *Action:* If a word is being used vaguely (like "natural," "fair," or "fine"), stop the argument and say, "Before we go further, how exactly are we defining [Term] in this context?"
+
+
+
+### Group 4: Combating Decision-Making Biases
+
+*Targeting: Sunk Cost Fallacy, Anchoring Bias, Loss Aversion*
+
+
+
+*   **Antidote 7: The Zero-Base Test (The Blank Slate).** 
+
+    *   *Action:* To defeat Sunk Cost, ask yourself: "If I hadn't already invested a year of my life / $1,000 into this project, would I choose to start it today?" If the answer is no, cut your losses.
+
+*   **Antidote 8: Blind Evaluation.** 
+
+    *   *Action:* To defeat Anchoring, write down your estimate, budget, or acceptable price *before* you look at the price tag, the salary offer, or the dealer's sticker.
+
+
+
+### Group 5: Combating Information & Belief Biases
+
+*Targeting: Confirmation Bias, Ostrich Effect, Blind-Spot Bias*
+
+
+
+*   **Antidote 9: Active Falsification (Devil's Advocate).** 
+
+    *   *Action:* Instead of Googling to prove yourself right, actively search for the strongest evidence that proves you *wrong*. Ask yourself: "What specific evidence would it take for me to change my mind on this?" If the answer is "nothing," you are operating on dogma, not logic.
+
+*   **Antidote 10: The Outsider Perspective.** 
+
+    *   *Action:* To defeat Blind-Spot bias, explain your decision to a smart person who is completely detached from the situation and has no emotional stake in it. Ask them to poke holes in your logic.

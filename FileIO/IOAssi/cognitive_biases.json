@@ -1,0 +1,163 @@
+[
+  {
+    "name": "Anchoring Bias",
+    "description": "Relying too heavily on the first piece of information offered (the 'anchor') when making decisions.",
+    "category": "Decision-making bias",
+    "sub_type": "Heuristic shortcut",
+    "real_world_example": "A car dealer starts with a high price, making the final negotiated price seem like a good deal."
+  },
+  {
+    "name": "Availability Heuristic",
+    "description": "Overestimating the importance or likelihood of events based on how easily examples come to mind.",
+    "category": "Memory/Probability bias",
+    "sub_type": "Heuristic shortcut",
+    "real_world_example": "Fearing airplane crashes more than car crashes because plane crashes are heavily reported in the news."
+  },
+  {
+    "name": "Bandwagon Effect",
+    "description": "The tendency to do or believe things because many other people do or believe the same.",
+    "category": "Social bias",
+    "sub_type": "Groupthink",
+    "real_world_example": "Adopting a new JavaScript framework simply because everyone on tech Twitter is talking about it."
+  },
+  {
+    "name": "Blind-Spot Bias",
+    "description": "Recognizing the impact of biases on the judgment of others, while failing to see the impact of biases on one's own judgment.",
+    "category": "Self-evaluation bias",
+    "sub_type": "Metacognitive blind spot",
+    "real_world_example": "Believing you are completely objective in hiring decisions while assuming other managers play favorites."
+  },
+  {
+    "name": "Choice-Supportive Bias",
+    "description": "The tendency to remember one's choices as better than they actually were.",
+    "category": "Memory bias",
+    "sub_type": "Post-purchase rationalization",
+    "real_world_example": "Justifying the purchase of an expensive Samsung Galaxy S24 by ignoring its minor bugs and exaggerating its camera features."
+  },
+  {
+    "name": "Confirmation Bias",
+    "description": "The tendency to search for, interpret, focus on, and remember information in a way that confirms one's preconceptions.",
+    "category": "Information processing bias",
+    "sub_type": "Belief persistence",
+    "real_world_example": "Only reading news articles from sources that align with your existing political views."
+  },
+  {
+    "name": "Decoy Effect",
+    "description": "A cognitive bias in which consumers will tend to have a specific change in preference between two options when also presented with a third option that is asymmetrically dominated.",
+    "category": "Decision-making bias",
+    "sub_type": "Context effect",
+    "real_world_example": "A medium popcorn costs $6 and a large costs $6.50, making the large seem like a massive bargain compared to the medium."
+  },
+  {
+    "name": "Dunning-Kruger Effect",
+    "description": "A cognitive bias in which people with low ability at a task overestimate their ability.",
+    "category": "Self-evaluation bias",
+    "sub_type": "Illusory superiority",
+    "real_world_example": "A beginner programmer writing their first HTML page and immediately believing they can architect a complex React enterprise application."
+  },
+  {
+    "name": "Endowment Effect",
+    "description": "The tendency for people to demand much more to give up an object than they would be willing to pay to acquire it.",
+    "category": "Decision-making bias",
+    "sub_type": "Ownership effect",
+    "real_world_example": "Refusing to sell your old 2007 motorcycle for market value because of your emotional attachment and the maintenance you've put into it."
+  },
+  {
+    "name": "Framing Effect",
+    "description": "Drawing different conclusions from the same information, depending on how that information is presented.",
+    "category": "Information processing bias",
+    "sub_type": "Context effect",
+    "real_world_example": "Preferring ground beef labeled '80% lean' over beef labeled '20% fat'."
+  },
+  {
+    "name": "Fundamental Attribution Error",
+    "description": "The tendency to over-emphasize personality-based explanations for behaviors observed in others while under-emphasizing situational explanations.",
+    "category": "Social attribution bias",
+    "sub_type": "Judgment error",
+    "real_world_example": "Assuming a coworker is lazy because they are late, while excusing your own lateness due to bad traffic."
+  },
+  {
+    "name": "Halo Effect",
+    "description": "The tendency for positive impressions of a person, company, brand or product in one area to positively influence one's opinion or feelings in other areas.",
+    "category": "Social bias",
+    "sub_type": "Cognitive shortcut",
+    "real_world_example": "Assuming a physically attractive person is also naturally kind and intelligent."
+  },
+  {
+    "name": "Hindsight Bias",
+    "description": "Sometimes called the 'I-knew-it-all-along' phenomenon, the tendency to see past events as being predictable at the time those events happened.",
+    "category": "Memory bias",
+    "sub_type": "Memory distortion",
+    "real_world_example": "Claiming you knew a tech stock was going to crash only after it actually plummets."
+  },
+  {
+    "name": "In-Group Favoritism",
+    "description": "The tendency for people to give preferential treatment to others they perceive to be members of their own groups.",
+    "category": "Social bias",
+    "sub_type": "Tribalism",
+    "real_world_example": "Hiring a candidate simply because they attended the same coding bootcamp or university as you."
+  },
+  {
+    "name": "Loss Aversion",
+    "description": "The tendency to prefer avoiding losses to acquiring equivalent gains.",
+    "category": "Decision-making bias",
+    "sub_type": "Prospect theory",
+    "real_world_example": "Feeling more pain from losing $100 than the joy of finding $100."
+  },
+  {
+    "name": "Negativity Bias",
+    "description": "Psychological phenomenon by which humans have a greater recall of unpleasant memories compared with positive memories.",
+    "category": "Memory/Emotion bias",
+    "sub_type": "Evolutionary adaptation",
+    "real_world_example": "Remembering a single insult from a performance review while forgetting five compliments."
+  },
+  {
+    "name": "Optimism Bias",
+    "description": "The tendency to be over-optimistic, overestimating favorable and pleasing outcomes.",
+    "category": "Probability estimation bias",
+    "sub_type": "Self-deception",
+    "real_world_example": "Estimating a home DIY repair will only take one hour, when it historically always takes you an entire weekend."
+  },
+  {
+    "name": "Ostrich Effect",
+    "description": "Avoiding exposing oneself to information that one fears may cause psychological discomfort.",
+    "category": "Information avoidance bias",
+    "sub_type": "Defense mechanism",
+    "real_world_example": "Refusing to look at your bank account balance after making several large, impulsive purchases."
+  },
+  {
+    "name": "Placebo Effect",
+    "description": "When simply believing that something will have a certain effect on you causes it to have that effect.",
+    "category": "Belief revision bias",
+    "sub_type": "Expectancy effect",
+    "real_world_example": "Feeling physically energized after drinking decaf coffee because you thought it was regular coffee."
+  },
+  {
+    "name": "Self-Serving Bias",
+    "description": "The tendency to claim more responsibility for successes than failures.",
+    "category": "Social attribution bias",
+    "sub_type": "Ego defense mechanism",
+    "real_world_example": "Attributing a successful project launch to your brilliant code, but blaming server issues for a failed deployment."
+  },
+  {
+    "name": "Status Quo Bias",
+    "description": "The tendency to like things to stay relatively the same, perceiving any change from the baseline as a loss.",
+    "category": "Decision-making bias",
+    "sub_type": "Inertia",
+    "real_world_example": "Continuing to use outdated legacy software (like Subversion) instead of migrating to Git simply because it's what you're used to."
+  },
+  {
+    "name": "Sunk Cost Fallacy",
+    "description": "The tendency to continue an endeavor once an investment in money, effort, or time has been made, rather than cut losses.",
+    "category": "Decision-making bias",
+    "sub_type": "Commitment bias",
+    "real_world_example": "Finishing a terrible book just because you're already halfway through it."
+  },
+  {
+    "name": "Survivorship Bias",
+    "description": "Concentrating on the people or things that 'survived' some process and inadvertently overlooking those that didn't because of their lack of visibility.",
+    "category": "Selection bias",
+    "sub_type": "Logical error",
+    "real_world_example": "Assuming starting a tech company is easy because you only hear about the successful startups and not the 90% that failed."
+  }
+]

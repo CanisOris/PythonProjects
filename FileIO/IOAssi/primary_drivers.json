@@ -1,0 +1,82 @@
+[
+  {
+    "driver_name": "Risk aversion",
+    "definition": "The tendency to prefer a sure outcome over a gamble with higher or equal expected value, prioritizing the avoidance of loss over acquiring equivalent gains."
+  },
+  {
+    "driver_name": "Reward seeking",
+    "definition": "The psychological drive to pursue positive outcomes, benefits, or dopamine-inducing stimuli, sometimes at the expense of rational risk assessment."
+  },
+  {
+    "driver_name": "Inertia",
+    "definition": "The preference for the current state of affairs or default option, resisting change due to the cognitive or physical effort required to alter course."
+  },
+  {
+    "driver_name": "Tribalism",
+    "definition": "The biological and social tendency to align with and favor one's own group (in-group) while derogating or distrusting those outside the group (out-group)."
+  },
+  {
+    "driver_name": "Ego preservation",
+    "definition": "The unconscious psychological defense mechanism aimed at protecting one's self-esteem and self-image from threats or perceived failures."
+  },
+  {
+    "driver_name": "Social conformity",
+    "definition": "The act of matching attitudes, beliefs, and behaviors to group norms to fit in, avoid social rejection, or gain approval."
+  },
+  {
+    "driver_name": "Emotional impact",
+    "definition": "The degree to which an event or piece of information evokes strong feelings, heavily skewing how easily it is remembered and how important it is perceived to be."
+  },
+  {
+    "driver_name": "Recent exposure",
+    "definition": "The cognitive shortcut where recently acquired information or recent experiences disproportionately influence judgment and memory retrieval."
+  },
+  {
+    "driver_name": "Evolutionary survival instincts",
+    "definition": "Deep-seated biological drives originally developed to keep early humans alive (e.g., hyper-focusing on threats), which often misfire in modern, non-lethal scenarios."
+  },
+  {
+    "driver_name": "Cognitive dissonance avoidance",
+    "definition": "The mental discomfort experienced by someone holding contradictory beliefs, leading them to reject or ignore new information that conflicts with their existing worldview."
+  },
+  {
+    "driver_name": "Desire for consistency",
+    "definition": "The psychological need to maintain alignment between one's past behaviors, public statements, and current beliefs, even when presented with evidence that one was wrong."
+  },
+  {
+    "driver_name": "Deflection",
+    "definition": "A psychological and argumentative tactic where criticism or focus is redirected away from the original issue or oneself onto another topic or person."
+  },
+  {
+    "driver_name": "Ad hominem attacks",
+    "definition": "A conversational tactic where one attacks the character, motive, or other attribute of the person making an argument, rather than addressing the substance of the argument itself."
+  },
+  {
+    "driver_name": "Appeal to authority or emotion",
+    "definition": "Attempting to win an argument by exploiting the audience's feelings or citing an unqualified/irrelevant figure of authority, bypassing logical evidence."
+  },
+  {
+    "driver_name": "Pattern-seeking behavior",
+    "definition": "The human brain's natural tendency to find meaningful connections, structures, or patterns in random, ambiguous, or unrelated data (apophenia)."
+  },
+  {
+    "driver_name": "Overgeneralization",
+    "definition": "Drawing broad, sweeping conclusions from a single event or a very small, unrepresentative sample of data."
+  },
+  {
+    "driver_name": "Circular reasoning",
+    "definition": "A logical flaw where the reasoner begins with what they are trying to end with, meaning the premise simply restates the conclusion rather than proving it."
+  },
+  {
+    "driver_name": "False binaries",
+    "definition": "The cognitive and logical error of artificially reducing a complex spectrum of possibilities down to only two mutually exclusive options."
+  },
+  {
+    "driver_name": "Semantic manipulation",
+    "definition": "The deliberate distortion, shifting, or ambiguous use of words and definitions to mislead an opponent or falsely validate an argument."
+  },
+  {
+    "driver_name": "Goalpost moving",
+    "definition": "The informal fallacy of demanding stronger evidence or changing the criteria for proof after the initial criteria have already been met."
+  }
+]

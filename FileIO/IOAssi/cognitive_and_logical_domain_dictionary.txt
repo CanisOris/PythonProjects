@@ -1,0 +1,140 @@
+# Domain Overview: Cognitive Psychology and Informal Logic
+
+This document defines the processes, key structures, and vocabulary used to categorize and understand human errors in judgment, memory, and argumentation.
+
+## 1. Key Structures and Language
+
+The domain is organized hierarchically, moving from broad classifications to specific manifestations:
+
+*   **Domain:** The highest level of classification, splitting the concepts into either **Cognitive Biases** (psychological tendencies and mental shortcuts) or **Logical Fallacies** (flaws in the structure or premise of an argument).
+*   **Category:** Broad groupings based on the area of human experience or reasoning affected (e.g., Decision-making bias, Fallacy of Relevance).
+*   **Core Mechanism:** The underlying psychological or logical process occurring in the brain or in the argument structure (e.g., "Filtering and assimilating new data points").
+*   **Primary Drivers:** The fundamental human motivations or logical missteps that trigger the core mechanism (e.g., Ego preservation, Pattern-seeking behavior).
+*   **Sub-type:** A more granular classification of the specific bias or fallacy (e.g., Heuristic shortcut, Goalpost moving).
+*   **Manifestation (The Specific Term):** The recognized name of the bias or fallacy as it appears in real-world scenarios (e.g., Sunk Cost Fallacy, Straw Man).
+
+## 2. Process Definitions (Core Mechanisms)
+
+These are the active processes and cognitive shortcuts that lead to the biases and fallacies defined in the dictionary:
+
+*   **Active selection between options under uncertainty:** Relies on immediate situational framing rather than long-term utility calculation. Driven by risk aversion, reward seeking, and inertia.
+*   **Evaluating human behavior and intent (self vs. others):** Assumes internal flaws in others and external obstacles for oneself. Driven by tribalism, ego preservation, and social conformity.
+*   **Distorting past recall or future probability estimates:** Substitutes "ease of recall" for "statistical probability." Driven by emotional impact, recent exposure, and survival instincts.
+*   **Filtering and assimilating new data points:** Accepts confirming evidence easily while subjecting contrary evidence to intense scrutiny. Driven by cognitive dissonance avoidance.
+*   **Substituting logical evidence with unrelated, emotionally charged variables:** The argument's conclusion does not logically follow from its premises. Driven by deflection and appeals to emotion/authority.
+*   **Drawing sweeping conclusions from inadequate or cherry-picked data:** The sample size or data selection is insufficient to prove causation. Driven by pattern-seeking and overgeneralization.
+*   **Baking the desired conclusion directly into the foundational premise:** Bypasses the need for actual proof by establishing an artificially constrained framework. Driven by circular reasoning and false binaries.
+*   **Exploiting linguistic loopholes, double meanings, or semantic shifts:** Relies on the deception of terminology rather than the substance of the claim. Driven by semantic manipulation.
+
+---
+
+## 3. Dictionary of Domain Terms (A-Z)
+
+### A
+*   **Ad Hominem (Fallacy):** Attacking an opponent's character or personal traits in an attempt to undermine their argument.
+*   **Ad hominem attacks (Driver):** A conversational tactic targeting character or motive rather than the substance of the argument.
+*   **Anchoring Bias (Bias):** Relying too heavily on the first piece of information offered (the 'anchor') when making decisions.
+*   **Appeal to Authority (Fallacy):** Asserting a claim is true simply because an authority said it was true, without supporting evidence.
+*   **Appeal to authority or emotion (Driver):** Exploiting audience feelings or citing unqualified authorities to bypass logical evidence.
+*   **Appeal to Emotion (Fallacy):** Manipulating an emotional response in place of a valid or compelling argument.
+*   **Appeal to Ignorance (Fallacy):** Arguing that a proposition must be true because it has not been proven false, or vice versa.
+*   **Appeal to Nature (Fallacy):** Arguing that because something is 'natural' it is therefore valid, justified, good, or ideal.
+*   **Availability Heuristic (Bias):** Overestimating the importance or likelihood of events based on how easily examples come to mind.
+
+### B
+*   **Bandwagon / Ad Populum (Fallacy):** Appealing to popularity or the fact that many people do something as an attempted form of validation.
+*   **Bandwagon Effect (Bias):** The tendency to do or believe things because many other people do or believe the same.
+*   **Begging the Question / Circular Reasoning (Fallacy):** A circular argument in which the conclusion is included in the premise.
+*   **Blind-Spot Bias (Bias):** Recognizing the impact of biases on the judgment of others, while failing to see the impact on one's own judgment.
+*   **Burden of Proof (Fallacy):** Asserting that the burden of proof lies not with the person making the claim, but with someone else to disprove.
+
+### C
+*   **Choice-Supportive Bias (Bias):** The tendency to remember one's choices as better than they actually were.
+*   **Circular reasoning (Driver):** A logical flaw where the premise simply restates the conclusion rather than proving it.
+*   **Cognitive Bias (Domain):** Systematic patterns of deviation from norm and rationality in judgment.
+*   **Cognitive dissonance avoidance (Driver):** The mental discomfort from holding contradictory beliefs, leading to the rejection of new, conflicting information.
+*   **Confirmation Bias (Bias):** The tendency to search for, interpret, focus on, and remember information in a way that confirms one's preconceptions.
+
+### D
+*   **Decision-making bias (Category):** Errors in judgment when making choices, often driven by heuristics, emotional attachments, or perceived losses/gains.
+*   **Decoy Effect (Bias):** A change in preference between two options when presented with a third option that is asymmetrically dominated.
+*   **Deflection (Driver):** Redirecting criticism or focus away from the original issue or oneself onto another topic or person.
+*   **Desire for consistency (Driver):** The need to maintain alignment between past behaviors and current beliefs, even when proven wrong.
+*   **Dunning-Kruger Effect (Bias):** A bias in which people with low ability at a task overestimate their ability.
+
+### E
+*   **Ego preservation (Driver):** The unconscious defense mechanism aimed at protecting self-esteem from threats or perceived failures.
+*   **Emotional impact (Driver):** The degree to which an event evokes strong feelings, heavily skewing memory and perceived importance.
+*   **Endowment Effect (Bias):** The tendency for people to demand much more to give up an object than they would pay to acquire it.
+*   **Equivocation (Fallacy):** Using a double meaning or ambiguity of language to mislead or misrepresent the truth.
+*   **Evolutionary survival instincts (Driver):** Deep-seated biological drives that often misfire in modern, non-lethal scenarios.
+
+### F
+*   **Fallacy of Ambiguity (Category):** Arguments that manipulate language, shifting definitions mid-argument to confuse or mislead.
+*   **Fallacy of Defective Induction (Category):** Arguments drawing sweeping conclusions from inadequate or cherry-picked data.
+*   **Fallacy of Presumption (Category):** Arguments relying on an unjustified assumption or a premise that assumes the conclusion is true.
+*   **Fallacy of Relevance (Category):** Arguments where premises are logically irrelevant to the conclusion, relying on emotional appeal or distraction.
+*   **False binaries (Driver):** Artificially reducing a complex spectrum of possibilities down to only two mutually exclusive options.
+*   **False Cause / Post Hoc (Fallacy):** Presuming that a real or perceived relationship between things means that one is the cause of the other.
+*   **False Dilemma / Black-or-White (Fallacy):** Presenting two alternative states as the only possibilities, when more possibilities exist.
+*   **Framing Effect (Bias):** Drawing different conclusions from the same information, depending on how that information is presented.
+*   **Fundamental Attribution Error (Bias):** Over-emphasizing personality-based explanations for others' behaviors while under-emphasizing situational ones.
+
+### G
+*   **Gambler's Fallacy (Fallacy):** Believing that 'runs' occur to statistically independent phenomena such as roulette wheel spins.
+*   **Genetic Fallacy (Fallacy):** Judging something good or bad on the basis of where it comes from, or from whom it comes.
+*   **Goalpost moving (Driver):** Demanding stronger evidence or changing the criteria for proof after the initial criteria have been met.
+
+### H
+*   **Halo Effect (Bias):** The tendency for positive impressions in one area to positively influence one's opinion or feelings in other areas.
+*   **Hasty Generalization (Fallacy):** Drawing a conclusion based on a small sample size rather than typical statistics.
+*   **Hindsight Bias (Bias):** The tendency to see past events as being predictable at the time those events happened.
+
+### I
+*   **In-Group Favoritism (Bias):** Giving preferential treatment to others perceived to be members of one's own group.
+*   **Inertia (Driver):** The preference for the current state or default option, resisting change due to required effort.
+*   **Information Processing & Belief bias (Category):** Biases affecting how people seek out, interpret, and integrate information.
+
+### L
+*   **Logical Fallacy (Domain):** Flaws in reasoning that undermine the logical validity of an argument.
+*   **Loss Aversion (Bias):** The tendency to prefer avoiding losses to acquiring equivalent gains.
+
+### M
+*   **Memory & Probability bias (Category):** Biases that affect how people encode, retrieve, or forecast information and likelihoods.
+*   **Middle Ground (Fallacy):** Claiming that a compromise, or middle point, between two extremes must be the truth.
+
+### N
+*   **Negativity Bias (Bias):** Phenomenon by which humans have a greater recall of unpleasant memories compared with positive ones.
+*   **No True Scotsman (Fallacy):** Making an appeal to purity as a way to dismiss relevant criticisms or flaws of an argument.
+
+### O
+*   **Optimism Bias (Bias):** The tendency to be over-optimistic, overestimating favorable outcomes.
+*   **Ostrich Effect (Bias):** Avoiding exposing oneself to information that one fears may cause psychological discomfort.
+*   **Overgeneralization (Driver):** Drawing broad, sweeping conclusions from a single event or a very small, unrepresentative sample.
+
+### P
+*   **Pattern-seeking behavior (Driver):** The human tendency to find meaningful connections or patterns in random or unrelated data.
+*   **Personal Incredulity (Fallacy):** Concluding that because something is difficult to understand, it is therefore not true.
+*   **Placebo Effect (Bias):** When simply believing that something will have a certain effect on you causes it to have that effect.
+
+### R
+*   **Recent exposure (Driver):** The cognitive shortcut where recently acquired information disproportionately influences judgment.
+*   **Red Herring (Fallacy):** Introducing an irrelevant topic to divert attention from the original issue.
+*   **Reward seeking (Driver):** The psychological drive to pursue positive outcomes, sometimes at the expense of rational risk assessment.
+*   **Risk aversion (Driver):** Preferring a sure outcome over a gamble with higher or equal expected value.
+
+### S
+*   **Self-Serving Bias (Bias):** The tendency to claim more responsibility for successes than failures.
+*   **Semantic manipulation (Driver):** Deliberate distortion, shifting, or ambiguous use of words to mislead an opponent.
+*   **Slippery Slope (Fallacy):** Asserting that if A is allowed to happen, then Z will consequently happen, therefore A should not happen.
+*   **Social & Attribution bias (Category):** Systematic patterns of deviation in judgment regarding inferences about other people or groups.
+*   **Social conformity (Driver):** Matching attitudes and behaviors to group norms to fit in or gain approval.
+*   **Status Quo Bias (Bias):** The tendency to like things to stay relatively the same, perceiving change as a loss.
+*   **Straw Man (Fallacy):** Misrepresenting, exaggerating, or fabricating someone's argument to make it easier to attack.
+*   **Sunk Cost Fallacy (Bias):** Continuing an endeavor once an investment has been made, rather than cutting losses.
+*   **Survivorship Bias (Bias):** Concentrating on things that 'survived' a process and inadvertently overlooking those that didn't.
+
+### T
+*   **Texas Sharpshooter (Fallacy):** Cherry-picking data clusters to suit an argument, or finding a pattern to fit a presumption.
+*   **Tribalism (Driver):** The tendency to align with and favor one's own in-group while distrusting the out-group.
+*   **Tu Quoque (Fallacy):** Answering criticism with criticism; turning it back on the accuser.

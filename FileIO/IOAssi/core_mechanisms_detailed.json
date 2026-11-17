@@ -1,0 +1,149 @@
+[
+  {
+    "core_mechanism": "Active selection between options under uncertainty",
+    "sub_values": {
+      "parent_category": "Decision-making bias",
+      "domain": "Cognitive Bias",
+      "category_definition": "Errors in judgment that occur when individuals are making choices, often driven by heuristics, emotional attachments, or perceived losses and gains.",
+      "primary_drivers": [
+        "Risk aversion",
+        "Reward seeking",
+        "Inertia"
+      ],
+      "common_manifestations": [
+        "Sunk cost fallacy",
+        "Anchoring bias",
+        "Loss aversion"
+      ],
+      "cognitive_shortcut": "Relies on immediate situational framing rather than long-term utility calculation."
+    }
+  },
+  {
+    "core_mechanism": "Evaluating human behavior and intent (self vs. others)",
+    "sub_values": {
+      "parent_category": "Social & Attribution bias",
+      "domain": "Cognitive Bias",
+      "category_definition": "Systematic patterns of deviation in judgment where inferences about other people, groups, or one's own role are drawn illogically, often driven by group dynamics or ego.",
+      "primary_drivers": [
+        "Tribalism",
+        "Ego preservation",
+        "Social conformity"
+      ],
+      "common_manifestations": [
+        "Fundamental attribution error",
+        "In-group favoritism",
+        "Bandwagon effect"
+      ],
+      "cognitive_shortcut": "Assumes internal flaws in others and external obstacles for oneself."
+    }
+  },
+  {
+    "core_mechanism": "Distorting past recall or future probability estimates",
+    "sub_values": {
+      "parent_category": "Memory & Probability bias",
+      "domain": "Cognitive Bias",
+      "category_definition": "Biases that affect how people encode, store, retrieve, or forecast information, often skewing the perceived likelihood of events based on emotional salience.",
+      "primary_drivers": [
+        "Emotional impact",
+        "Recent exposure",
+        "Evolutionary survival instincts"
+      ],
+      "common_manifestations": [
+        "Availability heuristic",
+        "Hindsight bias",
+        "Negativity bias"
+      ],
+      "cognitive_shortcut": "Substitutes 'ease of recall' for 'statistical probability'."
+    }
+  },
+  {
+    "core_mechanism": "Filtering and assimilating new data points",
+    "sub_values": {
+      "parent_category": "Information Processing & Belief bias",
+      "domain": "Cognitive Bias",
+      "category_definition": "Biases affecting how people seek out, interpret, and integrate information, generally favoring data that aligns with pre-existing beliefs or requires less mental effort.",
+      "primary_drivers": [
+        "Cognitive dissonance avoidance",
+        "Desire for consistency"
+      ],
+      "common_manifestations": [
+        "Confirmation bias",
+        "Ostrich effect",
+        "Placebo effect"
+      ],
+      "cognitive_shortcut": "Accepts confirming evidence easily while subjecting contrary evidence to intense scrutiny."
+    }
+  },
+  {
+    "core_mechanism": "Substituting logical evidence with unrelated, emotionally charged variables",
+    "sub_values": {
+      "parent_category": "Fallacy of Relevance",
+      "domain": "Logical Fallacy (Informal)",
+      "category_definition": "Arguments where the premises are logically irrelevant to the conclusion, relying instead on emotional appeal, character attacks, or distractions.",
+      "primary_drivers": [
+        "Deflection",
+        "Ad hominem attacks",
+        "Appeal to authority or emotion"
+      ],
+      "common_manifestations": [
+        "Red Herring",
+        "Straw Man",
+        "Genetic Fallacy"
+      ],
+      "logical_failure": "The argument's conclusion does not logically follow from its premises, even if the premises are factually true."
+    }
+  },
+  {
+    "core_mechanism": "Drawing sweeping conclusions from inadequate or cherry-picked data",
+    "sub_values": {
+      "parent_category": "Fallacy of Defective Induction",
+      "domain": "Logical Fallacy (Informal)",
+      "category_definition": "Arguments in which the premises are relevant to the conclusion but are far too weak or statistically flawed to support it.",
+      "primary_drivers": [
+        "Pattern-seeking behavior",
+        "Overgeneralization"
+      ],
+      "common_manifestations": [
+        "Hasty Generalization",
+        "False Cause (Post Hoc)",
+        "Texas Sharpshooter"
+      ],
+      "logical_failure": "The sample size, correlation, or selection of data is insufficient to prove the causation or generalized claim."
+    }
+  },
+  {
+    "core_mechanism": "Baking the desired conclusion directly into the foundational premise or limiting available options.",
+    "sub_values": {
+      "parent_category": "Fallacy of Presumption",
+      "domain": "Logical Fallacy (Informal)",
+      "category_definition": "Arguments that rely on an unjustified assumption, unstated premise, or a premise that assumes the conclusion is already true.",
+      "primary_drivers": [
+        "Circular reasoning",
+        "False binaries"
+      ],
+      "common_manifestations": [
+        "Begging the Question",
+        "False Dilemma",
+        "Burden of Proof"
+      ],
+      "logical_failure": "The argument bypasses the need for actual proof by establishing an artificially constrained or circular framework."
+    }
+  },
+  {
+    "core_mechanism": "Exploiting linguistic loopholes, double meanings, or semantic shifts.",
+    "sub_values": {
+      "parent_category": "Fallacy of Ambiguity",
+      "domain": "Logical Fallacy (Informal)",
+      "category_definition": "Arguments that manipulate language, using words or phrases in multiple senses or shifting definitions mid-argument to confuse or mislead.",
+      "primary_drivers": [
+        "Semantic manipulation",
+        "Goalpost moving"
+      ],
+      "common_manifestations": [
+        "Equivocation",
+        "No True Scotsman"
+      ],
+      "logical_failure": "The argument relies on the deception of terminology rather than the substance of the claim."
+    }
+  }
+]
