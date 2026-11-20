@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python 3 Dunder (Double-Underscore) Methods &amp; Attributes</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.5;
+      max-width: 860px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #1f2937;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 1.75rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.25rem;
+    }
+    ul {
+      padding-left: 1.25rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+    .next-steps {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+    }
+    .next-steps h2 {
+      margin-top: 0;
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Python 3 Dunder (Double-Underscore) Methods &amp; Attributes</h1>
+  <p>Commonly used Python 3 dunders grouped by purpose across the data model:</p>
+
+  <h2>Object Creation, Lifecycle &amp; Representation</h2>
+  <ul>
+    <li><code>__new__(cls, ...)</code> &mdash; Allocates and returns a new instance before <code>__init__</code> runs.</li>
+    <li><code>__init__(self, ...)</code> &mdash; Initializes a newly created instance.</li>
+    <li><code>__del__(self)</code> &mdash; Finalizer called when an instance is about to be destroyed (garbage collected).</li>
+    <li><code>__str__(self)</code> &mdash; Human-readable string conversion used by <code>str(obj)</code> and <code>print(obj)</code>.</li>
+    <li><code>__repr__(self)</code> &mdash; Unambiguous/debugging string representation used by <code>repr(obj)</code> and interactive shells.</li>
+    <li><code>__format__(self, format_spec)</code> &mdash; Custom formatting hook used by <code>format(obj, spec)</code> and f-strings (<code>f"{obj:spec}"</code>).</li>
+    <li><code>__bytes__(self)</code> &mdash; Byte string conversion used by <code>bytes(obj)</code>.</li>
+    <li><code>__hash__(self)</code> &mdash; Returns an integer hash so instances can be dict keys or set elements.</li>
+    <li><code>__bool__(self)</code> &mdash; Truth-value testing used by <code>bool(obj)</code> and <code>if obj:</code> (falls back to <code>__len__</code> if absent).</li>
+  </ul>
+
+  <h2>Rich Comparison Operators</h2>
+  <ul>
+    <li><code>__eq__(self, other)</code> &mdash; Equality (<code>==</code>)</li>
+    <li><code>__ne__(self, other)</code> &mdash; Inequality (<code>!=</code>)</li>
+    <li><code>__lt__(self, other)</code> &mdash; Less than (<code>&lt;</code>)</li>
+    <li><code>__le__(self, other)</code> &mdash; Less than or equal (<code>&lt;=</code>)</li>
+    <li><code>__gt__(self, other)</code> &mdash; Greater than (<code>&gt;</code>)</li>
+    <li><code>__ge__(self, other)</code> &mdash; Greater than or equal (<code>&gt;=</code>)</li>
+  </ul>
+
+  <h2>Attribute Access &amp; Descriptors</h2>
+  <ul>
+    <li><code>__getattr__(self, name)</code> &mdash; Called only when normal attribute lookup (<code>__getattribute__</code> + <code>__dict__</code> + MRO) fails.</li>
+    <li><code>__getattribute__(self, name)</code> &mdash; Intercepts <em>every</em> attribute access on an instance.</li>
+    <li><code>__setattr__(self, name, value)</code> &mdash; Intercepts every attribute assignment (<code>obj.attr = val</code>).</li>
+    <li><code>__delattr__(self, name)</code> &mdash; Intercepts attribute deletion (<code>del obj.attr</code>).</li>
+    <li><code>__dir__(self)</code> &mdash; Customizes attributes returned by <code>dir(obj)</code>.</li>
+    <li><code>__get__(self, instance, owner)</code> &mdash; Descriptor getter (data or non-data descriptor).</li>
+    <li><code>__set__(self, instance, value)</code> &mdash; Data descriptor setter.</li>
+    <li><code>__delete__(self, instance)</code> &mdash; Data descriptor deleter.</li>
+    <li><code>__set_name__(self, owner, name)</code> &mdash; Called on descriptors when assigned to a class body attribute.</li>
+  </ul>
+
+  <h2>Callable, Containers, Sequences &amp; Mappings</h2>
+  <ul>
+    <li><code>__call__(self, *args, **kwargs)</code> &mdash; Allows an instance to be called like a function (<code>obj()</code>).</li>
+    <li><code>__len__(self)</code> &mdash; Returns item count for <code>len(obj)</code>.</li>
+    <li><code>__getitem__(self, key)</code> &mdash; Subscript/indexing lookup (<code>obj[key]</code>).</li>
+    <li><code>__setitem__(self, key, value)</code> &mdash; Subscript assignment (<code>obj[key] = value</code>).</li>
+    <li><code>__delitem__(self, key)</code> &mdash; Subscript deletion (<code>del obj[key]</code>).</li>
+    <li><code>__contains__(self, item)</code> &mdash; Membership testing (<code>item in obj</code>).</li>
+    <li><code>__iter__(self)</code> &mdash; Returns an iterator object for <code>iter(obj)</code> / <code>for</code> loops.</li>
+    <li><code>__next__(self)</code> &mdash; Returns the next item from an iterator or raises <code>StopIteration</code>.</li>
+    <li><code>__reversed__(self)</code> &mdash; Custom reverse iteration for <code>reversed(obj)</code>.</li>
+    <li><code>__missing__(self, key)</code> &mdash; Called by <code>dict.__getitem__</code> when a key is not found.</li>
+  </ul>
+
+  <h2>Numeric, Bitwise &amp; In-Place Operators</h2>
+  <ul>
+    <li><strong>Binary arithmetic:</strong> <code>__add__</code>, <code>__sub__</code>, <code>__mul__</code>, <code>__matmul__</code> (<code>@</code>), <code>__truediv__</code> (<code>/</code>), <code>__floordiv__</code> (<code>//</code>), <code>__mod__</code> (<code>%</code>), <code>__divmod__</code>, <code>__pow__</code> (<code>**</code>).</li>
+    <li><strong>Reflected (right-hand) arithmetic:</strong> <code>__radd__</code>, <code>__rsub__</code>, <code>__rmul__</code>, <code>__rmatmul__</code>, <code>__rtruediv__</code>, <code>__rfloordiv__</code>, <code>__rmod__</code>, <code>__rdivmod__</code>, <code>__rpow__</code>.</li>
+    <li><strong>In-place augmented assignment:</strong> <code>__iadd__</code> (<code>+=</code>), <code>__isub__</code> (<code>-=</code>), <code>__imul__</code> (<code>*=</code>), <code>__imatmul__</code> (<code>@=</code>), <code>__itruediv__</code> (<code>/=</code>), <code>__ifloordiv__</code> (<code>//=</code>), <code>__imod__</code> (<code>%=</code>), <code>__ipow__</code> (<code>**=</code>).</li>
+    <li><strong>Unary arithmetic &amp; conversions:</strong> <code>__pos__</code> (<code>+x</code>), <code>__neg__</code> (<code>-x</code>), <code>__invert__</code> (<code>~x</code>), <code>__abs__</code>, <code>__round__</code>, <code>__trunc__</code>, <code>__floor__</code>, <code>__ceil__</code>, <code>__index__</code>.</li>
+    <li><strong>Bitwise &amp; reflected/in-place bitwise:</strong> <code>__and__</code>, <code>__xor__</code>, <code>__or__</code>, <code>__lshift__</code> (<code>&lt;&lt;</code>), <code>__rshift__</code> (<code>&gt;&gt;</code>) along with their <code>r</code> (<code>__rand__</code>, etc.) and <code>i</code> (<code>__iand__</code>, etc.) counterparts.</li>
+  </ul>
+
+  <h2>Context Managers, Coroutines &amp; Class/Module Metadata</h2>
+  <ul>
+    <li><code>__enter__(self)</code> / <code>__exit__(self, exc_type, exc_val, exc_tb)</code> &mdash; Synchronous context manager protocol (<code>with</code> statement).</li>
+    <li><code>__aenter__(self)</code> / <code>__aexit__(self, exc_type, exc_val, exc_tb)</code> &mdash; Asynchronous context manager protocol (<code>async with</code>).</li>
+    <li><code>__aiter__(self)</code> / <code>__anext__(self)</code> &mdash; Asynchronous iterator protocol (<code>async for</code>).</li>
+    <li><code>__await__(self)</code> &mdash; Makes an object awaitable (<code>await obj</code>).</li>
+    <li><strong>Common special attributes:</strong> <code>__dict__</code>, <code>__class__</code>, <code>__bases__</code>, <code>__mro__</code>, <code>__name__</code>, <code>__qualname__</code>, <code>__module__</code>, <code>__doc__</code>, <code>__annotations__</code>, <code>__slots__</code>, <code>__init_subclass__</code>, <code>__class_getitem__</code>.</li>
+  </ul>
+
+  <section class="next-steps">
+    <h2>Next Steps</h2>
+    <ol>
+      <li>Test <code>__str__</code>, <code>__repr__</code>, and <code>__eq__</code> on a small class (such as <code>PersonalityProfile</code> or <code>Traits</code>) in VS Code or Git Bash using Python 3.</li>
+      <li>Check Python's official data model reference when implementing less common hooks like <code>__slots__</code>, descriptors, or in-place operators.</li>
+    </ol>
+  </section>
+</body>
+</html>

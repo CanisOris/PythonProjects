@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python 3 Dictionary (dict) Instructions &amp; Reference</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.5;
+      max-width: 860px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #1f2937;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 1.75rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.25rem;
+    }
+    ul, ol {
+      padding-left: 1.35rem;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+    pre {
+      background: #f3f4f6;
+      padding: 0.9rem 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88em;
+      line-height: 1.45;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    .next-steps {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+    }
+    .next-steps h2 {
+      margin-top: 0;
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Python 3 Dictionary (<code>dict</code>) Instructions &amp; Reference</h1>
+  <p>In Python 3, a <code>dict</code> (dictionary) is a mutable mapping that stores <code>key: value</code> pairs with fast average-case <code>O(1)</code> lookup, insertion, and deletion. Since Python 3.7+, dictionaries preserve insertion order.</p>
+
+  <h2>1. Creating Dictionaries</h2>
+  <pre><code># Literal syntax with key: value pairs
+profile = {
+    "name": "Alice",
+    "role": "Analyst",
+    "active": True,
+}
+
+# Empty dictionary
+empty_dict = {}
+
+# dict() constructor (keyword args, list of 2-tuples, or zip)
+from_kwargs = dict(host="localhost", port=5432)
+from_pairs = dict([("a.txt", 120), ("b.txt", 340)])
+zipped = dict(zip(["id", "name"], [1, "notes.txt"]))
+
+# Dictionary comprehension
+ext_counts = {ext: 0 for ext in [".txt", ".csv", ".py"]}</code></pre>
+
+  <h2>2. Reading &amp; Safe Lookup</h2>
+  <pre><code>print(profile["name"])          # "Alice" (raises KeyError if key is missing)
+print(profile.get("email"))     # None (returns default instead of KeyError)
+print(profile.get("email", "")) # "" (custom fallback value)
+
+# Membership test checks keys (not values)
+if "role" in profile:
+    print(profile["role"])</code></pre>
+
+  <h2>3. Adding, Updating &amp; Removing Entries</h2>
+  <pre><code># Add or overwrite a value
+profile["email"] = "alice@example.com"
+profile["role"] = "Senior Analyst"
+
+# Merge / update multiple keys at once (or use `dict1 | dict2` in Python 3.9+)
+profile.update({"role": "Lead Analyst", "team": "Core"})
+merged = profile | {"env": "dev"}
+
+# Set default only if key is not already present
+tags = {}
+tags.setdefault("txt", []).append("readme.txt")
+
+# Remove entries
+removed_val = profile.pop("team", None)  # Removes key &amp; returns value (or None if absent)
+last_key, last_val = profile.popitem()    # Removes and returns last inserted (key, value)
+del profile["email"]                      # Deletes key (raises KeyError if missing)
+# profile.clear()                         # Removes all items in place</code></pre>
+
+  <h2>4. Iterating Over Keys, Values &amp; Items</h2>
+  <pre><code>scores = {"a.txt": 10, "b.txt": 25}
+
+for key in scores:                   # Iterates over keys (same as scores.keys())
+    print(key)
+
+for val in scores.values():          # Iterates over values
+    print(val)
+
+for key, val in scores.items():      # Iterates over (key, value) tuples
+    print(f"{key}: {val}")</code></pre>
+
+  <h2>5. Key Rules &amp; Gotchas</h2>
+  <ul>
+    <li><strong>Keys must be hashable:</strong> Strings, numbers, and tuples of hashable items (<code>("tbl_files", "ID")</code>) work as keys; lists, dicts, and sets raise <code>TypeError: unhashable type</code> because they are mutable.</li>
+    <li><strong>Assignment copies a reference, not a clone:</strong> <code>alias = scores</code> points to the same dictionary; use <code>scores.copy()</code> for a shallow copy.</li>
+    <li><strong>Avoid mutating a dict while iterating over it:</strong> Collect keys to remove into a list first rather than deleting keys during <code>for k in d:</code>.</li>
+  </ul>
+
+  <section class="next-steps">
+    <h2>Next Steps</h2>
+    <ol>
+      <li>Save a quick test snippet in VS Code and run it with Python 3 in Git Bash to compare <code>d[key]</code>, <code>d.get(key, default)</code>, <code>setdefault()</code>, and <code>|</code> merging.</li>
+      <li>Practice iterating with <code>.items()</code> when building lookup tables or counting occurrences from a list of filenames.</li>
+    </ol>
+  </section>
+</body>
+</html>

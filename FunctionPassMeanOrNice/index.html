@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python 3 Function-to-Function Passing Variations</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      line-height: 1.5;
+      max-width: 860px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #1f2937;
+    }
+    h1 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.2rem;
+      margin-top: 1.75rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.25rem;
+    }
+    pre {
+      background: #f3f4f6;
+      padding: 0.9rem 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88em;
+      line-height: 1.45;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.92em;
+    }
+    pre code {
+      background: transparent;
+      padding: 0;
+    }
+    .next-steps {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 6px;
+      padding: 1rem 1.25rem;
+      margin-top: 2rem;
+    }
+    .next-steps h2 {
+      margin-top: 0;
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Python 3 Function-to-Function Passing Variations</h1>
+  <p>In Python 3, passing data or behavior from one function to another&mdash;or chaining functions together&mdash;takes several distinct forms depending on whether you are passing values, functions themselves, or mutable state.</p>
+
+  <h2>1. Direct Return-to-Argument Passing (Chaining / Composition)</h2>
+  <p>One function computes a value and returns it to a caller, which passes that result directly as an argument to another function.</p>
+  <pre><code>def clean_filename(raw_name):
+    return raw_name.strip().lower()
+
+
+def has_txt_extension(name):
+    return name.endswith(".txt")
+
+
+result = has_txt_extension(clean_filename("  Notes.TXT  "))</code></pre>
+
+  <h2>2. Passing Functions as Arguments (Higher-Order Functions &amp; Callbacks)</h2>
+  <p>Functions are first-class objects in Python, so you can pass a function reference (without <code>()</code>) into another function to be invoked inside it.</p>
+  <pre><code>def apply_check(value, predicate_fn):
+    return predicate_fn(value)
+
+
+is_text = apply_check("readme.txt", lambda s: s.endswith(".txt"))</code></pre>
+
+  <h2>3. Passing Anonymous Functions (<code>lambda</code>)</h2>
+  <p>A short, single-expression function defined inline at the call site and passed directly into another function (common with <code>sorted()</code>, <code>map()</code>, <code>filter()</code>, or custom callbacks).</p>
+  <pre><code>names = ["b.txt", "a.txt", "c.txt"]
+sorted_names = sorted(names, key=lambda item: item[0])</code></pre>
+
+  <h2>4. Passing <code>*args</code> and <code>**kwargs</code> (Argument Forwarding / Wrapper Functions)</h2>
+  <p>A wrapper or intermediary function accepts arbitrary positional (<code>*args</code>) and/or keyword (<code>**kwargs</code>) arguments and forwards them along to another function.</p>
+  <pre><code>def log_and_run(fn, *args, **kwargs):
+    print(f"Calling {fn.__name__}")
+    return fn(*args, **kwargs)
+
+
+output = log_and_run(max, [10, 45, 22], default=0)</code></pre>
+
+  <h2>5. Partial Application (<code>functools.partial</code>)</h2>
+  <p>Pre-fills some arguments of an existing function to create a new callable with fewer required arguments, then passes or calls it elsewhere.</p>
+  <pre><code>from functools import partial
+
+
+def ends_with_ext(filename, ext):
+    return filename.endswith(ext)
+
+
+is_txt = partial(ends_with_ext, ext=".txt")
+print(is_txt("todo.txt"))  # True</code></pre>
+
+  <h2>6. Passing Mutable Objects (Shared In-Place Mutation)</h2>
+  <p>Passing a mutable structure (such as a <code>list</code>, <code>dict</code>, or custom class instance) from one function to another allows the receiving function to mutate the object's contents in place (while reassigning the local parameter name inside the callee does not rebind the caller's variable).</p>
+  <pre><code>def collect_txt_files(source_names, target_list):
+    for name in source_names:
+        if name.endswith(".txt"):
+            target_list.append(name)
+
+
+matches = []
+collect_txt_files(["a.txt", "b.py", "c.txt"], matches)</code></pre>
+
+  <h2>7. Returning a Function from a Function (Closures &amp; Factory Functions)</h2>
+  <p>One function defines and returns an inner function that "remembers" variables from the enclosing function's scope (a closure), which can then be called or passed to other functions.</p>
+  <pre><code>def make_suffix_checker(suffix):
+    def checker(text):
+        return text.endswith(suffix)
+    return checker
+
+
+check_txt = make_suffix_checker(".txt")
+print(check_txt("notes.txt"))  # True</code></pre>
+
+  <h2>8. Generator / Iterator Handoff (<code>yield</code> and <code>yield from</code>)</h2>
+  <p>One generator function yields items or delegates a sub-generator to another function/consumer so data streams lazily from stage to stage without building full intermediate lists.</p>
+  <pre><code>def txt_only(filenames):
+    for name in filenames:
+        if name.endswith(".txt"):
+            yield name
+
+
+def formatted_lines(filenames):
+    for fname in txt_only(filenames):
+        yield f"TXT FILE: {fname}"</code></pre>
+
+  <section class="next-steps">
+    <h2>Next Steps</h2>
+    <ol>
+      <li>Save a small test script in VS Code and run it with Python 3 in Git Bash to compare direct return chaining, <code>functools.partial</code>, and a <code>yield</code> generator pipeline on a sample list of file names.</li>
+      <li>Check whether your target function expects a keyword-only argument (after <code>*</code>) when forwarding <code>**kwargs</code> so unexpected keywords don't raise a <code>TypeError</code>.</li>
+    </ol>
+  </section>
+</body>
+</html>
