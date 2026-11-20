@@ -3,8 +3,14 @@ import os
 from contextlib import contextmanager
 
 TARGET_FOLDER = os.path.join(os.getcwd(), "PythonProjects", "SqlConn")
-database = os.path.join(TARGET_FOLDER, "test2.db")
+database = os.path.join(TARGET_FOLDER, "SubmissionAssignment.db")
 conn = sqlite3.connect(database)
+
+# file list tuple
+fileList = ('information.docx','Hello.txt','myImage.png','myMovie.mpg','World.txt','data.pdf','myPhoto.jpg')
+#what endts with .txt create a new list
+matched_files = [file for file in fileList if file.endswith('.txt')]
+print(matched_files)
 
 '''
 I ran into this issue before with another lang
@@ -26,25 +32,55 @@ gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg60gEJMjg2OWowajE1qAIIsAIB
 
 '''
 
-
-
 # Test db connection get connection
 @contextmanager
 def create_connection(db_file):
     """
     Create a database connection to the SQLite database specified by db_file.
-    Parameters:
-    db_file (str): The database file path.
-    Returns:Connection object or None if an error occurs.
     """
-    conn = None
-
+    conn = sqlite3.connect(db_file)
     try:
-        conn = sqlite3.connect(db_file)
-        try:
-            yield conn
-        finally:
-            conn.close()
-    except sqlite3.Error as e:
-        print(f"Error: {e}")
-        yield None
+        # still trying to understand generator behavior with context managers
+        # The yield statement allows the connection to be used within the context block.
+        # Once the block is exited, the code in the finally clause ensures the connection is closed.
+        yield conn
+    finally:
+        # Guaranteed to run, even if queries raise an exception
+        conn.close()  
+
+# lazy evaluation vs eager evaluation
+# i woul have split the filename and extension before inserting them into the database
+# os.path.splitext(file_name)
+
+
+try:
+    with create_connection(database) as conn:
+        cursor = conn.cursor()
+
+        # Adjust columns if your rubric expects strictly 2 fields (ID + file_name TEXT)
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS tbl_files (
+                ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                file_name TEXT NOT NULL
+            )
+        """)
+
+        rows_to_insert = [(file_name,) for file_name in matched_files]
+        cursor.executemany(
+            "INSERT INTO tbl_files (file_name) VALUES (?)",
+            rows_to_insert,
+        )
+        conn.commit()
+
+        cursor.execute("SELECT ID, file_name FROM tbl_files")
+        records = cursor.fetchall()
+
+        print("Qualifying .txt files in database:")
+        for row_id, stored_name in records:
+            print(f"  [{row_id}] {stored_name}")
+
+except sqlite3.Error as e:
+    print(f"Database error: {e}")
+
+
+

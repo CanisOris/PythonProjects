@@ -1,0 +1,71 @@
+Chapter 1: Introduction to generators
+0:000 secondsYo, let's talk about generators in Python. A generator is a function that behaves like an iterator, meaning it can
+0:088 secondsbe used in a for loop. Basically, with generators, you can pause a function, return a value, then resume that function, kind of like it's a pause
+0:1717 secondsbutton. You can pause and unpause. We use yield rather than return. You can iterate without loading everything into
+0:2424 secondsmemory. This is great for reading large files. Normally with a function, you use the return keyword to return something.
+0:3232 secondsIf we return a lot of data, it can be overwhelming. But with the yield keyword, it acts more as a drip faucet.
+0:4040 secondsWe're receiving that data one drip at a time. Let's go over an example. We'll create a function that will count. It's
+Chapter 2: Iterator function example
+0:4747 secondsgoing to behave as an iterator, but it's not going to be a generator at first. We will define a function to count to a
+0:5656 secondscertain number which we will represent as n. We'll create a list of numbers.
+1:041 minute, 4 secondsNumbers is an empty list and a local variable of count which we will set to one cuz we want to start counting at one
+1:131 minute, 13 secondswithin a while loop. While our count is less than or equal to the number that we want to count to which we've stated as
+1:221 minute, 22 secondsn, we will do the following. Take our list of numbers and call the append
+1:291 minute, 29 secondsmethod. We will append the current count and then we will increment count by one.
+1:361 minute, 36 secondsCount plus equals 1. This function will not be a generator quite yet. We're going to return our list of numbers.
+1:471 minute, 47 secondsSince we're returning a list, this function would behave as an iterator.
+1:521 minute, 52 secondsSo, we can use it in a loop. Let's accept some user input. We'll say number equals
+2:002 minutescall the input function. Then write a prompt. Enter a number to count two. And
+2:082 minutes, 8 secondsthen we do need to type cast this as a number. Let's type cast it as an integer.
+2:142 minutes, 14 secondsNow with the for loop for every number actually let's change this to n. I've already declared a variable as number
+2:232 minutes, 23 secondsfor every n meaning number in now we'll call this function of count to then pass in a number our number variable.
+2:352 minutes, 35 secondsWe will print each number as n.
+2:392 minutes, 39 secondsLet's test it. So let's say I would like to count to 10. We get the numbers 1 through 10.
+2:492 minutes, 49 secondsThis function, it's behaving as an iterator. We can use it in a for loop.
+2:542 minutes, 54 secondsWe'll receive a list of numbers which we iterate through. But there's one problem with using the return keyword.
+Chapter 3: Memory error and yield
+3:013 minutes, 1 secondIf we return a lot of data, it can overload our memory. Let's count up to like a cajillion.
+3:093 minutes, 9 secondsThis is going to take a while. One eternity later.
+3:133 minutes, 13 secondsOkay, looks like we've encountered a memory error. And I'm going to terminate this program.
+3:213 minutes, 21 secondsThe problem is we're returning too much data all at once. So rather than just a normal function, let's convert this function to be a generator. So we can
+3:303 minutes, 30 secondsreceive these numbers just one at a time like it's a [clears throat] drip faucet. Here are the changes I'm going to make.
+3:363 minutes, 36 secondsLet's delete our list of numbers. We no longer need to append our numbers.
+3:433 minutes, 43 secondsDelete the return statement.
+3:463 minutes, 46 secondsThen within this while loop, we'll use that yield keyword. Yield the current count. When we encounter yield, we'll
+3:543 minutes, 54 secondspause the function, return a value, and then resume the function again and continue it. Let's try this again. Let's start by counting to 10.
+4:054 minutes, 5 secondsseems to work the same.
+4:074 minutes, 7 secondsNow, let's count to like a cajillion again. Well, we can actually see the results.
+4:164 minutes, 16 secondsThey're incrementing one at a time, but it's still going to take forever, though, but you can at least see the results.
+Chapter 4: Reading files with generators
+4:244 minutes, 24 secondsLet's go over another example. We're going to read a file using a generator. We'll need some test text to work with.
+4:304 minutes, 30 secondsLet's create a text file just for some text to work with. I'm going to pull up on Wikipedia the Lord
+4:384 minutes, 38 secondsof the Rings, but pull up a page that interests you. I just need some sample text. I'm going to copy the description of this book. Uh, that's good enough.
+4:504 minutes, 50 secondsAll right. I'm going to copy it. And then somewhere on my computer, I'll choose my desktop for convenience.
+4:594 minutes, 59 secondsI'm going to create a new text document.
+5:025 minutes, 2 secondsI'll name it test and this is a txt file.
+5:085 minutes, 8 secondsI will paste all that text. Then I will just do a little bit of formatting just to make it look pretty.
+5:205 minutes, 20 secondsAll right, that's good enough for now. I'm going to copy this file location.
+5:255 minutes, 25 secondsWe'll need it later. Rightclick. Go to properties. Copy this location.
+5:335 minutes, 33 secondsAll right, let's get back to this. We'll create a generator to read a file.
+5:395 minutes, 39 secondsDefine a function of read file. We'll pass in a file path.
+5:505 minutes, 50 secondsTo read a file, you can use with call the open function.
+5:575 minutes, 57 secondsPass in the file path. Name it as file.
+6:046 minutes, 4 secondsFor every line in my file, we will use the yield keyword
+6:126 minutes, 12 secondsaccess line. Then call the strip function.
+6:176 minutes, 17 secondsThe strip function removes any unwanted characters from the beginning and the end of a string. And that is our generator function.
+6:276 minutes, 27 secondsLet's create a variable of file path equals
+6:346 minutes, 34 secondswithin a string. Paste that file location. Then include the file name including the extension. My file was test and the extension was txt.
+6:466 minutes, 46 secondsAnd then I'll want to be sure to use double forward slashes.
+6:556 minutes, 55 secondsAll right.
+6:576 minutes, 57 secondsNow this function it can be used in a for loop. It's iterable.
+7:027 minutes, 2 secondsFor every line in call my function my generator of read file pass in my file
+7:107 minutes, 10 secondspath and then we will print each line and now we should be able to read this file line by line.
+7:207 minutes, 20 secondsThere we go. Here's the Wikipedia page for The Lord of the Rings. Now, it's still a small file,
+7:287 minutes, 28 secondsso a generator probably wasn't necessary, but if it was larger, well, then a generator would work perfect. But
+7:357 minutes, 35 secondsthat's how to use a generator to read a file. All right, everybody. Those are generators in Python. They're functions that behave like an iterator, meaning
+Chapter 5: Summary of concepts
+7:447 minutes, 44 secondsthey can be used in a loop. You pause a function, return a value, then resume.
+7:507 minutes, 50 secondsOne of the main benefits is that you can iterate without loading everything into memory such as reading large files. And
+7:577 minutes, 57 secondswell everybody, those are generators in Python.
+
+Sync to video time
