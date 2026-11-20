@@ -1,5 +1,6 @@
 import sqlite3
 import os
+# import pathlib
 
 TARGET_FOLDER = os.path.join(os.getcwd(), "PythonProjects", "SqlConn")
 database = os.path.join(TARGET_FOLDER, "test2.db")

@@ -76,14 +76,13 @@ try:
 #         conn.commit()
 #         for file_name in matched_files:
 #             cursor.execute("INSERT INTO tbl_files(name, ext) VALUES (?,?)", ([0], os.path.splitext(file_name)[1]))
-#             conn.commit()
-        
+#             conn.commit()       
 #         cursor.execute("SELECT * FROM tbl_files")
 #         print(cursor.fetchall())
 
-# except sqlite3.Error as e:
+except sqlite3.Error as e0:
 
-        print(f"Database error: {e}")
+        print(f"Database error: {e0}")
 
         rows_to_insert = [(file_name,) for file_name in matched_files]
         cursor.executemany(
@@ -99,8 +98,8 @@ try:
         for row_id, stored_name in records:
             print(f"  [{row_id}] {stored_name}")
 
-except sqlite3.Error as e:
-    print(f"Database error: {e}")
+except sqlite3.Error as e1:
+    print(f"Database error: {e1}")
 
 
 
