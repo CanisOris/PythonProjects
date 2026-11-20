@@ -57,13 +57,33 @@ try:
     with create_connection(database) as conn:
         cursor = conn.cursor()
 
-        # Adjust columns if your rubric expects strictly 2 fields (ID + file_name TEXT)
+        # 2 fields: ID and file_name
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS tbl_files (
                 ID INTEGER PRIMARY KEY AUTOINCREMENT,
                 file_name TEXT NOT NULL
             )
         """)
+
+#         try:
+#     with create_connection(database) as conn:
+#         cursor = conn.cursor()
+#         cursor.execute("CREATE TABLE IF NOT EXISTS tbl_files ( \
+#             ID INTEGER PRIMARY KEY AUTOINCREMENT, \
+#             name, \
+#             ext \
+#         )")
+#         conn.commit()
+#         for file_name in matched_files:
+#             cursor.execute("INSERT INTO tbl_files(name, ext) VALUES (?,?)", ([0], os.path.splitext(file_name)[1]))
+#             conn.commit()
+        
+#         cursor.execute("SELECT * FROM tbl_files")
+#         print(cursor.fetchall())
+
+# except sqlite3.Error as e:
+
+        print(f"Database error: {e}")
 
         rows_to_insert = [(file_name,) for file_name in matched_files]
         cursor.executemany(
