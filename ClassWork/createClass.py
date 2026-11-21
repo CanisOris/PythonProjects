@@ -35,12 +35,12 @@ class PersonalityProfile:
             f"strengths={self.strengths!r}, challenges={self.challenges!r})"
         )
 
-
-# Outside the class, create an instance with illustrative personality traits.
-new_profile = PersonalityProfile(
-    "John Doe",
-    "Introvert",
-    "Thoughtful reflection, focused independent work, and attentive listening",
-    "Speaking up in large groups and managing social fatigue",
-)
-print(new_profile.analyze())
+if  __name__ == "__main__":
+    # Outside the class, create an instance with illustrative personality traits.
+    new_profile = PersonalityProfile(
+        "John Doe",
+        "Introvert",
+        "Thoughtful reflection, focused independent work, and attentive listening",
+        "Speaking up in large groups and managing social fatigue",
+    )
+    print(new_profile.analyze())

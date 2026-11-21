@@ -64,26 +64,8 @@ try:
                 file_name TEXT NOT NULL
             )
         """)
-
-#         try:
-#     with create_connection(database) as conn:
-#         cursor = conn.cursor()
-#         cursor.execute("CREATE TABLE IF NOT EXISTS tbl_files ( \
-#             ID INTEGER PRIMARY KEY AUTOINCREMENT, \
-#             name, \
-#             ext \
-#         )")
-#         conn.commit()
-#         for file_name in matched_files:
-#             cursor.execute("INSERT INTO tbl_files(name, ext) VALUES (?,?)", ([0], os.path.splitext(file_name)[1]))
-#             conn.commit()       
-#         cursor.execute("SELECT * FROM tbl_files")
-#         print(cursor.fetchall())
-
-except sqlite3.Error as e0:
-
-        print(f"Database error: {e0}")
-
+        
+        # loop and insert each matching filename into the database
         rows_to_insert = [(file_name,) for file_name in matched_files]
         cursor.executemany(
             "INSERT INTO tbl_files (file_name) VALUES (?)",
@@ -98,8 +80,9 @@ except sqlite3.Error as e0:
         for row_id, stored_name in records:
             print(f"  [{row_id}] {stored_name}")
 
-except sqlite3.Error as e1:
-    print(f"Database error: {e1}")
+    
+except sqlite3.Error as e:
+    print(f"Database error: {e}")
 
 
 
