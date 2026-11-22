@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using self vs. Not Using self in Python (Game Theory)</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav>
+  <main>
+    <h1>Using <code>self.</code> vs. Not Using <code>self.</code> in Python</h1>
+    <p>
+      Using <code>self.trust_score = trust_score</code> stores the value <strong>on the specific object instance</strong>
+      so other methods on that object can read or update it later. Without <code>self.</code> (just
+      <code>trust_score = trust_score</code>), it is only a <strong>local variable</strong> inside
+      <code>__init__</code> and disappears as soon as <code>__init__</code> finishes running.
+    </p>
+
+    <h2 id="key-differences">Key Differences</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Aspect</th>
+          <th>With <code>self.</code> (<code>self.trust_score = trust_score</code>)</th>
+          <th>Without <code>self.</code> (<code>trust_score = trust_score</code>)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Lifetime</strong></td>
+          <td>Lasts as long as the object instance exists</td>
+          <td>Destroyed as soon as <code>__init__</code> finishes</td>
+        </tr>
+        <tr>
+          <td><strong>Where it lives</strong></td>
+          <td>Stored on the instance (<code>obj.trust_score</code>)</td>
+          <td>Lives only in <code>__init__</code>'s local scope</td>
+        </tr>
+        <tr>
+          <td><strong>Access in other methods</strong></td>
+          <td>Accessible anywhere via <code>self.trust_score</code></td>
+          <td>Raises <code>NameError</code> in other methods</td>
+        </tr>
+        <tr>
+          <td><strong>Per-instance state</strong></td>
+          <td>Each strategy instance keeps its own value</td>
+          <td>Nothing is saved on the instance</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2 id="example-what-happens-when-you-omit-self">Example: What Happens When You Omit <code>self.</code></h2>
+    <pre><code>class BrokenStrategy:
+    def __init__(self, name, trust_score):
+        self.name = name
+        # Missing 'self.': trust_score is only a temporary local variable
+        trust_score = trust_score
+
+    def report_trust(self):
+        # Fails with NameError because trust_score was not saved on the instance
+        return f"{self.name} has trust score {trust_score}"
+</code></pre>
+
+    <p class="note">
+      In <code>self.trust_score = trust_score</code>, the right-hand <code>trust_score</code> is the parameter
+      passed into <code>__init__</code>, and <code>self.trust_score</code> is the attribute attached to that
+      specific instance (<code>self</code>).
+    </p>
+  </main>
+</body>
+</html>

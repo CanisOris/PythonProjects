@@ -4,103 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Python 3 OOP: Object Manipulation, Inheritance &amp; Polymorphism</title>
-  <style>
-    :root {
-      --bg: #0f1117;
-      --surface: #161b22;
-      --surface-alt: #1f2630;
-      --border: #30363d;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --accent: #58a6ff;
-      --code-bg: #0d1117;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      padding: 2rem 1.25rem;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 920px;
-      margin: 0 auto;
-    }
-
-    header {
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    h1 {
-      margin: 0 0 0.4rem;
-      font-size: 1.85rem;
-      color: var(--accent);
-    }
-
-    .subtitle {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.75rem;
-    }
-
-    h2 {
-      margin-top: 0;
-      font-size: 1.3rem;
-      color: var(--text);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-
-    p {
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
-
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      background: var(--surface-alt);
-      padding: 0.15rem 0.35rem;
-      border-radius: 4px;
-      font-size: 0.88em;
-      color: #79c0ff;
-    }
-
-    pre {
-      margin: 1rem 0 0;
-      padding: 1rem;
-      background: var(--code-bg);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow-x: auto;
-    }
-
-    pre code {
-      background: none;
-      padding: 0;
-      color: #c9d1d9;
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-  </style>
+  <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
+  <nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav>
   <div class="container">
     <header>
       <h1>Python 3 Object-Oriented Programming Examples</h1>
@@ -108,7 +15,7 @@
     </header>
 
     <section>
-      <h2>1. Object Use and Manipulation</h2>
+      <h2 id="1-object-use-and-manipulation">1. Object Use and Manipulation</h2>
       <p>
         Creating instances, reading/updating attributes, encapsulating validation with <code>@property</code>,
         and customizing object behavior with special ("dunder") methods like <code>__repr__</code> and <code>__eq__</code>.
@@ -167,7 +74,7 @@ print("Equal accounts:", acct == same_acct)  # True</code></pre>
     </section>
 
     <section>
-      <h2>2. Inheritance</h2>
+      <h2 id="2-inheritance">2. Inheritance</h2>
       <p>
         Deriving specialized classes from a base class, reusing parent initialization/logic with <code>super()</code>,
         extending or overriding behavior, and checking class relationships.
@@ -222,7 +129,7 @@ print(issubclass(Circle, Shape))    # True</code></pre>
     </section>
 
     <section>
-      <h2>3. Polymorphism</h2>
+      <h2 id="3-polymorphism">3. Polymorphism</h2>
       <p>
         Calling the same operation or method on objects of different types and letting each object respond according
         to its own implementation—via <strong>duck typing</strong>, shared interfaces, or operator overloading.

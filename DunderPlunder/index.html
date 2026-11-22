@@ -11,7 +11,7 @@
   <h1>Python 3 Dunder (Double-Underscore) Methods &amp; Attributes</h1>
   <p>Commonly used Python 3 dunders grouped by purpose across the data model:</p>
 
-  <h2>Object Creation, Lifecycle &amp; Representation</h2>
+  <h2 id="object-creation-lifecycle-representation">Object Creation, Lifecycle &amp; Representation</h2>
   <ul>
     <li><code>__new__(cls, ...)</code> &mdash; Allocates and returns a new instance before <code>__init__</code> runs.</li>
     <li><code>__init__(self, ...)</code> &mdash; Initializes a newly created instance.</li>
@@ -24,7 +24,7 @@
     <li><code>__bool__(self)</code> &mdash; Truth-value testing used by <code>bool(obj)</code> and <code>if obj:</code> (falls back to <code>__len__</code> if absent).</li>
   </ul>
 
-  <h2>Rich Comparison Operators</h2>
+  <h2 id="rich-comparison-operators">Rich Comparison Operators</h2>
   <ul>
     <li><code>__eq__(self, other)</code> &mdash; Equality (<code>==</code>)</li>
     <li><code>__ne__(self, other)</code> &mdash; Inequality (<code>!=</code>)</li>
@@ -34,7 +34,7 @@
     <li><code>__ge__(self, other)</code> &mdash; Greater than or equal (<code>&gt;=</code>)</li>
   </ul>
 
-  <h2>Attribute Access &amp; Descriptors</h2>
+  <h2 id="attribute-access-descriptors">Attribute Access &amp; Descriptors</h2>
   <ul>
     <li><code>__getattr__(self, name)</code> &mdash; Called only when normal attribute lookup (<code>__getattribute__</code> + <code>__dict__</code> + MRO) fails.</li>
     <li><code>__getattribute__(self, name)</code> &mdash; Intercepts <em>every</em> attribute access on an instance.</li>
@@ -47,7 +47,7 @@
     <li><code>__set_name__(self, owner, name)</code> &mdash; Called on descriptors when assigned to a class body attribute.</li>
   </ul>
 
-  <h2>Callable, Containers, Sequences &amp; Mappings</h2>
+  <h2 id="callable-containers-sequences-mappings">Callable, Containers, Sequences &amp; Mappings</h2>
   <ul>
     <li><code>__call__(self, *args, **kwargs)</code> &mdash; Allows an instance to be called like a function (<code>obj()</code>).</li>
     <li><code>__len__(self)</code> &mdash; Returns item count for <code>len(obj)</code>.</li>
@@ -61,7 +61,7 @@
     <li><code>__missing__(self, key)</code> &mdash; Called by <code>dict.__getitem__</code> when a key is not found.</li>
   </ul>
 
-  <h2>Numeric, Bitwise &amp; In-Place Operators</h2>
+  <h2 id="numeric-bitwise-in-place-operators">Numeric, Bitwise &amp; In-Place Operators</h2>
   <ul>
     <li><strong>Binary arithmetic:</strong> <code>__add__</code>, <code>__sub__</code>, <code>__mul__</code>, <code>__matmul__</code> (<code>@</code>), <code>__truediv__</code> (<code>/</code>), <code>__floordiv__</code> (<code>//</code>), <code>__mod__</code> (<code>%</code>), <code>__divmod__</code>, <code>__pow__</code> (<code>**</code>).</li>
     <li><strong>Reflected (right-hand) arithmetic:</strong> <code>__radd__</code>, <code>__rsub__</code>, <code>__rmul__</code>, <code>__rmatmul__</code>, <code>__rtruediv__</code>, <code>__rfloordiv__</code>, <code>__rmod__</code>, <code>__rdivmod__</code>, <code>__rpow__</code>.</li>
@@ -70,7 +70,7 @@
     <li><strong>Bitwise &amp; reflected/in-place bitwise:</strong> <code>__and__</code>, <code>__xor__</code>, <code>__or__</code>, <code>__lshift__</code> (<code>&lt;&lt;</code>), <code>__rshift__</code> (<code>&gt;&gt;</code>) along with their <code>r</code> (<code>__rand__</code>, etc.) and <code>i</code> (<code>__iand__</code>, etc.) counterparts.</li>
   </ul>
 
-  <h2>Context Managers, Coroutines &amp; Class/Module Metadata</h2>
+  <h2 id="context-managers-coroutines-class-module-metadata">Context Managers, Coroutines &amp; Class/Module Metadata</h2>
   <ul>
     <li><code>__enter__(self)</code> / <code>__exit__(self, exc_type, exc_val, exc_tb)</code> &mdash; Synchronous context manager protocol (<code>with</code> statement).</li>
     <li><code>__aenter__(self)</code> / <code>__aexit__(self, exc_type, exc_val, exc_tb)</code> &mdash; Asynchronous context manager protocol (<code>async with</code>).</li>
@@ -80,7 +80,7 @@
   </ul>
 
   <section class="next-steps">
-    <h2>Next Steps</h2>
+    <h2 id="next-steps">Next Steps</h2>
     <ol>
       <li>Test <code>__str__</code>, <code>__repr__</code>, and <code>__eq__</code> on a small class (such as <code>PersonalityProfile</code> or <code>Traits</code>) in VS Code or Git Bash using Python 3.</li>
       <li>Check Python's official data model reference when implementing less common hooks like <code>__slots__</code>, descriptors, or in-place operators.</li>

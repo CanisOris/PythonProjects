@@ -11,7 +11,7 @@
   <h1>Python 3 Exception Handling Variations</h1>
   <p>In Python 3, exception handling centers on <code>try</code>, <code>except</code>, <code>else</code>, and <code>finally</code> blocks, alongside raising, chaining, and grouping exceptions.</p>
 
-  <h2>1. Basic <code>try / except</code></h2>
+  <h2 id="1-basic-try-except">1. Basic <code>try / except</code></h2>
   <p>Catches a specific exception type so the program can recover or report a clear message instead of crashing.</p>
   <pre><code>raw_value = "42"
 try:
@@ -19,7 +19,7 @@ try:
 except ValueError:
     print(f"Cannot convert {raw_value!r} to an integer.")</code></pre>
 
-  <h2>2. Multiple <code>except</code> Blocks (Different Types)</h2>
+  <h2 id="2-multiple-except-blocks-different-types">2. Multiple <code>except</code> Blocks (Different Types)</h2>
   <p>Handles different exception classes with distinct recovery logic. Python checks <code>except</code> clauses in order from top to bottom and runs the first matching handler.</p>
   <pre><code>def read_first_line(path):
     try:
@@ -31,14 +31,14 @@ except ValueError:
         print(f"Permission denied reading {path}")
         return None</code></pre>
 
-  <h2>3. Tuple of Exceptions in One <code>except</code></h2>
+  <h2 id="3-tuple-of-exceptions-in-one-except">3. Tuple of Exceptions in One <code>except</code></h2>
   <p>Handles multiple distinct exception types the same way without repeating the block.</p>
   <pre><code>try:
     result = 10 / int("0")
 except (ValueError, ZeroDivisionError) as exc:
     print(f"Invalid calculation input: {exc}")</code></pre>
 
-  <h2>4. Capturing the Exception Object (<code>as exc</code>)</h2>
+  <h2 id="4-capturing-the-exception-object-as-exc">4. Capturing the Exception Object (<code>as exc</code>)</h2>
   <p>Binds the raised exception instance to a variable so you can inspect its message, attributes, or type.</p>
   <pre><code>try:
     data = {"a": 1}
@@ -46,7 +46,7 @@ except (ValueError, ZeroDivisionError) as exc:
 except KeyError as err:
     print(f"Missing key: {err!r}")</code></pre>
 
-  <h2>5. <code>try / except / else</code></h2>
+  <h2 id="5-try-except-else">5. <code>try / except / else</code></h2>
   <p>The <code>else</code> block runs <strong>only if</strong> the <code>try</code> block completes without raising an exception. Keeping non-guarded post-success code in <code>else</code> avoids accidentally catching exceptions raised outside the risky operation.</p>
   <pre><code>try:
     count = int("10")
@@ -55,7 +55,7 @@ except ValueError:
 else:
     print(f"Successfully parsed count: {count}")</code></pre>
 
-  <h2>6. <code>try / except / finally</code> (and <code>try / finally</code>)</h2>
+  <h2 id="6-try-except-finally-and-try-finally">6. <code>try / except / finally</code> (and <code>try / finally</code>)</h2>
   <p>The <code>finally</code> block <strong>always runs</strong> before leaving the <code>try</code> structure&mdash;whether an exception occurred, was caught, went uncaught, or a <code>return</code>/<code>break</code>/<code>continue</code> executed. Use it for cleanup such as closing connections or releasing locks.</p>
   <pre><code>conn = None
 try:
@@ -67,14 +67,14 @@ finally:
     if conn is not None:
         conn.close()</code></pre>
 
-  <h2>7. Catch-All <code>except Exception:</code> (and Why to Avoid Bare <code>except:</code>)</h2>
+  <h2 id="7-catch-all-except-exception-and-why-to-avoid-bare-except">7. Catch-All <code>except Exception:</code> (and Why to Avoid Bare <code>except:</code>)</h2>
   <p>Catching <code>Exception</code> handles standard runtime errors while letting <code>KeyboardInterrupt</code> and <code>SystemExit</code> (which inherit from <code>BaseException</code>, not <code>Exception</code>) propagate cleanly. Avoid bare <code>except:</code> unless you immediately re-raise after logging.</p>
   <pre><code>try:
     process_item()
 except Exception as exc:
     print(f"Unexpected error: {exc}")</code></pre>
 
-  <h2>8. Re-Raising with <code>raise</code></h2>
+  <h2 id="8-re-raising-with-raise">8. Re-Raising with <code>raise</code></h2>
   <p>Logs or partially handles an error inside <code>except</code> and re-raises the exact same exception with its original traceback intact.</p>
   <pre><code>try:
     load_config()
@@ -82,7 +82,7 @@ except OSError:
     print("Failed to load config; propagating error.")
     raise</code></pre>
 
-  <h2>9. Raising &amp; Chaining Exceptions (<code>raise ... from ...</code>)</h2>
+  <h2 id="9-raising-chaining-exceptions-raise-from">9. Raising &amp; Chaining Exceptions (<code>raise ... from ...</code>)</h2>
   <ul>
     <li><code>raise NewError("msg") from original_exc</code> &mdash; Explicitly links a new exception to its root cause (<code>__cause__</code>).</li>
     <li><code>raise NewError("msg") from None</code> &mdash; Suppresses the previous exception context in the traceback when you want a clean error message.</li>
@@ -93,7 +93,7 @@ except OSError:
     except ValueError as exc:
         raise ValueError(f"Invalid port number: {raw_port!r}") from exc</code></pre>
 
-  <h2>10. Exception Groups (<code>except*</code> &mdash; Python 3.11+)</h2>
+  <h2 id="10-exception-groups-except-python-3-11">10. Exception Groups (<code>except*</code> &mdash; Python 3.11+)</h2>
   <p>Handles <code>ExceptionGroup</code> / <code>BaseExceptionGroup</code> instances (such as multiple concurrent errors raised together) by matching subgroups of exceptions independently.</p>
   <pre><code>try:
     raise ExceptionGroup("batch failures", [ValueError("bad row"), KeyError("missing col")])
@@ -103,7 +103,7 @@ except* KeyError as eg:
     print(f"KeyErrors ({len(eg.exceptions)}): {eg.exceptions}")</code></pre>
 
   <section class="next-steps">
-    <h2>Next Steps</h2>
+    <h2 id="next-steps">Next Steps</h2>
     <ol>
       <li>Save a test script in VS Code and run it with Python 3 in Git Bash to verify <code>try / except / else / finally</code> execution order when an exception is raised versus when <code>try</code> succeeds.</li>
       <li>Check your Python 3 version (<code>python --version</code>) before using <code>except*</code> or <code>ExceptionGroup</code>, which require Python 3.11+.</li>

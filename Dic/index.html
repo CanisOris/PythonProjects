@@ -11,7 +11,7 @@
   <h1>Python 3 Dictionary (<code>dict</code>) Instructions &amp; Reference</h1>
   <p>In Python 3, a <code>dict</code> (dictionary) is a mutable mapping that stores <code>key: value</code> pairs with fast average-case <code>O(1)</code> lookup, insertion, and deletion. Since Python 3.7+, dictionaries preserve insertion order.</p>
 
-  <h2>1. Creating Dictionaries</h2>
+  <h2 id="1-creating-dictionaries">1. Creating Dictionaries</h2>
   <pre><code># Literal syntax with key: value pairs
 profile = {
     "name": "Alice",
@@ -30,7 +30,7 @@ zipped = dict(zip(["id", "name"], [1, "notes.txt"]))
 # Dictionary comprehension
 ext_counts = {ext: 0 for ext in [".txt", ".csv", ".py"]}</code></pre>
 
-  <h2>2. Reading &amp; Safe Lookup</h2>
+  <h2 id="2-reading-safe-lookup">2. Reading &amp; Safe Lookup</h2>
   <pre><code>print(profile["name"])          # "Alice" (raises KeyError if key is missing)
 print(profile.get("email"))     # None (returns default instead of KeyError)
 print(profile.get("email", "")) # "" (custom fallback value)
@@ -39,7 +39,7 @@ print(profile.get("email", "")) # "" (custom fallback value)
 if "role" in profile:
     print(profile["role"])</code></pre>
 
-  <h2>3. Adding, Updating &amp; Removing Entries</h2>
+  <h2 id="3-adding-updating-removing-entries">3. Adding, Updating &amp; Removing Entries</h2>
   <pre><code># Add or overwrite a value
 profile["email"] = "alice@example.com"
 profile["role"] = "Senior Analyst"
@@ -58,7 +58,7 @@ last_key, last_val = profile.popitem()    # Removes and returns last inserted (k
 del profile["email"]                      # Deletes key (raises KeyError if missing)
 # profile.clear()                         # Removes all items in place</code></pre>
 
-  <h2>4. Iterating Over Keys, Values &amp; Items</h2>
+  <h2 id="4-iterating-over-keys-values-items">4. Iterating Over Keys, Values &amp; Items</h2>
   <pre><code>scores = {"a.txt": 10, "b.txt": 25}
 
 for key in scores:                   # Iterates over keys (same as scores.keys())
@@ -70,7 +70,7 @@ for val in scores.values():          # Iterates over values
 for key, val in scores.items():      # Iterates over (key, value) tuples
     print(f"{key}: {val}")</code></pre>
 
-  <h2>5. Key Rules &amp; Gotchas</h2>
+  <h2 id="5-key-rules-gotchas">5. Key Rules &amp; Gotchas</h2>
   <ul>
     <li><strong>Keys must be hashable:</strong> Strings, numbers, and tuples of hashable items (<code>("tbl_files", "ID")</code>) work as keys; lists, dicts, and sets raise <code>TypeError: unhashable type</code> because they are mutable.</li>
     <li><strong>Assignment copies a reference, not a clone:</strong> <code>alias = scores</code> points to the same dictionary; use <code>scores.copy()</code> for a shallow copy.</li>
@@ -78,7 +78,7 @@ for key, val in scores.items():      # Iterates over (key, value) tuples
   </ul>
 
   <section class="next-steps">
-    <h2>Next Steps</h2>
+    <h2 id="next-steps">Next Steps</h2>
     <ol>
       <li>Save a quick test snippet in VS Code and run it with Python 3 in Git Bash to compare <code>d[key]</code>, <code>d.get(key, default)</code>, <code>setdefault()</code>, and <code>|</code> merging.</li>
       <li>Practice iterating with <code>.items()</code> when building lookup tables or counting occurrences from a list of filenames.</li>

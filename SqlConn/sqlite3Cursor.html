@@ -11,27 +11,27 @@
   <h1>Python 3 <code>sqlite3.Cursor</code> Methods and Attributes</h1>
   <p>Core methods and attributes on a Python 3 <code>sqlite3.Cursor</code> object for executing SQL, retrieving rows, and inspecting query state:</p>
 
-  <h2>Executing SQL Statements</h2>
+  <h2 id="executing-sql-statements">Executing SQL Statements</h2>
   <ul>
     <li><code>execute(sql[, parameters])</code> &mdash; Executes a single SQL statement using <code>?</code> (qmark) or <code>:name</code> (named) parameter binding.</li>
     <li><code>executemany(sql, seq_of_parameters)</code> &mdash; Executes a parameterized SQL command (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>) repeatedly across an iterable of parameter tuples/mappings.</li>
     <li><code>executescript(sql_script)</code> &mdash; Executes multiple semicolon-separated SQL statements at once (implicitly commits any open transaction first in standard <code>sqlite3</code> usage).</li>
   </ul>
 
-  <h2>Fetching Results</h2>
+  <h2 id="fetching-results">Fetching Results</h2>
   <ul>
     <li><code>fetchone()</code> &mdash; Returns the next row of a query result set as a single tuple (or configured row factory object), or <code>None</code> when no more rows remain.</li>
     <li><code>fetchmany([size=cursor.arraysize])</code> &mdash; Returns the next batch of up to <code>size</code> rows as a list (returns an empty list <code>[]</code> when no rows remain).</li>
     <li><code>fetchall()</code> &mdash; Returns all remaining rows of a query result set as a list (returns an empty list <code>[]</code> if no rows match).</li>
   </ul>
 
-  <h2>Iteration &amp; Cleanup</h2>
+  <h2 id="iteration-cleanup">Iteration &amp; Cleanup</h2>
   <ul>
     <li><code>__iter__()</code> / <code>__next__()</code> &mdash; Lets you iterate directly over the cursor (<code>for row in cursor:</code>) to stream rows one at a time.</li>
     <li><code>close()</code> &mdash; Closes the cursor and releases its resources.</li>
   </ul>
 
-  <h2>Useful Attributes After Execution</h2>
+  <h2 id="useful-attributes-after-execution">Useful Attributes After Execution</h2>
   <ul>
     <li><code>rowcount</code> &mdash; Number of rows affected by the last <code>INSERT</code>, <code>UPDATE</code>, or <code>DELETE</code> (or <code>-1</code> if unknown/not applicable).</li>
     <li><code>lastrowid</code> &mdash; Row ID (<code>rowid</code>) of the last inserted row on a DML statement against a rowid table (otherwise <code>None</code>).</li>
@@ -42,7 +42,7 @@
   </ul>
 
   <section class="next-steps">
-    <h2>Next Steps</h2>
+    <h2 id="next-steps">Next Steps</h2>
     <ol>
       <li>Test <code>fetchone()</code>, <code>fetchall()</code>, and <code>rowcount</code> on a sample <code>sqlite3</code> table in VS Code or Git Bash using Python 3.</li>
       <li>Check <code>cursor.description</code> after a <code>SELECT</code> query when you need column names programmatically.</li>

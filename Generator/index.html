@@ -11,7 +11,7 @@
   <h1>Python 3: Generator vs. Regular Function</h1>
   <p>In Python 3, a <strong>regular function</strong> (<code>def</code> with <code>return</code>) executes from start to finish and returns a single value (or <code>None</code>) at once, whereas a <strong>generator</strong> (<code>def</code> with <code>yield</code>, or a generator expression <code>(expr for ...)</code>) pauses execution at each <code>yield</code>, yields one value at a time on demand, and resumes right after that <code>yield</code> when the next item is requested.</p>
 
-  <h2>Core Differences at a Glance</h2>
+  <h2 id="core-differences-at-a-glance">Core Differences at a Glance</h2>
   <table>
     <thead>
       <tr>
@@ -59,14 +59,14 @@
     </tbody>
   </table>
 
-  <h2>How Execution Works Under the Hood</h2>
+  <h2 id="how-execution-works-under-the-hood">How Execution Works Under the Hood</h2>
   <ol>
     <li><strong>Lazy start:</strong> Calling <code>gen = my_generator()</code> does <strong>not</strong> execute the first line of <code>my_generator</code>. It creates and returns a generator object implementing both the <strong>iterator</strong> (<code>__iter__</code>, <code>__next__</code>) and <strong>generator</strong> protocols.</li>
     <li><strong>Step-by-step suspension:</strong> The first <code>next(gen)</code> runs until the first <code>yield value</code>, hands <code>value</code> to the caller, and freezes local state. The next <code>next(gen)</code> resumes immediately after <code>yield value</code> until the next <code>yield</code> or <code>return</code>.</li>
     <li><strong><code>return</code> inside a generator:</strong> A <code>return some_value</code> inside a generator function does <strong>not</strong> yield <code>some_value</code> to a normal <code>for</code> loop&mdash;it terminates the generator and attaches <code>some_value</code> as <code>.value</code> on the raised <code>StopIteration(some_value)</code> exception (which <code>yield from</code> can capture).</li>
   </ol>
 
-  <h2>Code Comparison</h2>
+  <h2 id="code-comparison">Code Comparison</h2>
   <pre><code># Regular function: builds and returns the entire list at once
 def get_txt_files_list(filenames):
     matches = []
@@ -94,7 +94,7 @@ print("First item:", next(gen))
 print("Remaining items:", list(gen))  # Consumes the rest; gen is now exhausted
 print("Second pass on same gen:", list(gen))  # Empty []</code></pre>
 
-  <h2>Generator Protocol Methods (<code>send</code>, <code>throw</code>, <code>close</code>)</h2>
+  <h2 id="generator-protocol-methods-send-throw-close">Generator Protocol Methods (<code>send</code>, <code>throw</code>, <code>close</code>)</h2>
   <p>Beyond <code>next(gen)</code> / <code>for item in gen:</code>, generator objects expose control methods:</p>
   <ul>
     <li><code>gen.send(value)</code> &mdash; Resumes execution and passes <code>value</code> in as the result of the current <code>(yield ...)</code> expression (use <code>gen.send(None)</code> or <code>next(gen)</code> to start a fresh generator).</li>
@@ -102,14 +102,14 @@ print("Second pass on same gen:", list(gen))  # Empty []</code></pre>
     <li><code>gen.close()</code> &mdash; Raises <code>GeneratorExit</code> at the paused <code>yield</code> so <code>finally</code> blocks run cleanly, then marks the generator closed (subsequent <code>next()</code> calls raise <code>StopIteration</code>).</li>
   </ul>
 
-  <h2>When to Choose Which</h2>
+  <h2 id="when-to-choose-which">When to Choose Which</h2>
   <ul>
     <li><strong>Use a regular function (<code>return</code>) when:</strong> You need a single computed result, random/indexed access (<code>result[2]</code>), <code>len(result)</code> upfront, or small datasets where eager evaluation is simpler and clearer.</li>
     <li><strong>Use a generator (<code>yield</code> / generator expression) when:</strong> Streaming large files, database cursors, or multi-step pipelines; processing items as soon as they arrive; stopping early (<code>next()</code>, <code>any()</code>, <code>break</code>) without computing remaining items; or modeling unbounded/infinite sequences.</li>
   </ul>
 
   <section class="next-steps">
-    <h2>Next Steps</h2>
+    <h2 id="next-steps">Next Steps</h2>
     <ol>
       <li>Save the <code>get_txt_files_list</code> vs. <code>iter_txt_files</code> snippet to a test file in VS Code and run it with Python 3 in Git Bash to observe single-pass exhaustion on <code>gen</code>.</li>
       <li>Try a generator expression such as <code>(f for f in sample if f.endswith(".txt"))</code> inside <code>for</code> or <code>sum()</code> and compare how it behaves against a list comprehension <code>[...]</code>.</li>

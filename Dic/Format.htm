@@ -13,7 +13,7 @@
         <p>A reference guide covering single-argument string coercion and two-argument format specification mini-language usage.</p>
 
         <div class="card">
-            <h2>1. Single-Argument Usage: <code>format(value)</code></h2>
+            <h2 id="1-single-argument-usage-format-value">1. Single-Argument Usage: <code>format(value)</code></h2>
             <p>When passed a single argument, <code>format()</code> acts as a wrapper around the object's string representation (similar to calling <code>str(obj)</code> or invoking <code>__format__("")</code>).</p>
             <pre># Converts objects/booleans directly to their string form
 is_equal = format(5 == 5)
@@ -21,7 +21,7 @@ print(is_equal)  # Output: "True"</pre>
         </div>
 
         <div class="card">
-            <h2>2. Two-Argument Usage: <code>format(value, format_spec)</code></h2>
+            <h2 id="2-two-argument-usage-format-value-format-spec">2. Two-Argument Usage: <code>format(value, format_spec)</code></h2>
             <p>When passed a second argument, it invokes the <strong>Format Specification Mini-Language</strong>. This is identical to the engine used inside f-strings (e.g., <code>f"{value:spec}"</code>).</p>
             <pre># Binary conversion with 8-bit zero padding
 binary_str = format(13, "08b")
@@ -29,7 +29,7 @@ print(binary_str)  # Output: "00001101"</pre>
         </div>
 
         <div class="card">
-            <h2>3. Format Specification Reference Mini-Language</h2>
+            <h2 id="3-format-specification-reference-mini-language">3. Format Specification Reference Mini-Language</h2>
             <table>
                 <thead>
                     <tr>
