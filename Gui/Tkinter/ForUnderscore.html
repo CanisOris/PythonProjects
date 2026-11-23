@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Tuple Unpacking: for _, variable</title>
+  <style>
+    :root,
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --surface: #1e293b;
+      --surface-alt: #0b1120;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #334155;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --code-text: #f8fafc;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+
+    [data-theme="medium"] {
+      --bg: #27303f;
+      --surface: #334155;
+      --surface-alt: #1e293b;
+      --text: #f1f5f9;
+      --muted: #cbd5e1;
+      --border: #475569;
+      --accent: #7dd3fc;
+      --accent-soft: rgba(125, 211, 252, 0.14);
+      --code-text: #f8fafc;
+      --shadow: rgba(0, 0, 0, 0.25);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --accent: #0284c7;
+      --accent-soft: rgba(2, 132, 199, 0.1);
+      --code-text: #0f172a;
+      --shadow: rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      padding: 2rem 1rem 4rem;
+    }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.65rem;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      margin: 0.25rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .theme-switcher {
+      display: inline-flex;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.2rem;
+      gap: 0.2rem;
+    }
+
+    .theme-btn {
+      background: transparent;
+      color: var(--muted);
+      border: none;
+      border-radius: 6px;
+      padding: 0.35rem 0.7rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .theme-btn.active {
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 6px 20px var(--shadow);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      color: var(--accent);
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 0.15rem 0.4rem;
+      border-radius: 5px;
+      font-size: 0.9em;
+    }
+
+    .code-block {
+      position: relative;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin-top: 0.75rem;
+      overflow: hidden;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.25rem 0.6rem;
+      font-size: 0.75rem;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    pre {
+      margin: 0;
+      padding: 1rem;
+      overflow-x: auto;
+      color: var(--code-text);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    ul {
+      margin: 0.5rem 0 0;
+      padding-left: 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.6rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Python: <code>for _, variable</code></h1>
+        <p class="subtitle">Tuple unpacking with a throwaway variable convention</p>
+      </div>
+      <div class="theme-switcher" role="group" aria-label="Theme selector">
+        <button class="theme-btn" data-set-theme="light" type="button">Light</button>
+        <button class="theme-btn" data-set-theme="medium" type="button">Medium</button>
+        <button class="theme-btn active" data-set-theme="dark" type="button">Dark</button>
+      </div>
+    </header>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        In Python, <code>for _, variable in ...</code> is a <strong><code>for</code> loop using tuple unpacking</strong>
+        where <code>_</code> is a naming convention for an <strong>ignored (throwaway) variable</strong>, and
+        <code>variable</code> captures the value you want to use.
+      </p>
+      <p>
+        It commonly appears when iterating over sequences of pairs or tuples—such as <code>enumerate()</code> or
+        <code>dict.items()</code>—where only one element of each pair is needed.
+      </p>
+    </section>
+
+    <section>
+      <h2>Common Examples</h2>
+
+      <h3>1. With <code>enumerate()</code> (ignoring the index)</h3>
+      <p><code>enumerate()</code> yields <code>(index, item)</code> pairs. Use <code>_</code> when you only need the item:</p>
+      <div class="code-block">
+        <button class="copy-btn" type="button">Copy</button>
+        <pre><code>fruits = ["apple", "banana", "cherry"]
+
+for _, fruit in enumerate(fruits):
+    print(fruit)
+# Output:
+# apple
+# banana
+# cherry</code></pre>
+      </div>
+
+      <h3>2. With <code>dict.items()</code> (ignoring the key)</h3>
+      <p><code>dict.items()</code> yields <code>(key, value)</code> pairs. Use <code>_</code> when you only need the value:</p>
+      <div class="code-block">
+        <button class="copy-btn" type="button">Copy</button>
+        <pre><code>prices = {"apple": 1.20, "banana": 0.50, "cherry": 3.00}
+
+for _, price in prices.items():
+    print(price)
+# Output:
+# 1.2
+# 0.5
+# 3.0</code></pre>
+      </div>
+
+      <h3>3. With a list of tuples</h3>
+      <p>Unpack the tuple elements directly and ignore the first value:</p>
+      <div class="code-block">
+        <button class="copy-btn" type="button">Copy</button>
+        <pre><code>coordinates = [(10, 20), (30, 40), (50, 60)]
+
+for _, y in coordinates:
+    print(y)
+# Output:
+# 20
+# 40
+# 60</code></pre>
+      </div>
+    </section>
+
+    <section>
+      <h2>Important Notes</h2>
+      <ul>
+        <li>
+          <strong><code>_</code> is a regular variable name:</strong> Python does not treat <code>_</code> as special
+          loop syntax. Each iteration assigns the first tuple element to <code>_</code>; using <code>_</code> simply signals
+          to readers that the value is intentionally unused.
+        </li>
+        <li>
+          <strong>Watch for name collisions and direct methods:</strong> In a REPL, <code>_</code> holds the last
+          evaluated expression, and tools like <code>gettext</code> also bind <code>_</code>. When you don't need a
+          dictionary key at all, <code>for price in prices.values():</code> is often clearer than unpacking and ignoring
+          the key.
+        </li>
+      </ul>
+    </section>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll(".theme-btn");
+    buttons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const theme = btn.dataset.setTheme;
+        document.documentElement.setAttribute("data-theme", theme);
+        buttons.forEach((b) => b.classList.toggle("active", b === btn));
+      });
+    });
+
+    document.querySelectorAll(".copy-btn").forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const code = btn.nextElementSibling.innerText;
+        try {
+          await navigator.clipboard.writeText(code);
+          btn.textContent = "Copied";
+          setTimeout(() => (btn.textContent = "Copy"), 1500);
+        } catch {
+          btn.textContent = "Error";
+          setTimeout(() => (btn.textContent = "Copy"), 1500);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
