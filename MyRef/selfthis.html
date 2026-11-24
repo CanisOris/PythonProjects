@@ -66,6 +66,28 @@
       In <code>self.trust_score = trust_score</code>, the right-hand <code>trust_score</code> is the parameter
       passed into <code>__init__</code>, and <code>self.trust_score</code> is the attribute attached to that
       specific instance (<code>self</code>).
-    </p></article></main>
+    </p>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Instance</strong></dt><dd>An individual object created from a class.</dd>
+<dt><strong>Instance attribute</strong></dt><dd>A value attached to a particular object and accessed through that instance.</dd>
+<dt><strong>Local variable</strong></dt><dd>A name bound within a function rather than saved on an instance.</dd>
+<dt><strong>Parameter</strong></dt><dd>A name in a function definition that receives an argument during a call.</dd>
+<dt><strong>Instance state</strong></dt><dd>Values stored on an individual object that describe its current condition.</dd>
+<dt><strong>Scope</strong></dt><dd>The region and lookup rules determining where a name is accessible.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>self</code></dt><dd>The conventional first parameter of an instance method, referring to the current object.</dd>
+<dt><code>__init__()</code></dt><dd>Initializes the instance; it can save incoming arguments as attributes.</dd>
+<dt><code>self.trust_score</code></dt><dd>Reads or writes the trust_score attribute on the current instance.</dd>
+<dt><code>trust_score = trust_score</code></dt><dd>Assigns the local parameter back to itself and does not save an instance attribute.</dd>
+<dt><code>report_trust()</code></dt><dd>The example method that needs an instance attribute to read the saved trust score.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>

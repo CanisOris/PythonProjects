@@ -48,6 +48,29 @@
       <li>Test <code>fetchone()</code>, <code>fetchall()</code>, and <code>rowcount</code> on a sample <code>sqlite3</code> table in VS Code or Git Bash using Python 3.</li>
       <li>Check <code>cursor.description</code> after a <code>SELECT</code> query when you need column names programmatically.</li>
     </ol>
-  </section></article></main>
+  </section>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Cursor</strong></dt><dd>An object used to execute SQL and retrieve results.</dd>
+<dt><strong>SQL statement</strong></dt><dd>An instruction defining, querying, or changing database data.</dd>
+<dt><strong>Parameter binding</strong></dt><dd>Passing values separately from SQL text through placeholders such as ? or :name.</dd>
+<dt><strong>Query result / Row</strong></dt><dd>A query result is a sequence of database records; sqlite3 returns each row as a tuple by default.</dd>
+<dt><strong>Transaction</strong></dt><dd>A unit of database work that can be committed or rolled back.</dd>
+<dt><strong>Row factory</strong></dt><dd>A callable controlling how result rows are converted to Python objects.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>execute()</code></dt><dd>Executes one SQL statement with optional bound parameters.</dd>
+<dt><code>executemany()</code></dt><dd>Executes a parameterized SQL statement for each supplied set of parameter values.</dd>
+<dt><code>executescript()</code></dt><dd>Executes a string containing multiple SQL statements.</dd>
+<dt><code>fetchone() / fetchmany() / fetchall()</code></dt><dd>Retrieve the next row, a batch of rows, or all remaining rows.</dd>
+<dt><code>close()</code></dt><dd>Closes a cursor and releases its resources.</dd>
+<dt><code>__iter__() / __next__()</code></dt><dd>Enable direct iteration over a cursor&#x27;s result rows.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>

@@ -271,3 +271,8 @@ table { display: block; max-width: 100%; overflow-x: auto; }
 .related-files { margin-top: .8rem; font-size: .9rem; }
 .main-menu .related-files > ul { margin: .4rem 0 0; padding-left: 1.25rem; }
 .main-menu .related-files > ul > li { margin-bottom: .3rem; overflow-wrap: anywhere; }
+
+/* Definition lists used by each page's terms and commands section. */
+.terms-and-commands { margin-top: 2rem; }
+.reference-content dt { margin-top: 1rem; font-weight: 600; }
+.reference-content dd { margin: .3rem 0 1rem 1rem; color: var(--text-secondary); }

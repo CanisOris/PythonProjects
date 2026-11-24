@@ -84,6 +84,27 @@ for key, val in scores.items():      # Iterates over (key, value) tuples
       <li>Save a quick test snippet in VS Code and run it with Python 3 in Git Bash to compare <code>d[key]</code>, <code>d.get(key, default)</code>, <code>setdefault()</code>, and <code>|</code> merging.</li>
       <li>Practice iterating with <code>.items()</code> when building lookup tables or counting occurrences from a list of filenames.</li>
     </ol>
-  </section></article></main>
+  </section>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Dictionary / Mapping</strong></dt><dd>A mutable collection associating unique, hashable keys with values.</dd>
+<dt><strong>Key / Value</strong></dt><dd>A key identifies an entry; the value is the object stored for that key.</dd>
+<dt><strong>Hashability</strong></dt><dd>The ability to supply a stable hash value and compatible equality behavior, as required for dictionary keys.</dd>
+<dt><strong>Dictionary comprehension</strong></dt><dd>An expression that builds a dictionary from key-value expressions and an iterable.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>dict()</code></dt><dd>Creates a dictionary from a mapping, key-value pairs, or keyword arguments.</dd>
+<dt><code>get()</code></dt><dd>Looks up a key and returns a default rather than raising KeyError when it is absent.</dd>
+<dt><code>update() / setdefault()</code></dt><dd>update() adds or overwrites entries; setdefault() inserts a default only when a key is absent.</dd>
+<dt><code>pop() / popitem()</code></dt><dd>pop() removes a specified key and returns its value; popitem() removes and returns the last inserted remaining pair.</dd>
+<dt><code>keys() / values() / items()</code></dt><dd>Return views of a dictionary&#x27;s keys, values, or key-value pairs.</dd>
+<dt><code>copy() / clear()</code></dt><dd>copy() makes a shallow copy; clear() removes all entries.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>

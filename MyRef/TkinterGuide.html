@@ -387,6 +387,30 @@ root.mainloop()</code></pre>
         <li><strong>Predictable resizing:</strong> Setting <code>weight=1</code> on <code>form_frame</code>'s input column and <code>output_frame</code>'s row/column lets the fields and log stretch cleanly without breaking alignment.</li>
         <li><strong>Modular refactoring:</strong> Each <code>Frame</code> can easily be turned into its own class or helper function later without rewriting sibling sections.</li>
       </ul>
-    </section></article></main>
+    </section>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Widget</strong></dt><dd>An interface element such as a label, entry, button, or frame.</dd>
+<dt><strong>Window / Frame</strong></dt><dd>A window is a top-level container; a frame groups widgets inside an interface.</dd>
+<dt><strong>Event loop</strong></dt><dd>Processes interface events and updates while the application runs.</dd>
+<dt><strong>Callback</strong></dt><dd>A function supplied to run when an event or action occurs.</dd>
+<dt><strong>Geometry manager</strong></dt><dd>A layout system such as pack or grid that arranges widgets within a parent.</dd>
+<dt><strong>Row / Column</strong></dt><dd>Horizontal and vertical positions used by grid to arrange widgets.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>Tk()</code></dt><dd>Creates the main application window and associated Tcl interpreter.</dd>
+<dt><code>Label() / Entry() / Button()</code></dt><dd>Create display text, single-line input, and a clickable command widget.</dd>
+<dt><code>Frame()</code></dt><dd>Creates a container for grouping other widgets.</dd>
+<dt><code>StringVar()</code></dt><dd>Creates a string variable that can be connected to widgets.</dd>
+<dt><code>pack() / grid()</code></dt><dd>Arrange widgets along container edges or in rows and columns.</dd>
+<dt><code>mainloop()</code></dt><dd>Starts Tkinter event processing.</dd>
+<dt><code>get() / set()</code></dt><dd>Read a widget or variable value, or update the value of a Tkinter variable.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>

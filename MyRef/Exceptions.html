@@ -109,6 +109,28 @@ except* KeyError as eg:
       <li>Save a test script in VS Code and run it with Python 3 in Git Bash to verify <code>try / except / else / finally</code> execution order when an exception is raised versus when <code>try</code> succeeds.</li>
       <li>Check your Python 3 version (<code>python --version</code>) before using <code>except*</code> or <code>ExceptionGroup</code>, which require Python 3.11+.</li>
     </ol>
-  </section></article></main>
+  </section>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Exception</strong></dt><dd>An object representing an error or exceptional condition during execution.</dd>
+<dt><strong>Exception handling</strong></dt><dd>Catching and responding to exceptions with try and except.</dd>
+<dt><strong>Exception chaining</strong></dt><dd>Preserving the relationship between a new exception and its underlying cause.</dd>
+<dt><strong>Exception group</strong></dt><dd>An exception containing multiple exceptions that can be handled together or by type.</dd>
+<dt><strong>Cleanup</strong></dt><dd>Work that releases resources or restores state when execution leaves a block.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>try / except</code></dt><dd>Run code that may fail and handle exceptions matching specified types.</dd>
+<dt><code>else</code></dt><dd>In a try statement, runs when the try block completes without raising an exception.</dd>
+<dt><code>finally</code></dt><dd>Runs when control leaves a try statement, whether execution succeeds or an exception occurs.</dd>
+<dt><code>raise</code></dt><dd>Raises an exception, or re-raises the current exception when used without an argument.</dd>
+<dt><code>raise ... from ...</code></dt><dd>Raises a new exception with an explicit cause.</dd>
+<dt><code>ExceptionGroup() / except*</code></dt><dd>Construct a group of exceptions and handle subgroups matching specified exception types.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>

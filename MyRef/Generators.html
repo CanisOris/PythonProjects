@@ -115,6 +115,29 @@ print("Second pass on same gen:", list(gen))  # Empty []</code></pre>
       <li>Save the <code>get_txt_files_list</code> vs. <code>iter_txt_files</code> snippet to a test file in VS Code and run it with Python 3 in Git Bash to observe single-pass exhaustion on <code>gen</code>.</li>
       <li>Try a generator expression such as <code>(f for f in sample if f.endswith(".txt"))</code> inside <code>for</code> or <code>sum()</code> and compare how it behaves against a list comprehension <code>[...]</code>.</li>
     </ol>
-  </section></article></main>
+  </section>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Generator</strong></dt><dd>An iterator created by a generator function or generator expression.</dd>
+<dt><strong>Iterator</strong></dt><dd>An object that supplies successive items through __next__().</dd>
+<dt><strong>Lazy evaluation</strong></dt><dd>Computing or producing results only when requested.</dd>
+<dt><strong>Suspension</strong></dt><dd>Pausing execution while retaining state for later resumption.</dd>
+<dt><strong>Streaming</strong></dt><dd>Processing data incrementally instead of loading the entire sequence.</dd>
+<dt><strong>StopIteration</strong></dt><dd>The exception signaling iterator exhaustion, handled automatically by for loops.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>def / return</code></dt><dd>Define a function; return supplies a regular function result or ends a generator.</dd>
+<dt><code>yield / yield from</code></dt><dd>Produce a value and pause a generator, or delegate to another iterable.</dd>
+<dt><code>next()</code></dt><dd>Requests the next item from an iterator, optionally using a default on exhaustion.</dd>
+<dt><code>send()</code></dt><dd>Resumes a generator and supplies a value to its paused yield expression.</dd>
+<dt><code>throw() / close()</code></dt><dd>Raise an exception at the suspension point or request cleanup by raising GeneratorExit.</dd>
+<dt><code>list()</code></dt><dd>Consumes an iterable, including a generator, into a list.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>

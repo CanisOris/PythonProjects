@@ -35,6 +35,28 @@
   <h2 id="io-module-classes-buffers"><code>io</code> Module Classes &amp; Buffers</h2>
   <ul>
     <li><code>io.StringIO(initial_value='', newline='\n')</code> &mdash; In-memory text stream using a string buffer (implements text I/O methods like <code>read()</code>, <code>write()</code>, <code>getvalue()</code>).</li>
-</ul></article></main>
+</ul>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Input/output</strong></dt><dd>Reading data from a source or writing it to a destination.</dd>
+<dt><strong>File object</strong></dt><dd>An object exposing operations for an opened file or stream.</dd>
+<dt><strong>Text stream / Binary stream</strong></dt><dd>Text streams work with strings and encodings; binary streams work with bytes.</dd>
+<dt><strong>Buffer</strong></dt><dd>Intermediate storage that collects data before reading or writing it.</dd>
+<dt><strong>File position</strong></dt><dd>The current stream location; in a text stream, tell() may return an opaque position token.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>open() / input() / print()</code></dt><dd>Open a file, read a line from input, or write objects as text.</dd>
+<dt><code>read() / readline() / readlines()</code></dt><dd>Read stream data, one line, or a list of lines.</dd>
+<dt><code>write() / writelines()</code></dt><dd>Write data or an iterable of data items; writelines() does not add separators automatically.</dd>
+<dt><code>seek() / tell()</code></dt><dd>Change the stream position or report its current position token.</dd>
+<dt><code>flush() / close()</code></dt><dd>Send buffered output to the underlying stream or close it and release resources.</dd>
+<dt><code>io.StringIO()</code></dt><dd>Creates an in-memory text stream for reading and writing strings.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>

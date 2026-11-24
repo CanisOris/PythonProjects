@@ -526,6 +526,31 @@ t = Temperature.from_fahrenheit(<span class="num">212</span>)
         <span class="fn">print</span>(<span class="str">"hello"</span>)
         mock_print.assert_called_once_with(<span class="str">"hello"</span>)</code></pre>
       </div>
-    </section></article></main>
+    </section>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Decorator</strong></dt><dd>A callable applied to a function or class to add or alter behavior and return its replacement.</dd>
+<dt><strong>Wrapper</strong></dt><dd>A callable surrounding another callable with extra behavior.</dd>
+<dt><strong>Decorator factory</strong></dt><dd>A function accepting configuration and returning a decorator.</dd>
+<dt><strong>Metadata</strong></dt><dd>Information such as a function&#x27;s name, documentation, and annotations.</dd>
+<dt><strong>Caching</strong></dt><dd>Saving results so later calls can reuse them.</dd>
+<dt><strong>Descriptor / Dispatch</strong></dt><dd>A descriptor controls attribute access; dispatch chooses an implementation, for example by argument type.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>@property / @classmethod / @staticmethod</code></dt><dd>Expose a managed attribute, a method receiving the class, or a method receiving no automatic instance or class.</dd>
+<dt><code>@functools.wraps</code></dt><dd>Copies function metadata to a wrapper and sets its __wrapped__ attribute.</dd>
+<dt><code>@cache / @lru_cache</code></dt><dd>Cache results for hashable arguments, with no size limit or a configurable least-recently-used limit.</dd>
+<dt><code>@cached_property</code></dt><dd>Computes a property on first access and stores its value on the instance.</dd>
+<dt><code>@dataclass</code></dt><dd>Generates methods such as __init__ and __repr__ from declared fields.</dd>
+<dt><code>@abstractmethod</code></dt><dd>Marks a method that concrete subclasses of an abstract base class must implement.</dd>
+<dt><code>@contextmanager</code></dt><dd>Turns a generator function yielding once into a context-manager factory.</dd>
+<dt><code>@overload</code></dt><dd>Declares alternative signatures for type checkers; a separate implementation handles runtime calls.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>

@@ -86,6 +86,29 @@
       <li>Test <code>__str__</code>, <code>__repr__</code>, and <code>__eq__</code> on a small class (such as <code>PersonalityProfile</code> or <code>Traits</code>) in VS Code or Git Bash using Python 3.</li>
       <li>Check Python's official data model reference when implementing less common hooks like <code>__slots__</code>, descriptors, or in-place operators.</li>
     </ol>
-  </section></article></main>
+  </section>
+<section class="terms-and-commands">
+<h2 id="terms-and-commands-used">Terms and Commands Used</h2>
+<p>A quick reference to the concepts and commands covered on this page.</p>
+<h3 id="reference-key-terms">Key terms</h3>
+<dl>
+<dt><strong>Dunder method</strong></dt><dd>A special method surrounded by double underscores that participates in a Python protocol.</dd>
+<dt><strong>Operator overloading</strong></dt><dd>Implementing special methods so custom objects support operators such as + or ==.</dd>
+<dt><strong>Descriptor</strong></dt><dd>An object that controls attribute access through methods such as __get__ or __set__ when stored on a class.</dd>
+<dt><strong>Iterator</strong></dt><dd>An object that supplies successive items until StopIteration signals exhaustion.</dd>
+<dt><strong>Context manager</strong></dt><dd>An object that manages entry and exit behavior for a with block.</dd>
+<dt><strong>Coroutine</strong></dt><dd>A computation that can suspend and resume, typically created by calling an async def function.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3>
+<dl>
+<dt><code>__init__() / __repr__()</code></dt><dd>Initialize an instance and provide its informative string representation.</dd>
+<dt><code>__eq__()</code></dt><dd>Defines equality comparison for an object.</dd>
+<dt><code>__getattr__()</code></dt><dd>Handles attribute access when normal attribute lookup fails.</dd>
+<dt><code>__call__()</code></dt><dd>Defines behavior when an instance is called like a function.</dd>
+<dt><code>__iter__() / __next__()</code></dt><dd>Return an iterator and obtain its next item, raising StopIteration when finished.</dd>
+<dt><code>__enter__() / __exit__()</code></dt><dd>Manage entry to and exit from a with block, including cleanup and exception handling.</dd>
+</dl>
+</section>
+</article></main>
 </body>
 </html>
