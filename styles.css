@@ -268,3 +268,6 @@ table { display: block; max-width: 100%; overflow-x: auto; }
 .main-menu > ul > li { scroll-margin-top: 13rem; }
 .current-search-match { outline: 2px solid var(--accent); outline-offset: .4rem; border-radius: 4px; }
 .key-list .search-term-match, .key-list .search-term-match code { background: #fef08a; color: #0f172a; }
+.related-files { margin-top: .8rem; font-size: .9rem; }
+.main-menu .related-files > ul { margin: .4rem 0 0; padding-left: 1.25rem; }
+.main-menu .related-files > ul > li { margin-bottom: .3rem; overflow-wrap: anywhere; }
