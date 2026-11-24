@@ -62,11 +62,11 @@ print(machine.insert_coin_and_turn(1.00))
 print(machine.gumballs_remaining)           
 
 # Clear the jam and refill the machine
-machine.service_machine()
+machine._clear_jam()
 machine.refill(5)
 print(machine.gumballs_remaining)           
 print(f"Collected: ${machine.collect_cash():.2f}")  
-
+machine.service_machine()
 # Bypassing __gumballs directly does not alter the internal mangled attribute
 machine.__gumballs = 500
 print(machine.gumballs_remaining)           
