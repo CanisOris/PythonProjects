@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python 3 OOP: Object Manipulation, Encapsulation, Inheritance, Polymorphism &amp; Abstraction</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
+</head>
+<body>
+ <header class="site-header"><h1>Python 3 Object-Oriented Programming Examples</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content"><div class="container">
+    <header>
+      <p class="subtitle">Runnable examples covering object use and manipulation, encapsulation, inheritance, polymorphism, abstraction, and key terms/commands.</p>
+      <nav class="section-nav" aria-label="Section navigation">
+        <ul>
+          <li><a href="#1-object-use-and-manipulation">1. Object Use and Manipulation</a></li>
+          <li><a href="#2-encapsulation">2. Encapsulation</a></li>
+          <li><a href="#3-inheritance">3. Inheritance</a></li>
+          <li><a href="#4-polymorphism">4. Polymorphism</a></li>
+          <li><a href="#5-abstraction">5. Abstraction</a></li>
+          <li><a href="#6-terms-and-commands">6. Terms and Commands Used</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+      <h2 id="1-object-use-and-manipulation">1. Object Use and Manipulation</h2>
+      <p>
+        Creating instances, reading/updating attributes, validating state with <code>@property</code>,
+        and customizing object behavior with special ("dunder") methods like <code>__repr__</code> and <code>__eq__</code>.
+      </p>
+      <pre><code>class BankAccount:
+    def __init__(self, owner: str, balance: float = 0.0) -&gt; None:
+        self.owner = owner
+        self.balance = balance  # Uses the setter below
+
+    @property
+    def balance(self) -&gt; float:
+        return self._balance
+
+    @balance.setter
+    def balance(self, value: float) -&gt; None:
+        if value &lt; 0:
+            raise ValueError("Balance cannot be negative.")
+        self._balance = round(value, 2)
+
+    def deposit(self, amount: float) -&gt; None:
+        if amount &lt;= 0:
+            raise ValueError("Deposit amount must be positive.")
+        self.balance += amount
+
+    def withdraw(self, amount: float) -&gt; bool:
+        if amount &lt;= 0 or amount &gt; self.balance:
+            return False
+        self.balance -= amount
+        return True
+
+    def __repr__(self) -&gt; str:
+        return f"BankAccount(owner={self.owner!r}, balance={self.balance:.2f})"
+
+    def __eq__(self, other: object) -&gt; bool:
+        if not isinstance(other, BankAccount):
+            return NotImplemented
+        return self.owner == other.owner and self.balance == other.balance
+
+
+# Instantiation and state manipulation
+acct = BankAccount("Maya", 250.0)
+acct.deposit(75.5)
+withdrew = acct.withdraw(100.0)
+
+print(acct)                   # BankAccount(owner='Maya', balance=225.50)
+print("Withdrew:", withdrew)  # Withdrew: True
+
+# Dynamic attribute inspection and manipulation
+setattr(acct, "currency", "USD")
+print("Currency:", getattr(acct, "currency"))            # Currency: USD
+print("Has overdraft:", hasattr(acct, "overdraft_limit")) # Has overdraft: False
+
+# Value equality via __eq__
+same_acct = BankAccount("Maya", 225.5)
+print("Equal accounts:", acct == same_acct)  # True</code></pre>
+    </section>
+
+    <section>
+      <h2 id="2-encapsulation">2. Encapsulation</h2>
+      <p>
+        Bundling internal state with the methods that manage it while restricting direct external mutation.
+        Python signals visibility using naming conventions—a single leading underscore (<code>_protected</code>) for
+        internal/subclass use and a double leading underscore (<code>__private</code>) for name-mangled attributes—paired
+        with controlled getter/setter interfaces.
+      </p>
+      <pre><code>class Vault:
+    def __init__(self, owner: str, pin: str, initial_funds: float = 0.0) -&gt; None:
+        self.owner = owner                  # Public attribute
+        self._audit_log: list[str] = []     # Protected convention (internal / subclass use)
+        self.__pin = pin                    # Name-mangled private attribute (_Vault__pin)
+        self.__balance = 0.0
+        if initial_funds &gt; 0:
+            self.deposit(initial_funds)
+
+    @property
+    def balance(self) -&gt; float:
+        """Read-only public view of the internal balance."""
+        return self.__balance
+
+    def deposit(self, amount: float) -&gt; None:
+        if amount &lt;= 0:
+            raise ValueError("Deposit must be positive.")
+        self.__balance += amount
+        self._record(f"Deposited {amount:.2f}")
+
+    def withdraw(self, amount: float, pin: str) -&gt; bool:
+        if not self.__verify_pin(pin):
+            self._record("Failed withdrawal: invalid PIN")
+            return False
+        if amount &lt;= 0 or amount &gt; self.__balance:
+            return False
+        self.__balance -= amount
+        self._record(f"Withdrew {amount:.2f}")
+        return True
+
+    def get_audit_log(self) -&gt; tuple[str, ...]:
+        # Return an immutable copy so callers cannot mutate internal history
+        return tuple(self._audit_log)
+
+    def _record(self, entry: str) -&gt; None:
+        self._audit_log.append(entry)
+
+    def __verify_pin(self, pin: str) -&gt; bool:
+        return pin == self.__pin
+
+
+vault = Vault("Jordan", pin="4821", initial_funds=500.0)
+print("Balance:", vault.balance)                        # Balance: 500.0
+print("Bad PIN:", vault.withdraw(100.0, pin="0000"))    # Bad PIN: False
+print("Good PIN:", vault.withdraw(100.0, pin="4821"))   # Good PIN: True
+print("Audit log:", vault.get_audit_log())
+
+# Direct access to __pin or __balance raises AttributeError
+try:
+    print(vault.__pin)
+except AttributeError as err:
+    print("Blocked direct access:", err)</code></pre>
+    </section>
+
+    <section>
+      <h2 id="3-inheritance">3. Inheritance</h2>
+      <p>
+        Deriving specialized classes from a base class, reusing parent initialization/logic with <code>super()</code>,
+        extending or overriding behavior, and checking class relationships.
+      </p>
+      <pre><code>import math
+
+
+class Shape:
+    def __init__(self, color: str = "black") -&gt; None:
+        self.color = color
+
+    def area(self) -&gt; float:
+        raise NotImplementedError("Subclasses must implement area().")
+
+    def describe(self) -&gt; str:
+        return f"A {self.color} {type(self).__name__.lower()}"
+
+
+class Rectangle(Shape):
+    def __init__(self, width: float, height: float, color: str = "blue") -&gt; None:
+        super().__init__(color=color)
+        self.width = width
+        self.height = height
+
+    def area(self) -&gt; float:
+        return self.width * self.height
+
+    def describe(self) -&gt; str:
+        base_desc = super().describe()
+        return f"{base_desc} ({self.width}x{self.height})"
+
+
+class Circle(Shape):
+    def __init__(self, radius: float, color: str = "red") -&gt; None:
+        super().__init__(color=color)
+        self.radius = radius
+
+    def area(self) -&gt; float:
+        return math.pi * (self.radius ** 2)
+
+
+rect = Rectangle(4, 5)
+circ = Circle(3)
+
+print(rect.describe(), "-&gt; area:", rect.area())           # A blue rectangle (4x5) -&gt; area: 20
+print(circ.describe(), "-&gt; area:", round(circ.area(), 2)) # A red circle -&gt; area: 28.27
+
+# Relationship checks
+print(isinstance(rect, Rectangle))  # True
+print(isinstance(rect, Shape))      # True
+print(issubclass(Circle, Shape))    # True</code></pre>
+    </section>
+
+    <section>
+      <h2 id="4-polymorphism">4. Polymorphism</h2>
+      <p>
+        Calling the same operation or method on objects of different types and letting each object respond according
+        to its own implementation—via <strong>duck typing</strong>, shared interfaces, or operator overloading.
+      </p>
+      <pre><code>import json
+
+
+# A. Polymorphism via shared method signature (duck typing)
+class EmailNotifier:
+    def send(self, recipient: str, message: str) -&gt; str:
+        return f"[Email -&gt; {recipient}] {message}"
+
+
+class SmsNotifier:
+    def send(self, recipient: str, message: str) -&gt; str:
+        return f"[SMS -&gt; {recipient}] {message}"
+
+
+class WebhookNotifier:
+    def send(self, recipient: str, message: str) -&gt; str:
+        payload = json.dumps({"to": recipient, "msg": message})
+        return f"[Webhook] {payload}"
+
+
+def notify_all(notifiers: list, recipient: str, message: str) -&gt; None:
+    # Works with any object that defines a compatible .send(recipient, message) method
+    for notifier in notifiers:
+        print(notifier.send(recipient, message))
+
+
+channels = [EmailNotifier(), SmsNotifier(), WebhookNotifier()]
+notify_all(channels, "alex@example.com", "Deployment succeeded.")
+
+
+# B. Built-in / operator polymorphism (len(), +)
+class Playlist:
+    def __init__(self, tracks: list[str]) -&gt; None:
+        self.tracks = list(tracks)
+
+    def __len__(self) -&gt; int:
+        return len(self.tracks)
+
+    def __add__(self, other: "Playlist") -&gt; "Playlist":
+        if not isinstance(other, Playlist):
+            return NotImplemented
+        return Playlist(self.tracks + other.tracks)
+
+
+p1 = Playlist(["Song A", "Song B"])
+p2 = Playlist(["Song C"])
+combined = p1 + p2
+
+print("Track count:", len(combined))  # Track count: 3
+print("Tracks:", combined.tracks)     # Tracks: ['Song A', 'Song B', 'Song C']</code></pre>
+    </section>
+
+    <section>
+      <h2 id="5-abstraction">5. Abstraction</h2>
+      <p>
+        Hiding low-level implementation details behind a clean, minimal contract so callers interact only with
+        <em>what</em> an object does rather than <em>how</em> it does it. Python enforces abstract contracts using
+        <code>abc.ABC</code> and <code>@abstractmethod</code>, preventing incomplete subclasses from being instantiated.
+      </p>
+      <pre><code>from abc import ABC, abstractmethod
+
+
+class PaymentProcessor(ABC):
+    """Abstract contract defining the interface every payment gateway must provide."""
+
+    @abstractmethod
+    def authorize(self, amount: float) -&gt; str:
+        """Reserve funds and return an authorization token."""
+
+    @abstractmethod
+    def capture(self, auth_token: str) -&gt; bool:
+        """Finalize a previously authorized charge."""
+
+    def process_payment(self, amount: float) -&gt; bool:
+        """High-level workflow built purely on abstract operations."""
+        token = self.authorize(amount)
+        return self.capture(token)
+
+
+class StripeProcessor(PaymentProcessor):
+    def authorize(self, amount: float) -&gt; str:
+        print(f"[Stripe] Authorizing ${amount:.2f} via Stripe API...")
+        return "stripe_tok_9182"
+
+    def capture(self, auth_token: str) -&gt; bool:
+        print(f"[Stripe] Capturing token {auth_token}")
+        return True
+
+
+class LocalMockProcessor(PaymentProcessor):
+    def authorize(self, amount: float) -&gt; str:
+        return f"mock_tok_{int(amount * 100)}"
+
+    def capture(self, auth_token: str) -&gt; bool:
+        return auth_token.startswith("mock_tok_")
+
+
+def checkout(processor: PaymentProcessor, total: float) -&gt; None:
+    # Caller depends only on the PaymentProcessor abstraction, not gateway internals
+    success = processor.process_payment(total)
+    print("Checkout complete:", success)
+
+
+checkout(StripeProcessor(), 49.99)
+checkout(LocalMockProcessor(), 15.00)
+
+# Attempting to instantiate an abstract base class directly raises TypeError
+try:
+    PaymentProcessor()
+except TypeError as err:
+    print("Cannot instantiate ABC:", err)</code></pre>
+    </section>
+
+    <section>
+      <h2 id="6-terms-and-commands">6. Terms and Commands Used</h2>
+      <p>
+        Definitions of core object-oriented concepts, naming conventions, built-in functions, decorators, and special
+        ("dunder") methods demonstrated across the examples above.
+      </p>
+
+      <h3 id="core-oop-python-concepts">Core OOP &amp; Python Concepts</h3>
+      <dl>
+        <dt><strong>Class &amp; Instance</strong></dt>
+        <dd>A <code>class</code> is a blueprint defining attributes and methods; an <em>instance</em> is an individual object created by calling the class (e.g., <code>BankAccount("Maya", 250.0)</code>).</dd>
+
+        <dt><strong><code>self</code></strong></dt>
+        <dd>The conventional first parameter of instance methods, referring to the specific object instance on which the method was called.</dd>
+
+        <dt><strong>Protected Convention (<code>_name</code>)</strong></dt>
+        <dd>A single leading underscore signaling to developers that an attribute or helper method is intended for internal class or subclass use rather than public callers.</dd>
+
+        <dt><strong>Name Mangling / Private Convention (<code>__name</code>)</strong></dt>
+        <dd>A double leading underscore (without trailing double underscores) that Python rewrites internally to <code>_ClassName__name</code> to prevent accidental external access or subclass collisions.</dd>
+
+        <dt><strong>Duck Typing</strong></dt>
+        <dd>A style of polymorphism where an object's suitability is determined by the presence of expected methods and attributes (e.g., <code>.send()</code>) rather than its inheritance hierarchy.</dd>
+
+        <dt><strong>Operator Overloading</strong></dt>
+        <dd>Implementing special methods such as <code>__add__</code> or <code>__eq__</code> so custom objects work naturally with standard Python operators (<code>+</code>, <code>==</code>).</dd>
+      </dl>
+
+      <h3 id="decorators-standard-library-tools">Decorators &amp; Standard Library Tools</h3>
+      <dl>
+        <dt><code>@property</code> / <code>@&lt;attr&gt;.setter</code></dt>
+        <dd>Built-in decorators that expose methods as managed attributes, allowing validation or computed reads while preserving standard dot-access syntax (<code>acct.balance</code>).</dd>
+
+        <dt><code>abc.ABC</code> &amp; <code>@abstractmethod</code></dt>
+        <dd>Base class and decorator from the <code>abc</code> (Abstract Base Classes) module used to define formal interfaces; Python raises <code>TypeError</code> if a subclass fails to implement all abstract methods.</dd>
+      </dl>
+
+      <h3 id="built-in-commands-functions">Built-in Commands &amp; Functions</h3>
+      <dl>
+        <dt><code>super()</code></dt>
+        <dd>Returns a proxy object delegating method calls to a parent or sibling class, commonly used in <code>__init__</code> or overridden methods to reuse base-class logic.</dd>
+
+        <dt><code>isinstance(obj, cls)</code></dt>
+        <dd>Returns <code>True</code> if <code>obj</code> is an instance of <code>cls</code> or any subclass thereof.</dd>
+
+        <dt><code>issubclass(sub, sup)</code></dt>
+        <dd>Returns <code>True</code> if class <code>sub</code> is derived from class <code>sup</code>.</dd>
+
+        <dt><code>getattr(obj, name)</code> / <code>setattr(obj, name, val)</code> / <code>hasattr(obj, name)</code></dt>
+        <dd>Built-in reflection functions for dynamically reading, assigning, or checking the existence of an object's attribute by string name.</dd>
+
+        <dt><code>type(obj).__name__</code></dt>
+        <dd>Retrieves the runtime class of <code>obj</code> and accesses its string class name.</dd>
+
+        <dt><code>NotImplemented</code> &amp; <code>NotImplementedError</code></dt>
+        <dd><code>NotImplemented</code> is a special return value signaling that a binary operation (like <code>==</code> or <code>+</code>) is unsupported for the given operand type; <code>NotImplementedError</code> is an exception raised when an abstract method has not been overridden.</dd>
+      </dl>
+
+      <h3 id="special-dunder-methods">Special ("Dunder") Methods</h3>
+      <dl>
+        <dt><code>__init__(self, ...)</code></dt>
+        <dd>Initializer method automatically invoked when a new instance is created to set up its initial state.</dd>
+
+        <dt><code>__repr__(self)</code></dt>
+        <dd>Returns an unambiguous string representation of an object, used by <code>repr()</code>, interactive consoles, and fallback <code>print()</code> formatting.</dd>
+
+        <dt><code>__eq__(self, other)</code></dt>
+        <dd>Defines value equality behavior for the <code>==</code> operator.</dd>
+
+        <dt><code>__len__(self)</code></dt>
+        <dd>Defines how the built-in <code>len(obj)</code> function computes the size of an object.</dd>
+
+        <dt><code>__add__(self, other)</code></dt>
+        <dd>Defines addition behavior for the <code>+</code> operator.</dd>
+      </dl>
+    </section>
+  </div></article></main>
+</body>
+</html>

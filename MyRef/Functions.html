@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python 3 Function-to-Function Passing Variations</title>
-  <link rel="stylesheet" href="../styles.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python 3 Function-to-Function Passing Variations</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
 </head>
 <body>
-  <nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav>
-  <h1>Python 3 Function-to-Function Passing Variations</h1>
-  <p>In Python 3, passing data or behavior from one function to another&mdash;or chaining functions together&mdash;takes several distinct forms depending on whether you are passing values, functions themselves, or mutable state.</p>
+ <header class="site-header"><h1>Python 3 Function-to-Function Passing Variations</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content"><p>In Python 3, passing data or behavior from one function to another&mdash;or chaining functions together&mdash;takes several distinct forms depending on whether you are passing values, functions themselves, or mutable state.</p>
 
   <h2 id="1-direct-return-to-argument-passing-chaining-composition">1. Direct Return-to-Argument Passing (Chaining / Composition)</h2>
   <p>One function computes a value and returns it to a caller, which passes that result directly as an argument to another function.</p>
@@ -97,6 +98,6 @@ def formatted_lines(filenames):
       <li>Save a small test script in VS Code and run it with Python 3 in Git Bash to compare direct return chaining, <code>functools.partial</code>, and a <code>yield</code> generator pipeline on a sample list of file names.</li>
       <li>Check whether your target function expects a keyword-only argument (after <code>*</code>) when forwarding <code>**kwargs</code> so unexpected keywords don't raise a <code>TypeError</code>.</li>
     </ol>
-  </section>
+  </section></article></main>
 </body>
 </html>

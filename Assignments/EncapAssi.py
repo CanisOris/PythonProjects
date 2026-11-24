@@ -5,9 +5,18 @@ class GumballMachine:
         # __private var for gumballs and cash box
         self.__gumballs = max(0, gumballs)
         self.__cash_box = 0.0
+        self._jammed = False
+
+    #Protected helper method
+    # clear jam action return none
+    def _clear_jam(self) -> None:
+        # Reset internal jam flag so the dispensing mechanism can operate again
+        self._jammed = False    
 
     # buy a gumball
     def insert_coin_and_turn(self, payment: float) -> str:
+        if self._jammed:
+            return "Machine is jammed!"
         if self.__gumballs <= 0:
             return "Out of gumballs!"
         if payment < self.price:
@@ -34,6 +43,10 @@ class GumballMachine:
         self.__cash_box = 0.0
         return collected
 
+    def service_machine(self) -> None:
+        self._clear_jam()
+        print("Machine serviced.")
+
     # show the number of gumballs remaining (read-only)
     @property
     def gumballs_remaining(self) -> int:
@@ -42,10 +55,14 @@ class GumballMachine:
 
 
 machine = GumballMachine(gumballs=3, price=0.50)
-print(machine.insert_coin_and_turn(0.50))  
+print(machine.insert_coin_and_turn(0.50))
+# Simulate a jam
+machine._jammed = True
 print(machine.insert_coin_and_turn(1.00))  
 print(machine.gumballs_remaining)           
 
+# Clear the jam and refill the machine
+machine.service_machine()
 machine.refill(5)
 print(machine.gumballs_remaining)           
 print(f"Collected: ${machine.collect_cash():.2f}")  

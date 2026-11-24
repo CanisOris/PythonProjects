@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python Tuple Unpacking: for _, variable</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
+</head>
+<body>
+ <header class="site-header"><h1>Python: <code>for _, variable</code></h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content"><div class="container">
+    <header>
+      <div>
+        
+        <p class="subtitle">Tuple unpacking with a throwaway variable convention</p>
+      </div>
+      
+    </header>
+
+    <section>
+      <h2 id="overview">Overview</h2>
+      <p>
+        In Python, <code>for _, variable in ...</code> is a <strong><code>for</code> loop using tuple unpacking</strong>
+        where <code>_</code> is a naming convention for an <strong>ignored (throwaway) variable</strong>, and
+        <code>variable</code> captures the value you want to use.
+      </p>
+      <p>
+        It commonly appears when iterating over sequences of pairs or tuples—such as <code>enumerate()</code> or
+        <code>dict.items()</code>—where only one element of each pair is needed.
+      </p>
+    </section>
+
+    <section>
+      <h2 id="common-examples">Common Examples</h2>
+
+      <h3 id="1-with-enumerate-ignoring-the-index">1. With <code>enumerate()</code> (ignoring the index)</h3>
+      <p><code>enumerate()</code> yields <code>(index, item)</code> pairs. Use <code>_</code> when you only need the item:</p>
+      <div class="code-block">
+        <button class="copy-btn" type="button">Copy</button>
+        <pre><code>fruits = ["apple", "banana", "cherry"]
+
+for _, fruit in enumerate(fruits):
+    print(fruit)
+# Output:
+# apple
+# banana
+# cherry</code></pre>
+      </div>
+
+      <h3 id="2-with-dict-items-ignoring-the-key">2. With <code>dict.items()</code> (ignoring the key)</h3>
+      <p><code>dict.items()</code> yields <code>(key, value)</code> pairs. Use <code>_</code> when you only need the value:</p>
+      <div class="code-block">
+        <button class="copy-btn" type="button">Copy</button>
+        <pre><code>prices = {"apple": 1.20, "banana": 0.50, "cherry": 3.00}
+
+for _, price in prices.items():
+    print(price)
+# Output:
+# 1.2
+# 0.5
+# 3.0</code></pre>
+      </div>
+
+      <h3 id="3-with-a-list-of-tuples">3. With a list of tuples</h3>
+      <p>Unpack the tuple elements directly and ignore the first value:</p>
+      <div class="code-block">
+        <button class="copy-btn" type="button">Copy</button>
+        <pre><code>coordinates = [(10, 20), (30, 40), (50, 60)]
+
+for _, y in coordinates:
+    print(y)
+# Output:
+# 20
+# 40
+# 60</code></pre>
+      </div>
+    </section>
+
+    <section>
+      <h2 id="important-notes">Important Notes</h2>
+      <ul>
+        <li>
+          <strong><code>_</code> is a regular variable name:</strong> Python does not treat <code>_</code> as special
+          loop syntax. Each iteration assigns the first tuple element to <code>_</code>; using <code>_</code> simply signals
+          to readers that the value is intentionally unused.
+        </li>
+        <li>
+          <strong>Watch for name collisions and direct methods:</strong> In a REPL, <code>_</code> holds the last
+          evaluated expression, and tools like <code>gettext</code> also bind <code>_</code>. When you don't need a
+          dictionary key at all, <code>for price in prices.values():</code> is often clearer than unpacking and ignoring
+          the key.
+        </li>
+      </ul>
+    </section>
+  </div></article></main>
+</body>
+</html>

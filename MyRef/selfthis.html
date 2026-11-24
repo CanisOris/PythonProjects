@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using self vs. Not Using self in Python (Game Theory)</title>
-  <link rel="stylesheet" href="../styles.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Using self vs. Not Using self in Python (Game Theory)</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
 </head>
 <body>
-  <nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav>
-  <main>
-    <h1>Using <code>self.</code> vs. Not Using <code>self.</code> in Python</h1>
-    <p>
+ <header class="site-header"><h1>Using <code>self.</code> vs. Not Using <code>self.</code> in Python</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content"><p>
       Using <code>self.trust_score = trust_score</code> stores the value <strong>on the specific object instance</strong>
       so other methods on that object can read or update it later. Without <code>self.</code> (just
       <code>trust_score = trust_score</code>), it is only a <strong>local variable</strong> inside
@@ -66,7 +66,6 @@
       In <code>self.trust_score = trust_score</code>, the right-hand <code>trust_score</code> is the parameter
       passed into <code>__init__</code>, and <code>self.trust_score</code> is the attribute attached to that
       specific instance (<code>self</code>).
-    </p>
-  </main>
+    </p></article></main>
 </body>
 </html>

@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python 3: Generator vs. Regular Function</title>
-  <link rel="stylesheet" href="../styles.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python 3: Generator vs. Regular Function</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
 </head>
 <body>
-  <nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav>
-  <h1>Python 3: Generator vs. Regular Function</h1>
-  <p>In Python 3, a <strong>regular function</strong> (<code>def</code> with <code>return</code>) executes from start to finish and returns a single value (or <code>None</code>) at once, whereas a <strong>generator</strong> (<code>def</code> with <code>yield</code>, or a generator expression <code>(expr for ...)</code>) pauses execution at each <code>yield</code>, yields one value at a time on demand, and resumes right after that <code>yield</code> when the next item is requested.</p>
+ <header class="site-header"><h1>Python 3: Generator vs. Regular Function</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content"><p>In Python 3, a <strong>regular function</strong> (<code>def</code> with <code>return</code>) executes from start to finish and returns a single value (or <code>None</code>) at once, whereas a <strong>generator</strong> (<code>def</code> with <code>yield</code>, or a generator expression <code>(expr for ...)</code>) pauses execution at each <code>yield</code>, yields one value at a time on demand, and resumes right after that <code>yield</code> when the next item is requested.</p>
 
   <h2 id="core-differences-at-a-glance">Core Differences at a Glance</h2>
   <table>
@@ -114,6 +115,6 @@ print("Second pass on same gen:", list(gen))  # Empty []</code></pre>
       <li>Save the <code>get_txt_files_list</code> vs. <code>iter_txt_files</code> snippet to a test file in VS Code and run it with Python 3 in Git Bash to observe single-pass exhaustion on <code>gen</code>.</li>
       <li>Try a generator expression such as <code>(f for f in sample if f.endswith(".txt"))</code> inside <code>for</code> or <code>sum()</code> and compare how it behaves against a list comprehension <code>[...]</code>.</li>
     </ol>
-  </section>
+  </section></article></main>
 </body>
 </html>

@@ -1,286 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Tkinter Guide — Widgets &amp; Layout Management</title>
-  <style>
-    :root {
-      --bg-primary: #12151c;
-      --bg-secondary: #1a1f2b;
-      --bg-card: #212736;
-      --bg-code: #0d1017;
-      --text-primary: #e6ebf5;
-      --text-secondary: #9aa5b8;
-      --accent: #4ea1ff;
-      --accent-hover: #74b7ff;
-      --border: #2e364a;
-      --table-stripe: #181d28;
-    }
-
-    body.theme-medium {
-      --bg-primary: #262b36;
-      --bg-secondary: #2f3543;
-      --bg-card: #383f50;
-      --bg-code: #1e222b;
-      --text-primary: #f0f3f9;
-      --text-secondary: #b8c1d1;
-      --accent: #66b2ff;
-      --accent-hover: #8cc7ff;
-      --border: #495268;
-      --table-stripe: #2b313e;
-    }
-
-    body.theme-light {
-      --bg-primary: #f5f7fb;
-      --bg-secondary: #ffffff;
-      --bg-card: #ffffff;
-      --bg-code: #f0f3f8;
-      --text-primary: #1a202c;
-      --text-secondary: #4a5568;
-      --accent: #1d6fe8;
-      --accent-hover: #1558bd;
-      --border: #d8e0ec;
-      --table-stripe: #f8fafc;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      line-height: 1.65;
-      transition: background-color 0.2s ease, color 0.2s ease;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: var(--bg-secondary);
-      border-bottom: 1px solid var(--border);
-      padding: 0.9rem 1.5rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .header-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      letter-spacing: 0.01em;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-    }
-
-    .nav-links a {
-      color: var(--accent);
-      text-decoration: none;
-      font-size: 0.92rem;
-      font-weight: 500;
-      padding: 0.25rem 0.5rem;
-      border-radius: 6px;
-    }
-
-    .nav-links a:hover {
-      background-color: var(--bg-card);
-      color: var(--accent-hover);
-    }
-
-    .theme-controls {
-      display: flex;
-      gap: 0.4rem;
-    }
-
-    .theme-btn {
-      background-color: var(--bg-card);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-      padding: 0.3rem 0.65rem;
-      border-radius: 6px;
-      font-size: 0.82rem;
-      cursor: pointer;
-    }
-
-    .theme-btn.active {
-      border-color: var(--accent);
-      color: var(--accent);
-      font-weight: 600;
-    }
-
-    main {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1.25rem 4rem;
-    }
-
-    section.card {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.75rem 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.14);
-    }
-
-    .section-badge {
-      display: inline-block;
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--accent);
-      margin-bottom: 0.35rem;
-    }
-
-    h1, h2, h3 {
-      margin-top: 0.4rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
-    }
-
-    h2 {
-      font-size: 1.5rem;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-
-    h3 {
-      font-size: 1.15rem;
-      margin-top: 1.5rem;
-      color: var(--accent);
-    }
-
-    p {
-      margin: 0.65rem 0;
-    }
-
-    ul, ol {
-      padding-left: 1.4rem;
-      margin: 0.6rem 0 1rem;
-    }
-
-    li {
-      margin-bottom: 0.45rem;
-    }
-
-    code {
-      font-family: "Fira Code", "Cascadia Code", Consolas, Monaco, monospace;
-      background-color: var(--bg-code);
-      padding: 0.15rem 0.4rem;
-      border-radius: 4px;
-      font-size: 0.9em;
-      border: 1px solid var(--border);
-    }
-
-    .code-wrapper {
-      position: relative;
-      margin: 1rem 0 1.25rem;
-    }
-
-    .copy-btn {
-      position: absolute;
-      top: 0.6rem;
-      right: 0.6rem;
-      background-color: var(--bg-card);
-      color: var(--text-primary);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 0.25rem 0.6rem;
-      font-size: 0.78rem;
-      cursor: pointer;
-      opacity: 0.88;
-    }
-
-    .copy-btn:hover {
-      opacity: 1;
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    pre {
-      background-color: var(--bg-code);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.1rem 1.2rem;
-      overflow-x: auto;
-      margin: 0;
-      font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    pre code {
-      background: none;
-      border: none;
-      padding: 0;
-      font-size: inherit;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0 1.25rem;
-      font-size: 0.94rem;
-    }
-
-    th, td {
-      border: 1px solid var(--border);
-      padding: 0.65rem 0.85rem;
-      text-align: left;
-      vertical-align: top;
-    }
-
-    th {
-      background-color: var(--bg-secondary);
-      font-weight: 600;
-    }
-
-    tr:nth-child(even) td {
-      background-color: var(--table-stripe);
-    }
-
-    hr {
-      border: 0;
-      border-top: 1px solid var(--border);
-      margin: 1.5rem 0;
-    }
-  </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python Tkinter Guide — Widgets &amp; Layout Management</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="header-title">Python Tkinter Reference</div>
+ <header class="site-header"><h1>Python Tkinter Guide — Widgets &amp; Layout Management</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content"><header>
+    
     <nav class="nav-links">
       <a href="#part-1">1. Widgets &amp; Definitions</a>
       <a href="#part-2">2. .pack() vs. .grid()</a>
       <a href="#part-3">3. Combining in Frames</a>
     </nav>
-    <div class="theme-controls" aria-label="Theme Switcher">
-      <button class="theme-btn active" onclick="setTheme('dark', this)">Dark</button>
-      <button class="theme-btn" onclick="setTheme('medium', this)">Medium</button>
-      <button class="theme-btn" onclick="setTheme('light', this)">Light</button>
-    </div>
+    
   </header>
 
-  <main>
+  
     <!-- RESPONSE 1 -->
     <section id="part-1" class="card">
       <div class="section-badge">Part 1</div>
-      <h2>Python Tkinter Widgets &amp; Definitions</h2>
+      <h2 id="python-tkinter-widgets-definitions">Python Tkinter Widgets &amp; Definitions</h2>
       <p>
         Python's built-in <strong><code>tkinter</code></strong> library wraps Tcl/Tk to create desktop graphical user interfaces (GUIs). In <code>tkinter</code>, every UI element—windows, buttons, text fields, labels, and containers—is a <strong>widget</strong>.
       </p>
 
-      <h3>How Widgets Work in <code>tkinter</code></h3>
+      <h3 id="how-widgets-work-in-tkinter">How Widgets Work in <code>tkinter</code></h3>
       <ol>
         <li><strong>Instantiation:</strong> You create a widget by passing its parent container (usually the root window <code>root</code>) as the first argument, followed by keyword options (like <code>text</code>, <code>bg</code>, <code>fg</code>, <code>font</code>, <code>command</code>).</li>
         <li><strong>Geometry Management:</strong> A widget does not appear until you place it using a layout manager—most commonly <strong><code>.pack()</code></strong> (stacks widgets), <strong><code>.grid()</code></strong> (rows and columns), or <strong><code>.place()</code></strong> (exact x/y coordinates).</li>
@@ -289,7 +38,7 @@
 
       <hr />
 
-      <h3>Core <code>tkinter</code> Widget Definitions</h3>
+      <h3 id="core-tkinter-widget-definitions">Core <code>tkinter</code> Widget Definitions</h3>
       <ul>
         <li><strong><code>Tk</code> (Root Window):</strong> The top-level main application window. Every <code>tkinter</code> app has one root window that starts the GUI loop via <code>root.mainloop()</code>.</li>
         <li><strong><code>Label</code>:</strong> Displays static text or an image. Used for titles, instructions, and status readouts.</li>
@@ -304,7 +53,7 @@
 
       <hr />
 
-      <h3>Runnable Example Script</h3>
+      <h3 id="runnable-example-script">Runnable Example Script</h3>
       <p>This example demonstrates several core widgets working together inside a single window:</p>
       <div class="code-wrapper">
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
@@ -392,12 +141,12 @@ root.mainloop()</code></pre>
     <!-- RESPONSE 2 -->
     <section id="part-2" class="card">
       <div class="section-badge">Part 2</div>
-      <h2><code>.pack()</code> vs. <code>.grid()</code> Layout Management</h2>
+      <h2 id="pack-vs-grid-layout-management"><code>.pack()</code> vs. <code>.grid()</code> Layout Management</h2>
       <p>
         In <code>tkinter</code>, <strong><code>.pack()</code></strong> and <strong><code>.grid()</code></strong> are geometry managers that control where widgets sit and how they resize inside a parent container (like <code>Tk</code> or <code>Frame</code>). A critical rule: <strong>do not mix <code>.pack()</code> and <code>.grid()</code> inside the same parent container</strong>—instead, put <code>.grid()</code> inside a <code>Frame</code> that itself is placed with <code>.pack()</code> (or vice versa).
       </p>
 
-      <h3>Quick Comparison: <code>.pack()</code> vs. <code>.grid()</code></h3>
+      <h3 id="quick-comparison-pack-vs-grid">Quick Comparison: <code>.pack()</code> vs. <code>.grid()</code></h3>
       <table>
         <thead>
           <tr>
@@ -432,7 +181,7 @@ root.mainloop()</code></pre>
 
       <hr />
 
-      <h3>Example 1: <code>.pack()</code> (Stacked / Edge-Based Layout)</h3>
+      <h3 id="example-1-pack-stacked-edge-based-layout">Example 1: <code>.pack()</code> (Stacked / Edge-Based Layout)</h3>
       <p><code>.pack()</code> works well when elements naturally flow in a single direction—such as a vertical column of controls or a horizontal button bar.</p>
       <ul>
         <li><strong><code>side</code></strong>: Which edge of the available space to pack against (<code>"top"</code> is default, or <code>"left"</code>, <code>"right"</code>, <code>"bottom"</code>).</li>
@@ -474,7 +223,7 @@ root.mainloop()</code></pre>
 
       <hr />
 
-      <h3>Example 2: <code>.grid()</code> (Row-and-Column Form Layout)</h3>
+      <h3 id="example-2-grid-row-and-column-form-layout">Example 2: <code>.grid()</code> (Row-and-Column Form Layout)</h3>
       <p><code>.grid()</code> shines when you want labels in one column and inputs cleanly aligned in the next, even if labels have different lengths.</p>
       <ul>
         <li><strong><code>row</code> / <code>column</code></strong>: 0-based coordinates in the grid.</li>
@@ -523,7 +272,7 @@ root.mainloop()</code></pre>
 
       <hr />
 
-      <h3>Practical Rule of Thumb</h3>
+      <h3 id="practical-rule-of-thumb">Practical Rule of Thumb</h3>
       <p>
         Use <strong><code>.pack()</code></strong> for single-axis stacks and toolbars, and <strong><code>.grid()</code></strong> whenever two or more columns need clean vertical alignment—wrapping <code>.grid()</code> sections inside <code>tk.Frame</code> containers when a window mixes forms with stacked panels.
       </p>
@@ -532,12 +281,12 @@ root.mainloop()</code></pre>
     <!-- RESPONSE 3 -->
     <section id="part-3" class="card">
       <div class="section-badge">Part 3</div>
-      <h2>Combining <code>.pack()</code> and <code>.grid()</code> Cleanly Inside Frames</h2>
+      <h2 id="combining-pack-and-grid-cleanly-inside-frames">Combining <code>.pack()</code> and <code>.grid()</code> Cleanly Inside Frames</h2>
       <p>
         The clean way to combine <strong><code>.pack()</code></strong> and <strong><code>.grid()</code></strong> in a multi-section window is to <strong>isolate each layout manager inside its own <code>tk.Frame</code></strong>. Because <code>tkinter</code> tracks geometry management per parent container, a <code>Frame</code> placed with <code>.pack()</code> can freely contain child widgets placed with <code>.grid()</code>—as long as no single parent calls both <code>.pack()</code> and <code>.grid()</code> on its own direct children.
       </p>
 
-      <h3>Architectural Pattern for Multi-Section Windows</h3>
+      <h3 id="architectural-pattern-for-multi-section-windows">Architectural Pattern for Multi-Section Windows</h3>
       <ol>
         <li><strong>Outer Window (<code>root</code>):</strong> Uses <code>.pack()</code> to stack distinct sections vertically (header, form section, action bar, output section).</li>
         <li><strong>Form Section (<code>form_frame</code>):</strong> Packed into <code>root</code> with <code>fill="x"</code>, while its internal labels and inputs use <code>.grid()</code> with <code>columnconfigure(1, weight=1)</code> so input fields stay aligned and stretch horizontally.</li>
@@ -547,7 +296,7 @@ root.mainloop()</code></pre>
 
       <hr />
 
-      <h3>Complete Multi-Section Example</h3>
+      <h3 id="complete-multi-section-example">Complete Multi-Section Example</h3>
       <div class="code-wrapper">
         <button class="copy-btn" onclick="copyCode(this)">Copy</button>
         <pre><code>import tkinter as tk
@@ -632,35 +381,12 @@ output_text.config(yscrollcommand=scrollbar.set)
 root.mainloop()</code></pre>
       </div>
 
-      <h3>Why This Structure Scales Well</h3>
+      <h3 id="why-this-structure-scales-well">Why This Structure Scales Well</h3>
       <ul>
         <li><strong>Clear ownership:</strong> Every container has a single geometry manager (<code>root</code> uses <code>.pack()</code>, <code>form_frame</code> uses <code>.grid()</code>, <code>action_frame</code> uses <code>.pack()</code>, <code>output_frame</code> uses <code>.grid()</code>), preventing layout conflicts as new controls are added.</li>
         <li><strong>Predictable resizing:</strong> Setting <code>weight=1</code> on <code>form_frame</code>'s input column and <code>output_frame</code>'s row/column lets the fields and log stretch cleanly without breaking alignment.</li>
         <li><strong>Modular refactoring:</strong> Each <code>Frame</code> can easily be turned into its own class or helper function later without rewriting sibling sections.</li>
       </ul>
-    </section>
-  </main>
-
-  <script>
-    function setTheme(theme, btn) {
-      document.body.classList.remove("theme-medium", "theme-light");
-      if (theme === "medium") {
-        document.body.classList.add("theme-medium");
-      } else if (theme === "light") {
-        document.body.classList.add("theme-light");
-      }
-      document.querySelectorAll(".theme-btn").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-    }
-
-    function copyCode(btn) {
-      const code = btn.nextElementSibling.innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        const original = btn.innerText;
-        btn.innerText = "Copied!";
-        setTimeout(() => { btn.innerText = original; }, 1500);
-      });
-    }
-  </script>
+    </section></article></main>
 </body>
 </html>

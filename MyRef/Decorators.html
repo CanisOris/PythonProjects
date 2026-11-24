@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python Decorators — Complete Guide &amp; Standard Library Reference</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
+</head>
+<body>
+ <header class="site-header"><h1>Python Decorators: Complete Guide &amp; Standard Library Reference</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content"><!-- 1. Overview -->
+    <section>
+      <h2 id="what-is-a-python-decorator">What Is a Python Decorator?</h2>
+      <p>
+        A <strong>Python decorator</strong> is a callable (usually a function or class) that takes another function or class, adds or modifies its behavior without permanently altering its source code, and returns a replacement object.
+      </p>
+      <p>
+        Under the hood, placing <code>@decorator</code> above a function definition is syntactic sugar for passing that function into the decorator and rebinding its name:
+      </p>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — Syntactic Sugar</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">def</span> <span class="fn">greet</span>(name):
+    <span class="kw">return</span> <span class="str">f"Hello, {name}!"</span>
+
+greet = decorator(greet)</code></pre>
+      </div>
+    </section>
+
+    <!-- 2. Custom Decorator Patterns -->
+    <section>
+      <h2 id="custom-decorator-patterns">Custom Decorator Patterns</h2>
+
+      <h3 id="1-basic-decorator-with-functools-wraps-timing-logging">1. Basic Decorator with <code>functools.wraps</code> (Timing / Logging)</h3>
+      <p>
+        Always apply <code>@functools.wraps(func)</code> to your inner wrapper so the decorated function retains its original <code>__name__</code>, <code>__doc__</code>, and signature metadata.
+      </p>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — Timer Decorator</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">import</span> functools
+<span class="kw">import</span> time
+
+<span class="kw">def</span> <span class="fn">timer</span>(func):
+    <span class="dec">@functools.wraps(func)</span>
+    <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+        start = time.perf_counter()
+        <span class="kw">try</span>:
+            <span class="kw">return</span> func(*args, **kwargs)
+        <span class="kw">finally</span>:
+            elapsed = time.perf_counter() - start
+            <span class="fn">print</span>(<span class="str">f"{func.__name__} took {elapsed:.4f}s"</span>)
+    <span class="kw">return</span> wrapper
+
+<span class="dec">@timer</span>
+<span class="kw">def</span> <span class="fn">compute_sum</span>(n):
+    <span class="str">"""Return the sum of integers from 0 to n - 1."""</span>
+    <span class="kw">return</span> <span class="fn">sum</span>(<span class="fn">range</span>(n))
+
+<span class="fn">print</span>(compute_sum(<span class="num">1_000_000</span>))
+<span class="fn">print</span>(compute_sum.__name__)  <span class="cmt"># "compute_sum" (thanks to @functools.wraps)</span></code></pre>
+      </div>
+
+      <h3 id="2-decorator-that-accepts-arguments-decorator-factory">2. Decorator That Accepts Arguments (Decorator Factory)</h3>
+      <p>
+        When a decorator takes configuration parameters (such as retry counts or permissions), add one outer factory function that returns the actual decorator.
+      </p>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — Parameterized Retry Decorator</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">import</span> functools
+<span class="kw">import</span> time
+
+<span class="kw">def</span> <span class="fn">retry</span>(max_attempts=<span class="num">3</span>, delay=<span class="num">0.1</span>):
+    <span class="kw">def</span> <span class="fn">decorator</span>(func):
+        <span class="dec">@functools.wraps(func)</span>
+        <span class="kw">def</span> <span class="fn">wrapper</span>(*args, **kwargs):
+            <span class="kw">for</span> attempt <span class="kw">in</span> <span class="fn">range</span>(<span class="num">1</span>, max_attempts + <span class="num">1</span>):
+                <span class="kw">try</span>:
+                    <span class="kw">return</span> func(*args, **kwargs)
+                <span class="kw">except</span> Exception <span class="kw">as</span> exc:
+                    <span class="kw">if</span> attempt == max_attempts:
+                        <span class="kw">raise</span>
+                    <span class="fn">print</span>(<span class="str">f"Attempt {attempt} failed ({exc}); retrying in {delay}s..."</span>)
+                    time.sleep(delay)
+        <span class="kw">return</span> wrapper
+    <span class="kw">return</span> decorator
+
+<span class="dec">@retry(max_attempts=3, delay=0.05)</span>
+<span class="kw">def</span> <span class="fn">flaky_call</span>():
+    <span class="kw">raise</span> ConnectionError(<span class="str">"Temporary network drop"</span>)</code></pre>
+      </div>
+    </section>
+
+    <!-- 3. When / When Not -->
+    <div class="grid-two">
+      <div class="card-good">
+        <h2 id="when-to-use-decorators">When to Use Decorators</h2>
+        <ul>
+          <li><strong>Cross-cutting concerns:</strong> Logging, timing/metrics, authentication checks, caching, and rate limiting shared across many functions.</li>
+          <li><strong>Registration patterns:</strong> Registering web routes, CLI subcommands, event listeners, or plugins (e.g., <code>@app.get("/items")</code>).</li>
+          <li><strong>Managed attributes &amp; constructors:</strong> Turning methods into computed attributes via <code>@property</code> or defining factory methods with <code>@classmethod</code>.</li>
+          <li><strong>Clean domain logic:</strong> Isolating repetitive setup/teardown guardrails from core business logic.</li>
+        </ul>
+      </div>
+
+      <div class="card-bad">
+        <h2 id="when-not-to-use-decorators">When NOT to Use Decorators</h2>
+        <ul>
+          <li><strong>Core business logic or hidden mutations:</strong> Silently altering arguments, swallowing exceptions, or changing return shapes obscures data flow.</li>
+          <li><strong>Deeply stacked chains:</strong> Layering 4–5 custom decorators on one function complicates debugging, stack traces, and readability.</li>
+          <li><strong>One-off behaviors:</strong> When logic is used in only one or two places, an explicit helper call or a context manager (<code>with ...:</code>) is clearer.</li>
+          <li><strong>Heavy introspection without <code>@wraps</code>:</strong> Omitting <code>functools.wraps</code> breaks doc generators, type tools, and test mocking.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 4. Complete Standard Library Decorators Reference -->
+    <section>
+      <h2 id="all-standard-library-decorators-usage-examples">All Standard Library Decorators &amp; Usage Examples</h2>
+      <p>
+        Python provides built-in decorators (available without imports) alongside standard library decorators organized by module for caching, classes, OOP interfaces, context managers, and typing.
+      </p>
+
+      <!-- Category A: Built-ins -->
+      <span class="module-badge">builtins (No Import Required)</span>
+      <h3 id="1-core-built-in-class-descriptor-decorators">1. Core Built-in Class &amp; Descriptor Decorators</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Decorator</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@property</code></td>
+            <td>Turns a method into a read-only attribute; pairs with <code>@&lt;name&gt;.setter</code> and <code>@&lt;name&gt;.deleter</code>.</td>
+          </tr>
+          <tr>
+            <td><code>@classmethod</code></td>
+            <td>Binds the class (<code>cls</code>) rather than an instance (<code>self</code>) as the first argument; ideal for factory constructors.</td>
+          </tr>
+          <tr>
+            <td><code>@staticmethod</code></td>
+            <td>Defines a utility function inside a class namespace that receives neither <code>self</code> nor <code>cls</code>.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — @property, @classmethod, @staticmethod</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">class</span> <span class="fn">Temperature</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, celsius: <span class="fn">float</span>):
+        self._celsius = celsius
+
+    <span class="dec">@property</span>
+    <span class="kw">def</span> <span class="fn">fahrenheit</span>(self) -&gt; <span class="fn">float</span>:
+        <span class="kw">return</span> (self._celsius * <span class="num">9</span> / <span class="num">5</span>) + <span class="num">32</span>
+
+    <span class="dec">@fahrenheit.setter</span>
+    <span class="kw">def</span> <span class="fn">fahrenheit</span>(self, value: <span class="fn">float</span>) -&gt; <span class="kw">None</span>:
+        self._celsius = (value - <span class="num">32</span>) * <span class="num">5</span> / <span class="num">9</span>
+
+    <span class="dec">@classmethod</span>
+    <span class="kw">def</span> <span class="fn">from_fahrenheit</span>(cls, f: <span class="fn">float</span>) -&gt; <span class="str">"Temperature"</span>:
+        <span class="kw">return</span> cls((f - <span class="num">32</span>) * <span class="num">5</span> / <span class="num">9</span>)
+
+    <span class="dec">@staticmethod</span>
+    <span class="kw">def</span> <span class="fn">is_freezing</span>(celsius: <span class="fn">float</span>) -&gt; <span class="fn">bool</span>:
+        <span class="kw">return</span> celsius &lt;= <span class="num">0.0</span>
+
+t = Temperature.from_fahrenheit(<span class="num">212</span>)
+<span class="fn">print</span>(t.celsius, t.fahrenheit, Temperature.is_freezing(<span class="num">-2</span>))</code></pre>
+      </div>
+
+      <!-- Category B: functools -->
+      <span class="module-badge">functools</span>
+      <h3 id="2-higher-order-function-caching-dispatch-decorators">2. Higher-Order Function, Caching &amp; Dispatch Decorators</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Decorator</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@wraps(wrapped)</code></td>
+            <td>Copies metadata (<code>__name__</code>, <code>__doc__</code>, annotations) onto a wrapper function.</td>
+          </tr>
+          <tr>
+            <td><code>@cache</code></td>
+            <td>Unbounded memoization cache (equivalent to <code>@lru_cache(maxsize=None)</code>).</td>
+          </tr>
+          <tr>
+            <td><code>@lru_cache(maxsize=128)</code></td>
+            <td>Least-Recently-Used memoization cache with configurable size and <code>.cache_info()</code> / <code>.cache_clear()</code>.</td>
+          </tr>
+          <tr>
+            <td><code>@cached_property</code></td>
+            <td>Computes a property once per instance and caches the value in the instance's <code>__dict__</code>.</td>
+          </tr>
+          <tr>
+            <td><code>@total_ordering</code></td>
+            <td>Generates all rich comparison methods (<code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>) from <code>__eq__</code> plus one ordering method (e.g., <code>__lt__</code>).</td>
+          </tr>
+          <tr>
+            <td><code>@singledispatch</code></td>
+            <td>Turns a function into a single-dispatch generic function overloaded by first-argument type via <code>@fn.register</code>.</td>
+          </tr>
+          <tr>
+            <td><code>@singledispatchmethod</code></td>
+            <td>Same as <code>@singledispatch</code>, designed for methods on a class (dispatches on the first argument after <code>self</code>/<code>cls</code>).</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — functools Decorators</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">from</span> functools <span class="kw">import</span> cache, lru_cache, cached_property, total_ordering, singledispatch
+
+<span class="dec">@cache</span>
+<span class="kw">def</span> <span class="fn">fib</span>(n: <span class="fn">int</span>) -&gt; <span class="fn">int</span>:
+    <span class="kw">return</span> n <span class="kw">if</span> n &lt; <span class="num">2</span> <span class="kw">else</span> fib(n - <span class="num">1</span>) + fib(n - <span class="num">2</span>)
+
+<span class="dec">@lru_cache(maxsize=256)</span>
+<span class="kw">def</span> <span class="fn">fetch_config</span>(env: <span class="fn">str</span>) -&gt; <span class="fn">dict</span>:
+    <span class="kw">return</span> {<span class="str">"env"</span>: env}
+
+<span class="dec">@total_ordering</span>
+<span class="kw">class</span> <span class="fn">Version</span>:
+    <span class="kw">def</span> <span class="fn">__init__</span>(self, major: <span class="fn">int</span>, minor: <span class="fn">int</span>):
+        self.pair = (major, minor)
+
+    <span class="kw">def</span> <span class="fn">__eq__</span>(self, other) -&gt; <span class="fn">bool</span>:
+        <span class="kw">return</span> self.pair == other.pair
+
+    <span class="kw">def</span> <span class="fn">__lt__</span>(self, other) -&gt; <span class="fn">bool</span>:
+        <span class="kw">return</span> self.pair &lt; other.pair
+
+    <span class="dec">@cached_property</span>
+    <span class="kw">def</span> <span class="fn">label</span>(self) -&gt; <span class="fn">str</span>:
+        <span class="kw">return</span> <span class="str">f"v{self.pair[0]}.{self.pair[1]}"</span>
+
+<span class="dec">@singledispatch</span>
+<span class="kw">def</span> <span class="fn">serialize</span>(value):
+    <span class="kw">return</span> <span class="fn">str</span>(value)
+
+<span class="dec">@serialize.register(list)</span>
+<span class="kw">def</span> <span class="fn">_</span>(value):
+    <span class="kw">return</span> <span class="str">", "</span>.join(<span class="fn">map</span>(<span class="fn">str</span>, value))</code></pre>
+      </div>
+
+      <!-- Category C: dataclasses & enum -->
+      <span class="module-badge">dataclasses &amp; enum</span>
+      <h3 id="3-data-container-enumeration-decorators">3. Data Container &amp; Enumeration Decorators</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Decorator</th>
+            <th>Module</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@dataclass</code></td>
+            <td><code>dataclasses</code></td>
+            <td>Auto-generates <code>__init__</code>, <code>__repr__</code>, <code>__eq__</code>, and optional ordering/immutability from type annotations.</td>
+          </tr>
+          <tr>
+            <td><code>@unique</code></td>
+            <td><code>enum</code></td>
+            <td>Ensures an <code>Enum</code> class has no duplicate member values (raises <code>ValueError</code> on duplicates).</td>
+          </tr>
+          <tr>
+            <td><code>@verify(...)</code></td>
+            <td><code>enum</code></td>
+            <td>Validates enum constraints such as <code>UNIQUE</code>, <code>CONTINUOUS</code>, or <code>NAMED_FLAGS</code> (Python 3.11+).</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — @dataclass and @unique</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">from</span> dataclasses <span class="kw">import</span> dataclass
+<span class="kw">from</span> enum <span class="kw">import</span> Enum, unique
+
+<span class="dec">@dataclass(frozen=True)</span>
+<span class="kw">class</span> <span class="fn">Point</span>:
+    x: <span class="fn">float</span>
+    y: <span class="fn">float</span>
+
+<span class="dec">@unique</span>
+<span class="kw">class</span> <span class="fn">HttpStatus</span>(Enum):
+    OK = <span class="num">200</span>
+    NOT_FOUND = <span class="num">404</span></code></pre>
+      </div>
+
+      <!-- Category D: abc -->
+      <span class="module-badge">abc</span>
+      <h3 id="4-abstract-base-class-decorators">4. Abstract Base Class Decorators</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Decorator</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@abstractmethod</code></td>
+            <td>Declares a method that subclasses must implement before the class can be instantiated.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — @abstractmethod</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">from</span> abc <span class="kw">import</span> ABC, abstractmethod
+
+<span class="kw">class</span> <span class="fn">Exporter</span>(ABC):
+    <span class="dec">@abstractmethod</span>
+    <span class="kw">def</span> <span class="fn">export</span>(self, payload: <span class="fn">dict</span>) -&gt; <span class="fn">str</span>:
+        <span class="kw">raise</span> NotImplementedError</code></pre>
+      </div>
+
+      <!-- Category E: contextlib -->
+      <span class="module-badge">contextlib</span>
+      <h3 id="5-context-manager-decorators">5. Context Manager Decorators</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Decorator</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@contextmanager</code></td>
+            <td>Turns a generator function with a single <code>yield</code> into a synchronous <code>with</code> context manager.</td>
+          </tr>
+          <tr>
+            <td><code>@asynccontextmanager</code></td>
+            <td>Turns an async generator function into an <code>async with</code> context manager.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — @contextmanager</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">from</span> contextlib <span class="kw">import</span> contextmanager
+<span class="kw">import</span> tempfile, shutil
+
+<span class="dec">@contextmanager</span>
+<span class="kw">def</span> <span class="fn">temp_workspace</span>():
+    path = tempfile.mkdtemp()
+    <span class="kw">try</span>:
+        <span class="kw">yield</span> path
+    <span class="kw">finally</span>:
+        shutil.rmtree(path)</code></pre>
+      </div>
+
+      <!-- Category F: typing & warnings -->
+      <span class="module-badge">typing &amp; warnings</span>
+      <h3 id="6-static-type-checking-deprecation-decorators">6. Static Type-Checking &amp; Deprecation Decorators</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Decorator</th>
+            <th>Module</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@overload</code></td>
+            <td><code>typing</code></td>
+            <td>Declares multiple type signatures for a function before its concrete implementation.</td>
+          </tr>
+          <tr>
+            <td><code>@final</code></td>
+            <td><code>typing</code></td>
+            <td>Indicates to type checkers that a method cannot be overridden or a class cannot be subclassed.</td>
+          </tr>
+          <tr>
+            <td><code>@override</code></td>
+            <td><code>typing</code></td>
+            <td>Verifies at type-check time that a method actually overrides a parent class method (Python 3.12+).</td>
+          </tr>
+          <tr>
+            <td><code>@runtime_checkable</code></td>
+            <td><code>typing</code></td>
+            <td>Allows a <code>typing.Protocol</code> to be checked at runtime with <code>isinstance()</code> / <code>issubclass()</code>.</td>
+          </tr>
+          <tr>
+            <td><code>@dataclass_transform</code></td>
+            <td><code>typing</code></td>
+            <td>Marks a custom decorator/metaclass as providing dataclass-like behavior for static type checkers.</td>
+          </tr>
+          <tr>
+            <td><code>@deprecated(msg)</code></td>
+            <td><code>warnings</code></td>
+            <td>Marks a function, class, or overload as deprecated at runtime and for static analyzers (Python 3.13+).</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — typing &amp; warnings Decorators</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">from</span> typing <span class="kw">import</span> overload, final, override, runtime_checkable, Protocol
+<span class="kw">from</span> warnings <span class="kw">import</span> deprecated
+
+<span class="dec">@overload</span>
+<span class="kw">def</span> <span class="fn">parse</span>(raw: <span class="fn">str</span>) -&gt; <span class="fn">int</span>: ...
+<span class="dec">@overload</span>
+<span class="kw">def</span> <span class="fn">parse</span>(raw: <span class="fn">bytes</span>) -&gt; <span class="fn">int</span>: ...
+<span class="kw">def</span> <span class="fn">parse</span>(raw: <span class="fn">str</span> | <span class="fn">bytes</span>) -&gt; <span class="fn">int</span>:
+    <span class="kw">return</span> <span class="fn">int</span>(raw)
+
+<span class="dec">@runtime_checkable</span>
+<span class="kw">class</span> <span class="fn">Closeable</span>(Protocol):
+    <span class="kw">def</span> <span class="fn">close</span>(self) -&gt; <span class="kw">None</span>: ...
+
+<span class="kw">class</span> <span class="fn">BaseService</span>:
+    <span class="kw">def</span> <span class="fn">run</span>(self) -&gt; <span class="kw">None</span>:
+        <span class="kw">pass</span>
+
+<span class="dec">@final</span>
+<span class="kw">class</span> <span class="fn">ConcreteService</span>(BaseService):
+    <span class="dec">@override</span>
+    <span class="kw">def</span> <span class="fn">run</span>(self) -&gt; <span class="kw">None</span>:
+        <span class="fn">print</span>(<span class="str">"Running"</span>)
+
+<span class="dec">@deprecated("Use ConcreteService.run() instead")</span>
+<span class="kw">def</span> <span class="fn">legacy_run</span>() -&gt; <span class="kw">None</span>:
+    <span class="kw">pass</span></code></pre>
+      </div>
+
+      <!-- Category G: Testing, Registration & Runtime Utilities -->
+      <span class="module-badge">unittest, atexit, types, asyncio &amp; weakref</span>
+      <h3 id="7-testing-lifecycle-runtime-utility-decorators">7. Testing, Lifecycle &amp; Runtime Utility Decorators</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Decorator</th>
+            <th>Module</th>
+            <th>Purpose</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>@unittest.skip</code> / <code>@skipIf</code> / <code>@skipUnless</code></td>
+            <td><code>unittest</code></td>
+            <td>Unconditionally or conditionally skips a test method or test class.</td>
+          </tr>
+          <tr>
+            <td><code>@unittest.expectedFailure</code></td>
+            <td><code>unittest</code></td>
+            <td>Marks a test as a known failure so it does not fail the test suite until fixed.</td>
+          </tr>
+          <tr>
+            <td><code>@unittest.mock.patch</code></td>
+            <td><code>unittest.mock</code></td>
+            <td>Temporarily replaces an object or attribute with a <code>MagicMock</code> during a test function.</td>
+          </tr>
+          <tr>
+            <td><code>@atexit.register</code></td>
+            <td><code>atexit</code></td>
+            <td>Registers a cleanup function to run automatically when the Python interpreter exits normally.</td>
+          </tr>
+          <tr>
+            <td><code>@types.coroutine</code></td>
+            <td><code>types</code></td>
+            <td>Converts a generator function into a coroutine object compatible with <code>await</code>.</td>
+          </tr>
+          <tr>
+            <td><code>@weakref.finalize</code></td>
+            <td><code>weakref</code></td>
+            <td>Registers a finalizer callback invoked when an object is garbage-collected.</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="code-wrapper">
+        <div class="code-header">
+          <span>Python — atexit &amp; unittest Decorators</span>
+          <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+        </div>
+        <pre><code><span class="kw">import</span> atexit
+<span class="kw">import</span> sys
+<span class="kw">import</span> unittest
+<span class="kw">from</span> unittest.mock <span class="kw">import</span> patch
+
+<span class="dec">@atexit.register</span>
+<span class="kw">def</span> <span class="fn">on_shutdown</span>():
+    <span class="fn">print</span>(<span class="str">"Flushing buffers before exit..."</span>)
+
+<span class="kw">class</span> <span class="fn">SampleTests</span>(unittest.TestCase):
+    <span class="dec">@unittest.skipIf(sys.platform == "win32", "POSIX-only test")</span>
+    <span class="kw">def</span> <span class="fn">test_posix_permissions</span>(self):
+        self.assertTrue(<span class="kw">True</span>)
+
+    <span class="dec">@patch("builtins.print")</span>
+    <span class="kw">def</span> <span class="fn">test_output</span>(self, mock_print):
+        <span class="fn">print</span>(<span class="str">"hello"</span>)
+        mock_print.assert_called_once_with(<span class="str">"hello"</span>)</code></pre>
+      </div>
+    </section></article></main>
+</body>
+</html>

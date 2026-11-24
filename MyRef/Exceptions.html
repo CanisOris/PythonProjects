@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python 3 Exception Handling Variations</title>
-  <link rel="stylesheet" href="../styles.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python 3 Exception Handling Variations</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
 </head>
 <body>
-  <nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav>
-  <h1>Python 3 Exception Handling Variations</h1>
-  <p>In Python 3, exception handling centers on <code>try</code>, <code>except</code>, <code>else</code>, and <code>finally</code> blocks, alongside raising, chaining, and grouping exceptions.</p>
+ <header class="site-header"><h1>Python 3 Exception Handling Variations</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content"><p>In Python 3, exception handling centers on <code>try</code>, <code>except</code>, <code>else</code>, and <code>finally</code> blocks, alongside raising, chaining, and grouping exceptions.</p>
 
   <h2 id="1-basic-try-except">1. Basic <code>try / except</code></h2>
   <p>Catches a specific exception type so the program can recover or report a clear message instead of crashing.</p>
@@ -108,6 +109,6 @@ except* KeyError as eg:
       <li>Save a test script in VS Code and run it with Python 3 in Git Bash to verify <code>try / except / else / finally</code> execution order when an exception is raised versus when <code>try</code> succeeds.</li>
       <li>Check your Python 3 version (<code>python --version</code>) before using <code>except*</code> or <code>ExceptionGroup</code>, which require Python 3.11+.</li>
     </ol>
-  </section>
+  </section></article></main>
 </body>
 </html>

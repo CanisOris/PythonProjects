@@ -1,186 +1,315 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Python Projects</title>
-  <link rel="stylesheet" href="styles.css">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python Projects</title>
+ <link rel="stylesheet" href="styles.css">
+ <script src="help.js" defer></script>
 </head>
 <body>
-  <h1>Python Projects</h1>
-  <p>Quick Reference</p>
-  <nav class="main-menu" aria-label="Reference documents and sections">
+ <header class="site-header"><h1>Python Projects</h1></header>
+ <main class="page-content"><form id="reference-search" class="reference-search" role="search">
+  <label for="reference-query">Search key terms and commands</label>
+  <div class="search-controls">
+    <input id="reference-query" type="search" placeholder="e.g. dictionary, grid(), or yield" aria-describedby="search-status">
+    <button type="submit">Search</button>
+    <button id="next-match" type="button" disabled>Next match</button>
+  </div>
+  <p id="search-status" role="status" aria-live="polite">.</p>
+</form>
+<nav class="main-menu" aria-label="Reference documents and sections">
+<ul>
+  <li><a href="MyRef/Dictionaries.html">Python 3 Dictionary (dict) Instructions &amp; Reference</a>
     <ul>
-      <li><a href="ClassWork/index.html">Python 3 OOP: Object Manipulation, Inheritance &amp; Polymorphism</a>
-        <ul>
-          <li><a href="ClassWork/index.html#1-object-use-and-manipulation">1. Object Use and Manipulation</a>
-          </li>
-          <li><a href="ClassWork/index.html#2-inheritance">2. Inheritance</a>
-          </li>
-          <li><a href="ClassWork/index.html#3-polymorphism">3. Polymorphism</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dictionaries.html#1-creating-dictionaries">1. Creating Dictionaries</a>
       </li>
-      <li><a href="ClassWork/selfthis.html">Using self vs. Not Using self in Python (Game Theory)</a>
-        <ul>
-          <li><a href="ClassWork/selfthis.html#key-differences">Key Differences</a>
-          </li>
-          <li><a href="ClassWork/selfthis.html#example-what-happens-when-you-omit-self">Example: What Happens When You Omit self.</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dictionaries.html#2-reading-safe-lookup">2. Reading &amp; Safe Lookup</a>
       </li>
-      <li><a href="Dic/Format.htm">Python format() Function &amp; Mini-Language Manual</a>
-        <ul>
-          <li><a href="Dic/Format.htm#1-single-argument-usage-format-value">1. Single-Argument Usage: format(value)</a>
-          </li>
-          <li><a href="Dic/Format.htm#2-two-argument-usage-format-value-format-spec">2. Two-Argument Usage: format(value, format_spec)</a>
-          </li>
-          <li><a href="Dic/Format.htm#3-format-specification-reference-mini-language">3. Format Specification Reference Mini-Language</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dictionaries.html#3-adding-updating-removing-entries">3. Adding, Updating &amp; Removing Entries</a>
       </li>
-      <li><a href="Dic/index.html">Python 3 Dictionary (dict) Instructions &amp; Reference</a>
-        <ul>
-          <li><a href="Dic/index.html#1-creating-dictionaries">1. Creating Dictionaries</a>
-          </li>
-          <li><a href="Dic/index.html#2-reading-safe-lookup">2. Reading &amp; Safe Lookup</a>
-          </li>
-          <li><a href="Dic/index.html#3-adding-updating-removing-entries">3. Adding, Updating &amp; Removing Entries</a>
-          </li>
-          <li><a href="Dic/index.html#4-iterating-over-keys-values-items">4. Iterating Over Keys, Values &amp; Items</a>
-          </li>
-          <li><a href="Dic/index.html#5-key-rules-gotchas">5. Key Rules &amp; Gotchas</a>
-          </li>
-          <li><a href="Dic/index.html#next-steps">Next Steps</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dictionaries.html#4-iterating-over-keys-values-items">4. Iterating Over Keys, Values &amp; Items</a>
       </li>
-      <li><a href="Dic/Operators.htm">Python Operators Reference</a>
-        <ul>
-          <li><a href="Dic/Operators.htm#1-arithmetic-operators">1. Arithmetic Operators</a>
-          </li>
-          <li><a href="Dic/Operators.htm#2-comparison-relational-operators">2. Comparison (Relational) Operators</a>
-          </li>
-          <li><a href="Dic/Operators.htm#3-logical-operators">3. Logical Operators</a>
-          </li>
-          <li><a href="Dic/Operators.htm#4-assignment-operators">4. Assignment Operators</a>
-          </li>
-          <li><a href="Dic/Operators.htm#5-identity-operators">5. Identity Operators</a>
-          </li>
-          <li><a href="Dic/Operators.htm#6-membership-operators">6. Membership Operators</a>
-          </li>
-          <li><a href="Dic/Operators.htm#7-bitwise-operators">7. Bitwise Operators</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dictionaries.html#5-key-rules-gotchas">5. Key Rules &amp; Gotchas</a>
       </li>
-      <li><a href="DunderPlunder/index.html">Python 3 Dunder (Double-Underscore) Methods &amp; Attributes</a>
-        <ul>
-          <li><a href="DunderPlunder/index.html#object-creation-lifecycle-representation">Object Creation, Lifecycle &amp; Representation</a>
-          </li>
-          <li><a href="DunderPlunder/index.html#rich-comparison-operators">Rich Comparison Operators</a>
-          </li>
-          <li><a href="DunderPlunder/index.html#attribute-access-descriptors">Attribute Access &amp; Descriptors</a>
-          </li>
-          <li><a href="DunderPlunder/index.html#callable-containers-sequences-mappings">Callable, Containers, Sequences &amp; Mappings</a>
-          </li>
-          <li><a href="DunderPlunder/index.html#numeric-bitwise-in-place-operators">Numeric, Bitwise &amp; In-Place Operators</a>
-          </li>
-          <li><a href="DunderPlunder/index.html#context-managers-coroutines-class-module-metadata">Context Managers, Coroutines &amp; Class/Module Metadata</a>
-          </li>
-          <li><a href="DunderPlunder/index.html#next-steps">Next Steps</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dictionaries.html#next-steps">Next Steps</a>
       </li>
-      <li><a href="ExceptHands/index.html">Python 3 Exception Handling Variations</a>
-        <ul>
-          <li><a href="ExceptHands/index.html#1-basic-try-except">1. Basic try / except</a>
-          </li>
-          <li><a href="ExceptHands/index.html#2-multiple-except-blocks-different-types">2. Multiple except Blocks (Different Types)</a>
-          </li>
-          <li><a href="ExceptHands/index.html#3-tuple-of-exceptions-in-one-except">3. Tuple of Exceptions in One except</a>
-          </li>
-          <li><a href="ExceptHands/index.html#4-capturing-the-exception-object-as-exc">4. Capturing the Exception Object (as exc)</a>
-          </li>
-          <li><a href="ExceptHands/index.html#5-try-except-else">5. try / except / else</a>
-          </li>
-          <li><a href="ExceptHands/index.html#6-try-except-finally-and-try-finally">6. try / except / finally (and try / finally)</a>
-          </li>
-          <li><a href="ExceptHands/index.html#7-catch-all-except-exception-and-why-to-avoid-bare-except">7. Catch-All except Exception: (and Why to Avoid Bare except:)</a>
-          </li>
-          <li><a href="ExceptHands/index.html#8-re-raising-with-raise">8. Re-Raising with raise</a>
-          </li>
-          <li><a href="ExceptHands/index.html#9-raising-chaining-exceptions-raise-from">9. Raising &amp; Chaining Exceptions (raise ... from ...)</a>
-          </li>
-          <li><a href="ExceptHands/index.html#10-exception-groups-except-python-3-11">10. Exception Groups (except* — Python 3.11+)</a>
-          </li>
-          <li><a href="ExceptHands/index.html#next-steps">Next Steps</a>
-          </li>
-        </ul>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Dictionary</li><li>Key</li><li>Value</li><li>Mapping</li><li>Hashability</li><li>Dictionary comprehension</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>dict()</code></li><li><code>get()</code></li><li><code>update()</code></li><li><code>setdefault()</code></li><li><code>pop()</code></li><li><code>popitem()</code></li><li><code>keys()</code></li><li><code>values()</code></li><li><code>items()</code></li><li><code>copy()</code></li><li><code>clear()</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/Dunder.html">Python 3 Dunder (Double-Underscore) Methods &amp; Attributes</a>
+    <ul>
+      <li><a href="MyRef/Dunder.html#object-creation-lifecycle-representation">Object Creation, Lifecycle &amp; Representation</a>
       </li>
-      <li><a href="FileIO/inex.html">Python 3 I/O Commands and io Module Reference</a>
-        <ul>
-          <li><a href="FileIO/inex.html#built-in-file-console-i-o">Built-In File &amp; Console I/O</a>
-          </li>
-          <li><a href="FileIO/inex.html#common-file-object-methods">Common File Object Methods</a>
-          </li>
-          <li><a href="FileIO/inex.html#io-module-classes-buffers">io Module Classes &amp; Buffers</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dunder.html#rich-comparison-operators">Rich Comparison Operators</a>
       </li>
-      <li><a href="FunctionPassMeanOrNice/index.html">Python 3 Function-to-Function Passing Variations</a>
-        <ul>
-          <li><a href="FunctionPassMeanOrNice/index.html#1-direct-return-to-argument-passing-chaining-composition">1. Direct Return-to-Argument Passing (Chaining / Composition)</a>
-          </li>
-          <li><a href="FunctionPassMeanOrNice/index.html#2-passing-functions-as-arguments-higher-order-functions-callbacks">2. Passing Functions as Arguments (Higher-Order Functions &amp; Callbacks)</a>
-          </li>
-          <li><a href="FunctionPassMeanOrNice/index.html#3-passing-anonymous-functions-lambda">3. Passing Anonymous Functions (lambda)</a>
-          </li>
-          <li><a href="FunctionPassMeanOrNice/index.html#4-passing-args-and-kwargs-argument-forwarding-wrapper-functions">4. Passing *args and **kwargs (Argument Forwarding / Wrapper Functions)</a>
-          </li>
-          <li><a href="FunctionPassMeanOrNice/index.html#5-partial-application-functools-partial">5. Partial Application (functools.partial)</a>
-          </li>
-          <li><a href="FunctionPassMeanOrNice/index.html#6-passing-mutable-objects-shared-in-place-mutation">6. Passing Mutable Objects (Shared In-Place Mutation)</a>
-          </li>
-          <li><a href="FunctionPassMeanOrNice/index.html#7-returning-a-function-from-a-function-closures-factory-functions">7. Returning a Function from a Function (Closures &amp; Factory Functions)</a>
-          </li>
-          <li><a href="FunctionPassMeanOrNice/index.html#8-generator-iterator-handoff-yield-and-yield-from">8. Generator / Iterator Handoff (yield and yield from)</a>
-          </li>
-          <li><a href="FunctionPassMeanOrNice/index.html#next-steps">Next Steps</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dunder.html#attribute-access-descriptors">Attribute Access &amp; Descriptors</a>
       </li>
-      <li><a href="Generator/index.html">Python 3: Generator vs. Regular Function</a>
-        <ul>
-          <li><a href="Generator/index.html#core-differences-at-a-glance">Core Differences at a Glance</a>
-          </li>
-          <li><a href="Generator/index.html#how-execution-works-under-the-hood">How Execution Works Under the Hood</a>
-          </li>
-          <li><a href="Generator/index.html#code-comparison">Code Comparison</a>
-          </li>
-          <li><a href="Generator/index.html#generator-protocol-methods-send-throw-close">Generator Protocol Methods (send, throw, close)</a>
-          </li>
-          <li><a href="Generator/index.html#when-to-choose-which">When to Choose Which</a>
-          </li>
-          <li><a href="Generator/index.html#next-steps">Next Steps</a>
-          </li>
-        </ul>
+      <li><a href="MyRef/Dunder.html#callable-containers-sequences-mappings">Callable, Containers, Sequences &amp; Mappings</a>
       </li>
-      <li><a href="SqlConn/sqlite3Cursor.html">Python sqlite3.Cursor Methods and Attributes</a>
+      <li><a href="MyRef/Dunder.html#numeric-bitwise-in-place-operators">Numeric, Bitwise &amp; In-Place Operators</a>
+      </li>
+      <li><a href="MyRef/Dunder.html#context-managers-coroutines-class-module-metadata">Context Managers, Coroutines &amp; Class/Module Metadata</a>
+      </li>
+      <li><a href="MyRef/Dunder.html#next-steps">Next Steps</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Dunder method</li><li>Operator overloading</li><li>Descriptor</li><li>Iterator</li><li>Context manager</li><li>Coroutine</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>__init__()</code></li><li><code>__repr__()</code></li><li><code>__eq__()</code></li><li><code>__getattr__()</code></li><li><code>__call__()</code></li><li><code>__iter__()</code></li><li><code>__next__()</code></li><li><code>__enter__()</code></li><li><code>__exit__()</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/Exceptions.html">Python 3 Exception Handling Variations</a>
+    <ul>
+      <li><a href="MyRef/Exceptions.html#1-basic-try-except">1. Basic try / except</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#2-multiple-except-blocks-different-types">2. Multiple except Blocks (Different Types)</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#3-tuple-of-exceptions-in-one-except">3. Tuple of Exceptions in One except</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#4-capturing-the-exception-object-as-exc">4. Capturing the Exception Object (as exc)</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#5-try-except-else">5. try / except / else</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#6-try-except-finally-and-try-finally">6. try / except / finally (and try / finally)</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#7-catch-all-except-exception-and-why-to-avoid-bare-except">7. Catch-All except Exception: (and Why to Avoid Bare except:)</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#8-re-raising-with-raise">8. Re-Raising with raise</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#9-raising-chaining-exceptions-raise-from">9. Raising &amp; Chaining Exceptions (raise ... from ...)</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#10-exception-groups-except-python-3-11">10. Exception Groups (except* — Python 3.11+)</a>
+      </li>
+      <li><a href="MyRef/Exceptions.html#next-steps">Next Steps</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Exception</li><li>Exception handling</li><li>Exception chaining</li><li>Exception group</li><li>Cleanup</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>try</code></li><li><code>except</code></li><li><code>else</code></li><li><code>finally</code></li><li><code>raise</code></li><li><code>raise from</code></li><li><code>except*</code></li><li><code>ExceptionGroup()</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/Functions.html">Python 3 Function-to-Function Passing Variations</a>
+    <ul>
+      <li><a href="MyRef/Functions.html#1-direct-return-to-argument-passing-chaining-composition">1. Direct Return-to-Argument Passing (Chaining / Composition)</a>
+      </li>
+      <li><a href="MyRef/Functions.html#2-passing-functions-as-arguments-higher-order-functions-callbacks">2. Passing Functions as Arguments (Higher-Order Functions &amp; Callbacks)</a>
+      </li>
+      <li><a href="MyRef/Functions.html#3-passing-anonymous-functions-lambda">3. Passing Anonymous Functions (lambda)</a>
+      </li>
+      <li><a href="MyRef/Functions.html#4-passing-args-and-kwargs-argument-forwarding-wrapper-functions">4. Passing *args and **kwargs (Argument Forwarding / Wrapper Functions)</a>
+      </li>
+      <li><a href="MyRef/Functions.html#5-partial-application-functools-partial">5. Partial Application (functools.partial)</a>
+      </li>
+      <li><a href="MyRef/Functions.html#6-passing-mutable-objects-shared-in-place-mutation">6. Passing Mutable Objects (Shared In-Place Mutation)</a>
+      </li>
+      <li><a href="MyRef/Functions.html#7-returning-a-function-from-a-function-closures-factory-functions">7. Returning a Function from a Function (Closures &amp; Factory Functions)</a>
+      </li>
+      <li><a href="MyRef/Functions.html#8-generator-iterator-handoff-yield-and-yield-from">8. Generator / Iterator Handoff (yield and yield from)</a>
+      </li>
+      <li><a href="MyRef/Functions.html#next-steps">Next Steps</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Function composition</li><li>Callback</li><li>Higher-order function</li><li>Closure</li><li>Partial application</li><li>Mutable state</li><li>Generator</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>def</code></li><li><code>return</code></li><li><code>lambda</code></li><li><code>*args</code></li><li><code>**kwargs</code></li><li><code>functools.partial()</code></li><li><code>yield</code></li><li><code>yield from</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/inex.html">Python 3 I/O Commands and io Module Reference</a>
+    <ul>
+      <li><a href="MyRef/inex.html#built-in-file-console-i-o">Built-In File &amp; Console I/O</a>
+      </li>
+      <li><a href="MyRef/inex.html#common-file-object-methods">Common File Object Methods</a>
+      </li>
+      <li><a href="MyRef/inex.html#io-module-classes-buffers">io Module Classes &amp; Buffers</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Input/output</li><li>File object</li><li>Text stream</li><li>Binary stream</li><li>Buffer</li><li>File position</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>open()</code></li><li><code>input()</code></li><li><code>print()</code></li><li><code>read()</code></li><li><code>readline()</code></li><li><code>readlines()</code></li><li><code>write()</code></li><li><code>writelines()</code></li><li><code>seek()</code></li><li><code>tell()</code></li><li><code>flush()</code></li><li><code>close()</code></li><li><code>io.StringIO()</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/objectOri.html">Python 3 OOP: Object Manipulation, Encapsulation, Inheritance, Polymorphism &amp; Abstraction</a>
+    <ul>
+      <li><a href="MyRef/objectOri.html#1-object-use-and-manipulation">1. Object Use and Manipulation</a>
+      </li>
+      <li><a href="MyRef/objectOri.html#2-encapsulation">2. Encapsulation</a>
+      </li>
+      <li><a href="MyRef/objectOri.html#3-inheritance">3. Inheritance</a>
+      </li>
+      <li><a href="MyRef/objectOri.html#4-polymorphism">4. Polymorphism</a>
+      </li>
+      <li><a href="MyRef/objectOri.html#5-abstraction">5. Abstraction</a>
+      </li>
+      <li><a href="MyRef/objectOri.html#6-terms-and-commands">6. Terms and Commands Used</a>
         <ul>
-          <li><a href="SqlConn/sqlite3Cursor.html#executing-sql-statements">Executing SQL Statements</a>
+          <li><a href="MyRef/objectOri.html#core-oop-python-concepts">Core OOP &amp; Python Concepts</a>
           </li>
-          <li><a href="SqlConn/sqlite3Cursor.html#fetching-results">Fetching Results</a>
+          <li><a href="MyRef/objectOri.html#decorators-standard-library-tools">Decorators &amp; Standard Library Tools</a>
           </li>
-          <li><a href="SqlConn/sqlite3Cursor.html#iteration-cleanup">Iteration &amp; Cleanup</a>
+          <li><a href="MyRef/objectOri.html#built-in-commands-functions">Built-in Commands &amp; Functions</a>
           </li>
-          <li><a href="SqlConn/sqlite3Cursor.html#useful-attributes-after-execution">Useful Attributes After Execution</a>
-          </li>
-          <li><a href="SqlConn/sqlite3Cursor.html#next-steps">Next Steps</a>
+          <li><a href="MyRef/objectOri.html#special-dunder-methods">Special (&quot;Dunder&quot;) Methods</a>
           </li>
         </ul>
       </li>
     </ul>
-  </nav>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Class</li><li>Object</li><li>Instance</li><li>Encapsulation</li><li>Inheritance</li><li>Polymorphism</li><li>Abstraction</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>class</code></li><li><code>__init__()</code></li><li><code>@property</code></li><li><code>@classmethod</code></li><li><code>@staticmethod</code></li><li><code>super()</code></li><li><code>isinstance()</code></li><li><code>issubclass()</code></li><li><code>getattr()</code></li><li><code>setattr()</code></li><li><code>hasattr()</code></li><li><code>@abstractmethod</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/Generators.html">Python 3: Generator vs. Regular Function</a>
+    <ul>
+      <li><a href="MyRef/Generators.html#core-differences-at-a-glance">Core Differences at a Glance</a>
+      </li>
+      <li><a href="MyRef/Generators.html#how-execution-works-under-the-hood">How Execution Works Under the Hood</a>
+      </li>
+      <li><a href="MyRef/Generators.html#code-comparison">Code Comparison</a>
+      </li>
+      <li><a href="MyRef/Generators.html#generator-protocol-methods-send-throw-close">Generator Protocol Methods (send, throw, close)</a>
+      </li>
+      <li><a href="MyRef/Generators.html#when-to-choose-which">When to Choose Which</a>
+      </li>
+      <li><a href="MyRef/Generators.html#next-steps">Next Steps</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Generator</li><li>Iterator</li><li>Lazy evaluation</li><li>Suspension</li><li>Streaming</li><li>StopIteration</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>def</code></li><li><code>return</code></li><li><code>yield</code></li><li><code>yield from</code></li><li><code>next()</code></li><li><code>send()</code></li><li><code>throw()</code></li><li><code>close()</code></li><li><code>list()</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/Decorators.html">Python Decorators — Complete Guide &amp; Standard Library Reference</a>
+    <ul>
+      <li><a href="MyRef/Decorators.html#what-is-a-python-decorator">What Is a Python Decorator?</a>
+      </li>
+      <li><a href="MyRef/Decorators.html#custom-decorator-patterns">Custom Decorator Patterns</a>
+        <ul>
+          <li><a href="MyRef/Decorators.html#1-basic-decorator-with-functools-wraps-timing-logging">1. Basic Decorator with functools.wraps (Timing / Logging)</a>
+          </li>
+          <li><a href="MyRef/Decorators.html#2-decorator-that-accepts-arguments-decorator-factory">2. Decorator That Accepts Arguments (Decorator Factory)</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="MyRef/Decorators.html#when-to-use-decorators">When to Use Decorators</a>
+      </li>
+      <li><a href="MyRef/Decorators.html#when-not-to-use-decorators">When NOT to Use Decorators</a>
+      </li>
+      <li><a href="MyRef/Decorators.html#all-standard-library-decorators-usage-examples">All Standard Library Decorators &amp; Usage Examples</a>
+        <ul>
+          <li><a href="MyRef/Decorators.html#1-core-built-in-class-descriptor-decorators">1. Core Built-in Class &amp; Descriptor Decorators</a>
+          </li>
+          <li><a href="MyRef/Decorators.html#2-higher-order-function-caching-dispatch-decorators">2. Higher-Order Function, Caching &amp; Dispatch Decorators</a>
+          </li>
+          <li><a href="MyRef/Decorators.html#3-data-container-enumeration-decorators">3. Data Container &amp; Enumeration Decorators</a>
+          </li>
+          <li><a href="MyRef/Decorators.html#4-abstract-base-class-decorators">4. Abstract Base Class Decorators</a>
+          </li>
+          <li><a href="MyRef/Decorators.html#5-context-manager-decorators">5. Context Manager Decorators</a>
+          </li>
+          <li><a href="MyRef/Decorators.html#6-static-type-checking-deprecation-decorators">6. Static Type-Checking &amp; Deprecation Decorators</a>
+          </li>
+          <li><a href="MyRef/Decorators.html#7-testing-lifecycle-runtime-utility-decorators">7. Testing, Lifecycle &amp; Runtime Utility Decorators</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Decorator</li><li>Wrapper</li><li>Decorator factory</li><li>Metadata</li><li>Caching</li><li>Descriptor</li><li>Dispatch</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>@property</code></li><li><code>@classmethod</code></li><li><code>@staticmethod</code></li><li><code>@functools.wraps</code></li><li><code>@cache</code></li><li><code>@lru_cache</code></li><li><code>@cached_property</code></li><li><code>@dataclass</code></li><li><code>@abstractmethod</code></li><li><code>@contextmanager</code></li><li><code>@overload</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/Format.htm">Python format() Function &amp; Mini-Language Manual</a>
+    <ul>
+      <li><a href="MyRef/Format.htm#1-single-argument-usage-format-value">1. Single-Argument Usage: format(value)</a>
+      </li>
+      <li><a href="MyRef/Format.htm#2-two-argument-usage-format-value-format-spec">2. Two-Argument Usage: format(value, format_spec)</a>
+      </li>
+      <li><a href="MyRef/Format.htm#3-format-specification-reference-mini-language">3. Format Specification Reference Mini-Language</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>String formatting</li><li>Format specification</li><li>Binary</li><li>Octal</li><li>Hexadecimal</li><li>Precision</li><li>Alignment</li><li>Zero padding</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>format()</code></li><li><code>str()</code></li><li><code>__format__()</code></li><li><code>f-string</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/Operators.htm">Python Operators Reference</a>
+    <ul>
+      <li><a href="MyRef/Operators.htm#1-arithmetic-operators">1. Arithmetic Operators</a>
+      </li>
+      <li><a href="MyRef/Operators.htm#2-comparison-relational-operators">2. Comparison (Relational) Operators</a>
+      </li>
+      <li><a href="MyRef/Operators.htm#3-logical-operators">3. Logical Operators</a>
+      </li>
+      <li><a href="MyRef/Operators.htm#4-assignment-operators">4. Assignment Operators</a>
+      </li>
+      <li><a href="MyRef/Operators.htm#5-identity-operators">5. Identity Operators</a>
+      </li>
+      <li><a href="MyRef/Operators.htm#6-membership-operators">6. Membership Operators</a>
+      </li>
+      <li><a href="MyRef/Operators.htm#7-bitwise-operators">7. Bitwise Operators</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Arithmetic operator</li><li>Comparison operator</li><li>Logical operator</li><li>Assignment operator</li><li>Identity operator</li><li>Membership operator</li><li>Bitwise operator</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>+</code></li><li><code>-</code></li><li><code>*</code></li><li><code>/</code></li><li><code>//</code></li><li><code>%</code></li><li><code>**</code></li><li><code>==</code></li><li><code>!=</code></li><li><code>and</code></li><li><code>or</code></li><li><code>not</code></li><li><code>is</code></li><li><code>in</code></li><li><code>&amp;</code></li><li><code>|</code></li><li><code>^</code></li><li><code>~</code></li><li><code>&lt;&lt;</code></li><li><code>&gt;&gt;</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/sqlite3Cursor.html">Python sqlite3.Cursor Methods and Attributes</a>
+    <ul>
+      <li><a href="MyRef/sqlite3Cursor.html#executing-sql-statements">Executing SQL Statements</a>
+      </li>
+      <li><a href="MyRef/sqlite3Cursor.html#fetching-results">Fetching Results</a>
+      </li>
+      <li><a href="MyRef/sqlite3Cursor.html#iteration-cleanup">Iteration &amp; Cleanup</a>
+      </li>
+      <li><a href="MyRef/sqlite3Cursor.html#useful-attributes-after-execution">Useful Attributes After Execution</a>
+      </li>
+      <li><a href="MyRef/sqlite3Cursor.html#next-steps">Next Steps</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Cursor</li><li>SQL statement</li><li>Parameter binding</li><li>Query result</li><li>Row</li><li>Transaction</li><li>Row factory</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>execute()</code></li><li><code>executemany()</code></li><li><code>executescript()</code></li><li><code>fetchone()</code></li><li><code>fetchmany()</code></li><li><code>fetchall()</code></li><li><code>close()</code></li><li><code>__iter__()</code></li><li><code>__next__()</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/TkinterGuide.html">Python Tkinter Guide — Widgets &amp; Layout Management</a>
+    <ul>
+      <li><a href="MyRef/TkinterGuide.html#python-tkinter-widgets-definitions">Python Tkinter Widgets &amp; Definitions</a>
+        <ul>
+          <li><a href="MyRef/TkinterGuide.html#how-widgets-work-in-tkinter">How Widgets Work in tkinter</a>
+          </li>
+          <li><a href="MyRef/TkinterGuide.html#core-tkinter-widget-definitions">Core tkinter Widget Definitions</a>
+          </li>
+          <li><a href="MyRef/TkinterGuide.html#runnable-example-script">Runnable Example Script</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="MyRef/TkinterGuide.html#pack-vs-grid-layout-management">.pack() vs. .grid() Layout Management</a>
+        <ul>
+          <li><a href="MyRef/TkinterGuide.html#quick-comparison-pack-vs-grid">Quick Comparison: .pack() vs. .grid()</a>
+          </li>
+          <li><a href="MyRef/TkinterGuide.html#example-1-pack-stacked-edge-based-layout">Example 1: .pack() (Stacked / Edge-Based Layout)</a>
+          </li>
+          <li><a href="MyRef/TkinterGuide.html#example-2-grid-row-and-column-form-layout">Example 2: .grid() (Row-and-Column Form Layout)</a>
+          </li>
+          <li><a href="MyRef/TkinterGuide.html#practical-rule-of-thumb">Practical Rule of Thumb</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="MyRef/TkinterGuide.html#combining-pack-and-grid-cleanly-inside-frames">Combining .pack() and .grid() Cleanly Inside Frames</a>
+        <ul>
+          <li><a href="MyRef/TkinterGuide.html#architectural-pattern-for-multi-section-windows">Architectural Pattern for Multi-Section Windows</a>
+          </li>
+          <li><a href="MyRef/TkinterGuide.html#complete-multi-section-example">Complete Multi-Section Example</a>
+          </li>
+          <li><a href="MyRef/TkinterGuide.html#why-this-structure-scales-well">Why This Structure Scales Well</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Widget</li><li>Window</li><li>Frame</li><li>Event loop</li><li>Callback</li><li>Geometry manager</li><li>Row</li><li>Column</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>Tk()</code></li><li><code>Label()</code></li><li><code>Entry()</code></li><li><code>Button()</code></li><li><code>Frame()</code></li><li><code>StringVar()</code></li><li><code>pack()</code></li><li><code>grid()</code></li><li><code>mainloop()</code></li><li><code>get()</code></li><li><code>set()</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/ForUnderscore.html">Python Tuple Unpacking: for _, variable</a>
+    <ul>
+      <li><a href="MyRef/ForUnderscore.html#overview">Overview</a>
+      </li>
+      <li><a href="MyRef/ForUnderscore.html#common-examples">Common Examples</a>
+        <ul>
+          <li><a href="MyRef/ForUnderscore.html#1-with-enumerate-ignoring-the-index">1. With enumerate() (ignoring the index)</a>
+          </li>
+          <li><a href="MyRef/ForUnderscore.html#2-with-dict-items-ignoring-the-key">2. With dict.items() (ignoring the key)</a>
+          </li>
+          <li><a href="MyRef/ForUnderscore.html#3-with-a-list-of-tuples">3. With a list of tuples</a>
+          </li>
+        </ul>
+      </li>
+      <li><a href="MyRef/ForUnderscore.html#important-notes">Important Notes</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Tuple unpacking</li><li>Throwaway variable</li><li>Loop variable</li><li>Index</li><li>Key-value pair</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>for</code></li><li><code>in</code></li><li><code>enumerate()</code></li><li><code>dict.items()</code></li><li><code>print()</code></li></ul></div></div>
+  </li>
+  <li><a href="MyRef/selfthis.html">Using self vs. Not Using self in Python (Game Theory)</a>
+    <ul>
+      <li><a href="MyRef/selfthis.html#key-differences">Key Differences</a>
+      </li>
+      <li><a href="MyRef/selfthis.html#example-what-happens-when-you-omit-self">Example: What Happens When You Omit self.</a>
+      </li>
+    </ul>
+  <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Instance</li><li>Instance attribute</li><li>Local variable</li><li>Parameter</li><li>Instance state</li><li>Scope</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>__init__()</code></li><li><code>report_trust()</code></li></ul></div></div>
+  </li>
+</ul>
+</nav></main>
 </body>
 </html>
-
