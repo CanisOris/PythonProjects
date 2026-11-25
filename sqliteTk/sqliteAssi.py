@@ -25,13 +25,25 @@ def create_connection(db_file):
         conn.close()  
 
 
-
+insert_row = ("John", "Doe", 30)
 try:
     with create_connection(database) as conn:
         cur = conn.cursor()
 
         cur.execute(f"DROP TABLE IF EXISTS {tbl1}")
+        cur.execute(f"CREATE TABLE IF NOT EXISTS {tbl1} (FirstName TEXT, LastName TEXT, Age INT)")
+        cur.execute(f"INSERT INTO {tbl1} (FirstName, LastName, Age) VALUES (?, ?, ?)", insert_row)
+        conn.commit()
 
+        insert_row = (insert_row, ("Jane", "Doe", 25))
+        cur.executemany(f"INSERT INTO {tbl1} (FirstName, LastName, Age) VALUES (?, ?, ?)", insert_row)
+        conn.commit()
+
+        print("Records inserted successfully.")
+        cur.execute(f"SELECT FirstName, LastName, Age FROM {tbl1}")
+        records = cur.fetchall()
+        for first_name, last_name, age in records:
+            print(f"{first_name} {last_name}, Age: {age}")  
 
         # 
         # cursor.execute("""
