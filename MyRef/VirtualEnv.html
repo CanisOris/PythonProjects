@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Virtual Environment Commands</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      line-height: 1.5;
+      max-width: 820px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      color: #1f2937;
+    }
+    h1, h2 {
+      color: #111827;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.35rem;
+    }
+    pre {
+      background: #111827;
+      color: #f9fafb;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.92em;
+    }
+    p code, li code {
+      background: #f3f4f6;
+      padding: 0.15rem 0.35rem;
+      border-radius: 4px;
+    }
+    ul {
+      padding-left: 1.25rem;
+    }
+    li {
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Python Virtual Environment Commands</h1>
+  <p>Here are the standard commands for creating, starting up (activating), shutting down (deactivating), and managing a Python <code>virtualenv</code> (or <code>venv</code>) environment. Commands vary slightly between Linux/macOS and Windows.</p>
+
+  <h2>Setup and Start Up (Activation)</h2>
+  <ul>
+    <li>
+      <strong>Create an environment:</strong>
+      <pre><code>python -m venv venv</code></pre>
+      <p>Or use <code>virtualenv venv</code> if using the standalone <code>virtualenv</code> package.</p>
+    </li>
+    <li>
+      <strong>Activate on Linux / macOS (bash / zsh):</strong>
+      <pre><code>source venv/bin/activate</code></pre>
+    </li>
+    <li>
+      <strong>Activate on Linux / macOS (fish shell):</strong>
+      <pre><code>source venv/bin/activate.fish</code></pre>
+    </li>
+    <li>
+      <strong>Activate on Windows (Command Prompt):</strong>
+      <pre><code>venv\Scripts\activate.bat</code></pre>
+    </li>
+    <li>
+      <strong>Activate on Windows (PowerShell):</strong>
+      <pre><code>venv\Scripts\Activate.ps1</code></pre>
+    </li>
+  </ul>
+
+  <h2>Shut Down (Deactivation) and Removal</h2>
+  <ul>
+    <li>
+      <strong>Deactivate (exit the environment) on any OS or shell:</strong>
+      <pre><code>deactivate</code></pre>
+    </li>
+    <li>
+      <strong>Delete an environment completely:</strong> Deactivate first, then remove the environment directory:
+      <pre><code>rm -rf venv          # Linux / macOS
+rmdir /s /q venv    # Windows CMD</code></pre>
+    </li>
+  </ul>
+
+  <h2>Package and Environment Management</h2>
+  <ul>
+    <li>
+      <strong>Check which Python executable is active:</strong>
+      <pre><code>which python    # Linux / macOS
+where python    # Windows</code></pre>
+    </li>
+    <li>
+      <strong>List installed packages:</strong>
+      <pre><code>pip list</code></pre>
+    </li>
+    <li>
+      <strong>Install a package:</strong>
+      <pre><code>pip install requests</code></pre>
+    </li>
+    <li>
+      <strong>Export exact dependencies to a file:</strong>
+      <pre><code>pip freeze &gt; requirements.txt</code></pre>
+    </li>
+    <li>
+      <strong>Install dependencies from a requirements file:</strong>
+      <pre><code>pip install -r requirements.txt</code></pre>
+    </li>
+    <li>
+      <strong>Upgrade <code>pip</code> inside the environment:</strong>
+      <pre><code>python -m pip install --upgrade pip</code></pre>
+    </li>
+  </ul>
+
+  <h2>Troubleshooting Quick Check</h2>
+  <ul>
+    <li>
+      <strong>PowerShell script execution blocked on Windows:</strong> If <code>Activate.ps1</code> throws an execution policy error, run:
+      <pre><code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code></pre>
+    </li>
+    <li>
+      <strong>Wrong Python version used:</strong> Specify the interpreter explicitly when creating the environment:
+      <pre><code>python3.12 -m venv venv    # Linux / macOS
+py -3.12 -m venv venv      # Windows</code></pre>
+    </li>
+  </ul>
+</body>
+</html>
