@@ -276,3 +276,6 @@ table { display: block; max-width: 100%; overflow-x: auto; }
 .terms-and-commands { margin-top: 2rem; }
 .reference-content dt { margin-top: 1rem; font-weight: 600; }
 .reference-content dd { margin: .3rem 0 1rem 1rem; color: var(--text-secondary); }
+
+.table-wrapper { max-width: 100%; overflow-x: auto; }
+.pipeline-banner { padding: 1rem; margin: 1rem 0; background: var(--bg-primary); border: 1px solid var(--border-color); border-left: 4px solid var(--accent); border-radius: 6px; }

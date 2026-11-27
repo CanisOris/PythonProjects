@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Django Stack &amp; HTTP Request Lifecycle</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
+</head>
+<body>
+ <header class="site-header"><h1>Django Architecture Reference</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content">
+
+    <div class="container">
+        
+            
+            <p>Overview of the Django technology stack and the HTTP request-response lifecycle.</p>
+        
+
+        <section class="card">
+            <h2 id="1-the-django-stack">1. The Django Stack</h2>
+            <p>
+                The <strong>Django stack</strong> centers on <strong>Django</strong>, a high-level Python web framework designed for rapid development, clean structure, and built-in security. Rather than forcing you to assemble third-party libraries for routine web tasks, Django follows a <strong>&ldquo;batteries-included&rdquo;</strong> philosophy while keeping components loosely coupled enough to swap or extend.
+            </p>
+
+            <h3 id="core-django-framework-mvt-architecture">Core Django Framework (MVT Architecture)</h3>
+            <p>
+                Django organizes applications around <strong>Model-View-Template (MVT)</strong>&mdash;a variation of MVC&mdash;supported by routing, middleware, and administrative tools:
+            </p>
+            <ul>
+                <li><strong>Models &amp; ORM:</strong> Python classes (<code>models.Model</code>) define your data schema and relationships, while Django's ORM handles database queries and migrations across SQL engines.</li>
+                <li><strong>URLs (<code>urls.py</code>):</strong> Maps incoming request paths and parameters to view functions or classes.</li>
+                <li><strong>Views (<code>views.py</code>):</strong> Receives HTTP requests, coordinates data via models or services, applies business/access logic, and returns HTTP responses (HTML pages, redirects, or JSON/API payloads).</li>
+                <li><strong>Templates:</strong> Server-side rendering engine (Django Template Language, or Jinja2) that injects context data into HTML or other text formats using template inheritance and tags.</li>
+                <li><strong>Middleware &amp; Built-in Utilities:</strong> Request/response hooks for sessions, CSRF protection, authentication/permissions, form validation, and an auto-generated <strong>Admin</strong> interface for managing models.</li>
+            </ul>
+
+            <h3 id="typical-production-tech-stack">Typical Production Tech Stack</h3>
+            <p>In real-world deployments, Django pairs with external services for persistence, async work, caching, and web serving:</p>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Layer</th>
+                            <th>Common Choices</th>
+                            <th>Role in the Stack</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Language &amp; Framework</strong></td>
+                            <td>Python + Django (+ <strong>Django REST Framework</strong> or <strong>Django Ninja</strong>)</td>
+                            <td>Core application logic, ORM, admin, and optional REST/JSON APIs.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Database</strong></td>
+                            <td><strong>PostgreSQL</strong> (also SQLite in dev/small apps, MySQL)</td>
+                            <td>Primary relational data store with strong indexing, JSONB, and migration support.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Cache &amp; Broker</strong></td>
+                            <td><strong>Redis</strong></td>
+                            <td>Fast caching layer, session/rate-limit storage, and message broker for background workers.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Background Tasks</strong></td>
+                            <td><strong>Celery</strong> (or Django Q / Huey)</td>
+                            <td>Runs slow or scheduled jobs (emails, reports, webhooks, data syncs) outside the request cycle.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>App &amp; Web Server</strong></td>
+                            <td><strong>Gunicorn</strong> or <strong>Uvicorn</strong> + <strong>Nginx</strong> (or <strong>WhiteNoise</strong> for static assets)</td>
+                            <td>Runs Python WSGI/ASGI processes, terminates TLS, buffers traffic, and serves static/media files.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Frontend</strong></td>
+                            <td>Django Templates + <strong>HTMX</strong> / Alpine.js, or <strong>React</strong> / <strong>Vue</strong> / <strong>Next.js</strong></td>
+                            <td>Renders UI via server-driven HTML fragments or a decoupled SPA consuming a Django API.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3 id="common-architectural-patterns">Common Architectural Patterns</h3>
+            <ul>
+                <li><strong>Classic Full-Stack (Monolith):</strong> Django renders HTML templates on the server, often enhanced with <strong>HTMX</strong> for dynamic partial updates without building a separate frontend codebase.</li>
+                <li><strong>API Backend + Separate Frontend:</strong> Django (commonly with <strong>Django REST Framework</strong>) exposes JSON endpoints for a React, Vue, or mobile client.</li>
+                <li><strong>Async / Realtime Extensions:</strong> Uses <strong>ASGI</strong> (with Uvicorn/Daphne and Django Channels) when handling WebSockets, long-lived connections, or native async views.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2 id="2-how-an-http-request-flows-through-django">2. How an HTTP Request Flows Through Django</h2>
+            <div class="pipeline-banner">
+                <strong>Pipeline:</strong> Web/App Server &rarr; Middleware (Request Phase) &rarr; URL Resolver &rarr; View (with ORM/Models) &rarr; Template Rendering (if HTML) &rarr; Middleware (Response Phase) &rarr; HTTP Response
+            </div>
+
+            <h3 id="request-pipeline-stages">Request Pipeline Stages</h3>
+            <ol>
+                <li><strong>Web &amp; Application Server Entry:</strong> <strong>Nginx</strong> (or a reverse proxy) forwards the incoming HTTP request to a Python application server (<strong>Gunicorn</strong> via <strong>WSGI</strong> for standard synchronous requests, or <strong>Uvicorn</strong> via <strong>ASGI</strong> for async/WebSocket traffic), which builds a Django <code>HttpRequest</code> object.</li>
+                <li><strong>Request Middleware (<code>process_request</code> / <code>__call__</code> before view):</strong> Registered middleware classes in <code>settings.MIDDLEWARE</code> run in top-to-bottom order. Each can inspect or mutate <code>request</code> (such as attaching <code>request.user</code> via authentication middleware, managing sessions, or enforcing CSRF checks) or short-circuit early by returning an <code>HttpResponse</code> directly.</li>
+                <li><strong>URL Routing (<code>urls.py</code>):</strong> Django's URL resolver matches <code>request.path</code> (and HTTP method in class-based views) against patterns in <code>ROOT_URLCONF</code> (<code>urlpatterns</code>), capturing path/query parameters and locating the target view callable.</li>
+                <li><strong>View Execution &amp; Models/ORM:</strong> The matched view function or class-based view runs with <code>request</code> and any captured arguments. Views often query or update data through Django <strong>models</strong> and the <strong>ORM</strong>, which translates Python querysets into parameterized SQL sent to the database (such as PostgreSQL) and returns model instances.</li>
+                <li><strong>Template Rendering (HTML Views):</strong> For server-rendered pages, the view passes a context dictionary into <code>render(request, "app/page.html", context)</code>. Django's template engine loads the template, evaluates tags, filters, and template inheritance (<code>{% extends %}</code> / <code>{% block %}</code>), and produces rendered HTML inside an <code>HttpResponse</code> (API views instead return JSON or serialized payloads).</li>
+                <li><strong>Response Middleware &amp; Return:</strong> The <code>HttpResponse</code> travels back up <code>settings.MIDDLEWARE</code> in reverse (bottom-to-top) order so response hooks can set headers, cookies, or compression before the server sends the response back to the client.</li>
+            </ol>
+
+            <h3 id="quick-stage-reference">Quick Stage Reference</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Stage</th>
+                            <th>Primary Files / Components</th>
+                            <th>Main Responsibility</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ingress</strong></td>
+                            <td>Nginx + Gunicorn / Uvicorn</td>
+                            <td>Accepts network traffic and creates the <code>HttpRequest</code> object.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Middleware (In)</strong></td>
+                            <td><code>settings.MIDDLEWARE</code></td>
+                            <td>Runs cross-cutting request checks (auth, sessions, security).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Routing</strong></td>
+                            <td><code>urls.py</code> (<code>path</code> / <code>re_path</code> / <code>include</code>)</td>
+                            <td>Matches URL paths to a view and extracts route parameters.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>View &amp; Data</strong></td>
+                            <td><code>views.py</code>, <code>models.py</code> (ORM)</td>
+                            <td>Executes business logic and reads/writes database records.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Presentation</strong></td>
+                            <td><code>templates/*.html</code> (or DRF/Ninja)</td>
+                            <td>Renders HTML responses or returns structured API data.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Middleware (Out)</strong></td>
+                            <td><code>settings.MIDDLEWARE</code> (reverse order)</td>
+                            <td>Finalizes response headers, cookies, or error handling.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+<section class="terms-and-commands"><h2 id="terms-and-commands-used">Terms and Commands Used</h2><p>A quick reference to the concepts and commands covered on this page.</p><h3 id="reference-key-terms">Key terms</h3><dl>
+<dt><strong>Django</strong></dt><dd>A Python framework providing tools for web applications.</dd>
+<dt><strong>MVT</strong></dt><dd>Model-View-Template, Django&#x27;s organization of data, request handling, and presentation.</dd>
+<dt><strong>Model</strong></dt><dd>A Python class describing stored data and its database behavior.</dd>
+<dt><strong>ORM</strong></dt><dd>Object-relational mapper, which connects Python model operations to database queries.</dd>
+<dt><strong>URLconf</strong></dt><dd>A Python module defining URL patterns that route requests to views.</dd>
+<dt><strong>View</strong></dt><dd>A callable that receives a request and returns a response.</dd>
+<dt><strong>Template</strong></dt><dd>A text document rendered with context data, tags, and filters.</dd>
+<dt><strong>Middleware</strong></dt><dd>Layers surrounding view execution that can inspect or alter requests and responses.</dd>
+<dt><strong>HTTP request-response lifecycle</strong></dt><dd>The processing path from an incoming request to the outgoing response.</dd>
+<dt><strong>WSGI / ASGI</strong></dt><dd>Interfaces connecting Python applications to servers for synchronous or asynchronous processing.</dd>
+<dt><strong>Cache / Message broker</strong></dt><dd>Storage for reusable results and infrastructure for passing work to background processes.</dd>
+<dt><strong>Migration</strong></dt><dd>A versioned description of changes to the database schema.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3><dl>
+<dt><code>models.Model</code></dt><dd>The base class used to define Django database models.</dd>
+<dt><code>path()</code></dt><dd>Defines a URL pattern using route syntax and optional converters.</dd>
+<dt><code>re_path()</code></dt><dd>Defines a URL pattern using a regular expression.</dd>
+<dt><code>include()</code></dt><dd>Delegates a URL prefix to another URLconf.</dd>
+<dt><code>render()</code></dt><dd>Combines a template and context into a rendered HttpResponse.</dd>
+<dt><code>HttpRequest</code></dt><dd>The object containing information about an incoming request.</dd>
+<dt><code>HttpResponse</code></dt><dd>The object used to return response content, headers, and status.</dd>
+<dt><code>settings.MIDDLEWARE</code></dt><dd>The ordered configuration of middleware layers.</dd>
+<dt><code>ROOT_URLCONF / urlpatterns</code></dt><dd>The root routing module and its sequence of URL patterns.</dd>
+<dt><code>{% extends %} / {% block %}</code></dt><dd>Template tags for inheriting a template and defining overridable content.</dd>
+</dl>
+</section>
+ </article></main>
+</body>
+</html>

@@ -1,52 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Python Virtual Environment Commands</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      line-height: 1.5;
-      max-width: 820px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-      color: #1f2937;
-    }
-    h1, h2 {
-      color: #111827;
-      border-bottom: 1px solid #e5e7eb;
-      padding-bottom: 0.35rem;
-    }
-    pre {
-      background: #111827;
-      color: #f9fafb;
-      padding: 0.75rem 1rem;
-      border-radius: 6px;
-      overflow-x: auto;
-    }
-    code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      font-size: 0.92em;
-    }
-    p code, li code {
-      background: #f3f4f6;
-      padding: 0.15rem 0.35rem;
-      border-radius: 4px;
-    }
-    ul {
-      padding-left: 1.25rem;
-    }
-    li {
-      margin-bottom: 0.75rem;
-    }
-  </style>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="color-scheme" content="light">
+ <title>Python Virtual Environment Commands</title>
+ <link rel="stylesheet" href="../styles.css">
+ <script src="../help.js" defer></script>
 </head>
 <body>
-  <h1>Python Virtual Environment Commands</h1>
+ <header class="site-header"><h1>Python Virtual Environment Commands</h1><nav class="back-to-index" aria-label="Main navigation"><a href="../index.html">&larr; Back to index</a></nav></header>
+ <main class="page-content"><article class="reference-content">
+
+  
   <p>Here are the standard commands for creating, starting up (activating), shutting down (deactivating), and managing a Python <code>virtualenv</code> (or <code>venv</code>) environment. Commands vary slightly between Linux/macOS and Windows.</p>
 
-  <h2>Setup and Start Up (Activation)</h2>
+  <h2 id="setup-and-start-up-activation">Setup and Start Up (Activation)</h2>
   <ul>
     <li>
       <strong>Create an environment:</strong>
@@ -71,7 +40,7 @@
     </li>
   </ul>
 
-  <h2>Shut Down (Deactivation) and Removal</h2>
+  <h2 id="shut-down-deactivation-and-removal">Shut Down (Deactivation) and Removal</h2>
   <ul>
     <li>
       <strong>Deactivate (exit the environment) on any OS or shell:</strong>
@@ -84,7 +53,7 @@ rmdir /s /q venv    # Windows CMD</code></pre>
     </li>
   </ul>
 
-  <h2>Package and Environment Management</h2>
+  <h2 id="package-and-environment-management">Package and Environment Management</h2>
   <ul>
     <li>
       <strong>Check which Python executable is active:</strong>
@@ -113,7 +82,7 @@ where python    # Windows</code></pre>
     </li>
   </ul>
 
-  <h2>Troubleshooting Quick Check</h2>
+  <h2 id="troubleshooting-quick-check">Troubleshooting Quick Check</h2>
   <ul>
     <li>
       <strong>PowerShell script execution blocked on Windows:</strong> If <code>Activate.ps1</code> throws an execution policy error, run:
@@ -125,5 +94,37 @@ where python    # Windows</code></pre>
 py -3.12 -m venv venv      # Windows</code></pre>
     </li>
   </ul>
+
+<section class="terms-and-commands"><h2 id="terms-and-commands-used">Terms and Commands Used</h2><p>A quick reference to the concepts and commands covered on this page.</p><h3 id="reference-key-terms">Key terms</h3><dl>
+<dt><strong>Virtual environment</strong></dt><dd>An isolated Python environment with its own installed packages.</dd>
+<dt><strong>venv</strong></dt><dd>Python&#x27;s standard-library module for creating virtual environments.</dd>
+<dt><strong>virtualenv</strong></dt><dd>A separately installed tool for creating virtual environments.</dd>
+<dt><strong>Activation</strong></dt><dd>Updating the current shell&#x27;s environment so the virtual environment&#x27;s commands take precedence.</dd>
+<dt><strong>Deactivation</strong></dt><dd>Restoring the shell environment that was active before activation.</dd>
+<dt><strong>Package / Dependency</strong></dt><dd>Installable Python software, or software required by a project.</dd>
+<dt><strong>requirements.txt</strong></dt><dd>A file listing package requirements that pip can install.</dd>
+<dt><strong>Interpreter</strong></dt><dd>The Python executable that runs code.</dd>
+<dt><strong>PATH</strong></dt><dd>The environment variable listing directories searched for commands.</dd>
+</dl>
+<h3 id="reference-key-commands">Key commands</h3><dl>
+<dt><code>python -m venv venv</code></dt><dd>Creates a virtual environment in the directory named venv.</dd>
+<dt><code>virtualenv venv</code></dt><dd>Creates an environment using the separately installed virtualenv tool.</dd>
+<dt><code>source venv/bin/activate</code></dt><dd>Activates the environment in bash or zsh.</dd>
+<dt><code>source venv/bin/activate.fish</code></dt><dd>Activates the environment in the fish shell.</dd>
+<dt><code>venv\Scripts\activate.bat</code></dt><dd>Activates the environment in Windows Command Prompt.</dd>
+<dt><code>.\venv\Scripts\Activate.ps1</code></dt><dd>Activates the environment in Windows PowerShell.</dd>
+<dt><code>deactivate</code></dt><dd>Restores the shell state from before activation without deleting the environment.</dd>
+<dt><code>which python / where python</code></dt><dd>Locate Python in Unix-like shells or Windows Command Prompt; in PowerShell use where.exe python or Get-Command python.</dd>
+<dt><code>pip list</code></dt><dd>Lists installed packages in the environment associated with pip.</dd>
+<dt><code>pip install requests</code></dt><dd>Installs the requests package.</dd>
+<dt><code>pip freeze &gt; requirements.txt</code></dt><dd>Writes installed package specifications to a requirements file.</dd>
+<dt><code>pip install -r requirements.txt</code></dt><dd>Installs packages specified by a requirements file.</dd>
+<dt><code>python -m pip install --upgrade pip</code></dt><dd>Upgrades pip for the selected Python interpreter.</dd>
+<dt><code>Set-ExecutionPolicy</code></dt><dd>Configures PowerShell script execution policy; the example on this page changes the current user&#x27;s policy.</dd>
+<dt><code>python3.12 -m venv venv / py -3.12 -m venv venv</code></dt><dd>Selects Python 3.12 when creating the environment.</dd>
+<dt><code>rm -rf venv / rmdir /s /q venv</code></dt><dd>Deletes the named environment directory in a Unix-like shell or Windows Command Prompt; this is separate from deactivation.</dd>
+</dl>
+</section>
+ </article></main>
 </body>
 </html>

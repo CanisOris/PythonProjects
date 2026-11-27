@@ -10,7 +10,7 @@
 </head>
 <body>
  <header class="site-header"><h1>Python Project Knowledge Base</h1></header>
- <main class="page-content"><form id="reference-search" class="reference-search" role="search">
+ <main class="page-content"><p><a href="MyRef/index.html">Help table of contents</a></p><form id="reference-search" class="reference-search" role="search">
   <label for="reference-query">Search key terms and commands</label>
   <div class="search-controls">
     <input id="reference-query" type="search" placeholder="e.g. dictionary, grid(), or yield" aria-describedby="search-status">
@@ -124,15 +124,15 @@
 <li><a href="https://github.com/CanisOris/PythonProjects/blob/main/Challenges/funcChal.py" target="_blank" rel="noopener noreferrer">Challenges/funcChal.py</a></li>
 <li><a href="https://github.com/CanisOris/PythonProjects/blob/main/Challenges/lambdaChal.py" target="_blank" rel="noopener noreferrer">Challenges/lambdaChal.py</a></li></ul></div>
   </li>
-  <li><a href="MyRef/inex.html">Python 3 I/O Commands and io Module Reference</a>
+  <li><a href="MyRef/ioCommands.html">Python 3 I/O Commands and io Module Reference</a>
     <ul>
-      <li><a href="MyRef/inex.html#built-in-file-console-i-o">Built-In File &amp; Console I/O</a>
+      <li><a href="MyRef/ioCommands.html#built-in-file-console-i-o">Built-In File &amp; Console I/O</a>
       </li>
-      <li><a href="MyRef/inex.html#common-file-object-methods">Common File Object Methods</a>
+      <li><a href="MyRef/ioCommands.html#common-file-object-methods">Common File Object Methods</a>
       </li>
-      <li><a href="MyRef/inex.html#io-module-classes-buffers">io Module Classes &amp; Buffers</a>
+      <li><a href="MyRef/ioCommands.html#io-module-classes-buffers">io Module Classes &amp; Buffers</a>
       </li>
-    <li><a href="MyRef/inex.html#terms-and-commands-used">Terms and Commands Used</a><ul><li><a href="MyRef/inex.html#reference-key-terms">Key terms</a></li><li><a href="MyRef/inex.html#reference-key-commands">Key commands</a></li></ul></li>
+    <li><a href="MyRef/ioCommands.html#terms-and-commands-used">Terms and Commands Used</a><ul><li><a href="MyRef/ioCommands.html#reference-key-terms">Key terms</a></li><li><a href="MyRef/ioCommands.html#reference-key-commands">Key commands</a></li></ul></li>
 </ul>
   <div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Input/output</li><li>File object</li><li>Text stream</li><li>Binary stream</li><li>Buffer</li><li>File position</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>open()</code></li><li><code>input()</code></li><li><code>print()</code></li><li><code>read()</code></li><li><code>readline()</code></li><li><code>readlines()</code></li><li><code>write()</code></li><li><code>writelines()</code></li><li><code>seek()</code></li><li><code>tell()</code></li><li><code>flush()</code></li><li><code>close()</code></li><li><code>io.StringIO()</code></li></ul></div></div>
   <div class="related-files"><strong>Related files (GitHub):</strong><ul aria-label="Related files on GitHub"><li><a href="https://github.com/CanisOris/PythonProjects/blob/main/FileIO/iop1.py" target="_blank" rel="noopener noreferrer">FileIO/iop1.py</a></li>
@@ -364,6 +364,37 @@
 <li><a href="https://github.com/CanisOris/PythonProjects/blob/main/ClassWork/createClass.py" target="_blank" rel="noopener noreferrer">ClassWork/createClass.py</a></li>
 <li><a href="https://github.com/CanisOris/PythonProjects/blob/main/Assignments/EncapAssi.py" target="_blank" rel="noopener noreferrer">Assignments/EncapAssi.py</a></li></ul></div>
   </li>
+<li><a href="MyRef/DjangoStack.html">Django Stack &amp; HTTP Request Lifecycle</a><ul>
+<li><a href="MyRef/DjangoStack.html#1-the-django-stack">1. The Django Stack</a><ul>
+<li><a href="MyRef/DjangoStack.html#core-django-framework-mvt-architecture">Core Django Framework (MVT Architecture)</a></li>
+<li><a href="MyRef/DjangoStack.html#typical-production-tech-stack">Typical Production Tech Stack</a></li>
+<li><a href="MyRef/DjangoStack.html#common-architectural-patterns">Common Architectural Patterns</a></li>
+</ul>
+</li>
+<li><a href="MyRef/DjangoStack.html#2-how-an-http-request-flows-through-django">2. How an HTTP Request Flows Through Django</a><ul>
+<li><a href="MyRef/DjangoStack.html#request-pipeline-stages">Request Pipeline Stages</a></li>
+<li><a href="MyRef/DjangoStack.html#quick-stage-reference">Quick Stage Reference</a></li>
+</ul>
+</li>
+<li><a href="MyRef/DjangoStack.html#terms-and-commands-used">Terms and Commands Used</a><ul>
+<li><a href="MyRef/DjangoStack.html#reference-key-terms">Key terms</a></li>
+<li><a href="MyRef/DjangoStack.html#reference-key-commands">Key commands</a></li>
+</ul>
+</li>
+</ul>
+<div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Django</li><li>MVT</li><li>Model</li><li>ORM</li><li>URLconf</li><li>View</li><li>Template</li><li>Middleware</li><li>HTTP request-response lifecycle</li><li>WSGI / ASGI</li><li>Cache / Message broker</li><li>Migration</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>models.Model</code></li><li><code>path()</code></li><li><code>re_path()</code></li><li><code>include()</code></li><li><code>render()</code></li><li><code>HttpRequest</code></li><li><code>HttpResponse</code></li><li><code>settings.MIDDLEWARE</code></li><li><code>ROOT_URLCONF / urlpatterns</code></li><li><code>{% extends %} / {% block %}</code></li></ul></div></div></li>
+<li><a href="MyRef/VirtualEnv.html">Python Virtual Environment Commands</a><ul>
+<li><a href="MyRef/VirtualEnv.html#setup-and-start-up-activation">Setup and Start Up (Activation)</a></li>
+<li><a href="MyRef/VirtualEnv.html#shut-down-deactivation-and-removal">Shut Down (Deactivation) and Removal</a></li>
+<li><a href="MyRef/VirtualEnv.html#package-and-environment-management">Package and Environment Management</a></li>
+<li><a href="MyRef/VirtualEnv.html#troubleshooting-quick-check">Troubleshooting Quick Check</a></li>
+<li><a href="MyRef/VirtualEnv.html#terms-and-commands-used">Terms and Commands Used</a><ul>
+<li><a href="MyRef/VirtualEnv.html#reference-key-terms">Key terms</a></li>
+<li><a href="MyRef/VirtualEnv.html#reference-key-commands">Key commands</a></li>
+</ul>
+</li>
+</ul>
+<div class="key-lists"><div class="key-list"><strong>Key terms:</strong><ul aria-label="Key terms"><li>Virtual environment</li><li>venv</li><li>virtualenv</li><li>Activation</li><li>Deactivation</li><li>Package / Dependency</li><li>requirements.txt</li><li>Interpreter</li><li>PATH</li></ul></div><div class="key-list"><strong>Key commands:</strong><ul aria-label="Key commands"><li><code>python -m venv venv</code></li><li><code>virtualenv venv</code></li><li><code>source venv/bin/activate</code></li><li><code>source venv/bin/activate.fish</code></li><li><code>venv\Scripts\activate.bat</code></li><li><code>.\venv\Scripts\Activate.ps1</code></li><li><code>deactivate</code></li><li><code>which python / where python</code></li><li><code>pip list</code></li><li><code>pip install requests</code></li><li><code>pip freeze &gt; requirements.txt</code></li><li><code>pip install -r requirements.txt</code></li><li><code>python -m pip install --upgrade pip</code></li><li><code>Set-ExecutionPolicy</code></li><li><code>python3.12 -m venv venv / py -3.12 -m venv venv</code></li><li><code>rm -rf venv / rmdir /s /q venv</code></li></ul></div></div></li>
 </ul>
 </nav></main>
 </body>
